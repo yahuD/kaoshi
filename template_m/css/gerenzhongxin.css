@@ -1,0 +1,326 @@
+a {
+  text-decoration: none;
+}
+html {
+  font-size: 50px;
+}
+@media screen and (min-width: 320px) {
+  html {
+    font-size: 21.33333333px;
+  }
+}
+@media screen and (min-width: 360px) {
+  html {
+    font-size: 24px;
+  }
+}
+@media screen and (min-width: 375px) {
+  html {
+    font-size: 25px;
+  }
+}
+@media screen and (min-width: 384px) {
+  html {
+    font-size: 25.6px;
+  }
+}
+@media screen and (min-width: 400px) {
+  html {
+    font-size: 26.66666667px;
+  }
+}
+@media screen and (min-width: 414px) {
+  html {
+    font-size: 27.6px;
+  }
+}
+@media screen and (min-width: 424px) {
+  html {
+    font-size: 28.26666667px;
+  }
+}
+@media screen and (min-width: 480px) {
+  html {
+    font-size: 32px;
+  }
+}
+@media screen and (min-width: 540px) {
+  html {
+    font-size: 36px;
+  }
+}
+@media screen and (min-width: 720px) {
+  html {
+    font-size: 48px;
+  }
+}
+@media screen and (min-width: 750px) {
+  html {
+    font-size: 50px;
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  min-width: 320px;
+  width: 15rem;
+  height: 100%;
+  margin: 0 auto;
+  font-family: Arial, Helvetica;
+  box-sizing: border-box;
+  background-color: #efefef;
+}
+.exit_zhezhao {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.exit_box {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 9.6rem;
+  height: 6.6rem;
+  background-color: #fff;
+  z-index: 2;
+  box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.1);
+  border-radius: 0.16rem;
+}
+.exit_box h3 {
+  font-size: 0.64rem;
+  color: #111;
+  text-align: center;
+  padding-top: 1.7rem;
+  font-weight: 400;
+}
+.exit_box .exit_box_qx {
+  float: left;
+  display: block;
+  width: 3.2rem;
+  height: 1.4rem;
+  line-height: 1.4rem;
+  border-radius: 0.4rem;
+  background-color: #cccccc;
+  font-size: 0.64rem;
+  text-align: center;
+  color: #FFF;
+  margin-left: 1.2rem;
+  margin-top: 1.4rem;
+}
+.exit_box .exit_box_qd {
+  float: right;
+  display: block;
+  width: 3.2rem;
+  height: 1.4rem;
+  line-height: 1.4rem;
+  border-radius: 0.4rem;
+  background-color: #0c8ece;
+  font-size: 0.64rem;
+  text-align: center;
+  color: #FFF;
+  margin-right: 1.2rem;
+  margin-top: 1.4rem;
+}
+.user {
+  overflow: hidden;
+  width: 100%;
+}
+.user .top_box {
+  overflow: hidden;
+  width: 100%;
+  height: 7.4rem;
+  background: url(../imgs/pro-bg.png) no-repeat;
+  background-size: 100% 100%;
+}
+.user .top_box .user_pic_box {
+  width: 100%;
+  height: 2.24rem;
+  margin-top: 2.94rem;
+}
+.user .top_box .user_pic_box .user_header {
+  float: left;
+  width: 2.24rem;
+  height: 2.24rem;
+  margin-left: 1.2rem;
+}
+.user .top_box .user_pic_box .user_header img {
+  display: block;
+  width: 2.24rem;
+  height: 2.24rem;
+}
+.user .top_box .user_pic_box .use_name {
+  float: left;
+  width: 4rem;
+  height: 2.24rem;
+  line-height: 2.24rem;
+  font-size: 0.56rem;
+  color: #333;
+  margin-left: 0.2rem;
+}
+.user .items_120 {
+  width: 100%;
+  height: 2.4rem;
+  margin-top: -1.2rem;
+  padding: 0 0.4rem;
+}
+.user .items_120 .item_120_con {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  border-radius: 0.16rem;
+  box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.1);
+}
+.user .items_120 .item_120_con .user_icon {
+  position: absolute;
+  left: 50%;
+  top: 0.44rem;
+  transform: translateX(-50%);
+  width: 1.2rem;
+  height: 0.82rem;
+}
+.user .items_120 .item_120_con .user_icon img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.user .items_120 .item_120_con .use_icon_info {
+  position: absolute;
+  bottom: 0.5rem;
+  font-size: 0.44rem;
+  color: #0A72A5;
+  text-align: center;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.user .items_580 {
+  overflow: hidden;
+  height: 11.6rem;
+  width: 100%;
+  margin-top: 0.7rem;
+  padding: 0 0.4rem;
+}
+.user .items_580 .items_580_box {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.16rem;
+  background-color: #fff;
+  box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.1);
+}
+.user .items_580 .items_580_box ul {
+  height: 100%;
+  width: 100%;
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
+  padding-top: 0.4rem;
+}
+.user .items_580 .items_580_box ul li {
+  overflow: hidden;
+  width: 100%;
+  height: 1.5rem;
+  border-bottom: 0.02rem solid #efefef !important;
+  line-height: 1.5rem;
+}
+.user .items_580 .items_580_box ul li span {
+  float: left;
+  font-size: 0.5rem;
+  color: #999;
+}
+.user .items_580 .items_580_box ul li em {
+  float: right;
+  font-size: 0.5rem;
+  color: #111;
+}
+.user .logOut_exit {
+  width: 100%;
+  height: 1.6rem;
+  padding: 0 0.4rem;
+  padding-left: 0.4rem;
+  margin-top: 1rem;
+  margin-bottom: 3.4rem;
+}
+.user .logOut_exit .exit {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.16rem;
+  font-size: 0.72rem;
+  text-align: center;
+  color: #333333;
+  line-height: 1.6rem;
+  background-color: #fff;
+  -webkit-tap-highlight-color: transparent;
+}
+.user .footer {
+  min-width: 320px;
+  width: 15rem;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 1.96rem;
+  background-color: #fff;
+  padding-top: 0.2rem;
+}
+.user .footer .home {
+  float: left;
+  display: block;
+  width: 1.04rem;
+  height: 100%;
+  margin-left: 3rem;
+  -webkit-tap-highlight-color: transparent;
+}
+.user .footer .home .home_img {
+  width: 1.04rem;
+  height: 1.04rem;
+}
+.user .footer .home .home_img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.user .footer .home .shouye_wenzi {
+  width: 1.1rem;
+  font-size: 0.4rem;
+  color: #666;
+  text-align: center;
+  margin-top: 0.2rem;
+}
+.user .footer .person {
+  float: right;
+  display: block;
+  width: 1.04rem;
+  height: 100%;
+  margin-right: 3rem;
+  -webkit-tap-highlight-color: transparent;
+}
+.user .footer .person .person_img {
+  width: 1.04rem;
+  height: 1.04rem;
+}
+.user .footer .person .person_img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.user .footer .person .person_wenzi {
+  width: 1.1rem;
+  font-size: 0.4rem;
+  color: #666;
+  text-align: center;
+  margin-top: 0.1rem;
+}
+.user .footer .person .cur {
+  color: #0C8ECE;
+  font-weight: 700;
+}

@@ -1,0 +1,96 @@
+{include file="admin_header.html" title="修改教师-考试系统"}
+
+{include file="admin_top.html"}
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="main">
+			<div class="col-xs-2 leftmenu">
+				<ul class="list-group">
+					<li class="list-group-item">
+						<a href="?ctl=user&act=studentLists">学员管理</a>
+					</li>
+					<li class="list-group-item active">
+						<a href="?ctl=user&act=teacherLists">教师管理</a>
+					</li>
+					<li class="list-group-item">
+						<a href="?ctl=user&act=adminLists">管理员管理</a>
+					</li>
+				</ul>
+			</div>
+
+			<div id="datacontent">
+				<div class="box itembox" style="margin-bottom:0px;border-bottom:1px solid #CCCCCC;">
+					<div class="col-xs-12">
+						<ol class="breadcrumb">
+							<li>用户</li>
+							<li><a href="/teacher"></a>教师管理</li>
+							<li class="active">修改教师</li>
+						</ol>
+					</div>
+				</div>
+
+				<div class="box itembox" style="padding-top:10px;margin-bottom:0px;">
+					<h4 class="title" style="padding:10px;">
+						修改教师
+						<a class="pull-right btn btn-primary" href="?ctl=user&act=teacherLists">教师列表</a>
+					</h4>
+					<form class="form-horizontal" id="editTeacher" style="margin-top:40px;">
+						<div class="form-group">
+							<label for="username" class="control-label col-sm-2">姓名</label>
+							<div class="col-sm-4">
+								<input class="form-control" name="name" id="name" size="25" type="text" value="{$row.name}" needle="needle" datatype="name" max="40" alt="请输入姓名" />
+								<span class="help-block">请输入姓名</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="username" class="control-label col-sm-2">教师账号</label>
+							<div class="col-sm-4">
+								<input class="form-control" name="teacher_id" id="teacher_id" size="25" type="text" value="{$row.account}" needle="needle" datatype="teacher_id" max="40" alt="请输入教师账号" readonly="readonly"/>
+								
+							</div>
+						</div>
+						<input type="hidden" name="uid" value="{$row.uid}">
+						<div class="form-group">
+							<label for="groupid" class="control-label col-sm-2"></label>
+							<div class="col-sm-4">
+								<button class="btn btn-primary editTeacher">提交</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{include file="admin_footer.html"}
+
+</body>
+<script>
+	$('.editTeacher').click(function(e){
+		e.preventDefault();//禁止冒泡
+		var name = $('#name').val();
+		var teacher_id = $('#teacher_id').val();
+
+		if(name == ''){
+			dtAlert({ message:'请输入姓名',title:'<i class="glyphicon glyphicon-remove"></i>',style:'primary' });
+			return false;
+		}
+		if(teacher_id == ''){
+			dtAlert({ message:'请输入教师账号',title:'<i class="glyphicon glyphicon-remove"></i>',style:'primary' });
+			return false;
+		}
+
+		$.post("/index.php?ctl=user&act=editTeacher", $('#editTeacher').serialize(),
+			function(data){
+				console.log(data);
+		    	if(data.res == 'failed'){
+		    		dtAlert({ message:data.msg,title:'<i class="glyphicon glyphicon-remove"></i>',style:'primary' });
+					return false;
+		    	}else{
+		    		dtAlert({ message:'修改成功',title:'<i class="glyphicon glyphicon-ok"></i>',style:'primary',callback:"window.location.href='?ctl=user&act=teacherLists';" });
+		    	}
+		}, "json");
+	})
+</script>
+</html>

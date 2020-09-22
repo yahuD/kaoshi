@@ -1,0 +1,223 @@
+@import 'common';
+/* 首页css */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-width: 320px;
+    width: 15rem;
+    height: 100%;
+    margin: 0 auto;
+    font-family: Arial, Helvetica;
+    background-color: #edeeef;
+    
+}
+// 请填写完整信息后登录
+.frm_info_no{
+    display: block;
+    position: fixed;
+    width: 400rem / 50;
+    height: 180rem / 50;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    background-color: #0C8ECE;
+    opacity: .5;
+    .no_top{
+        height: 110rem / 50;
+        line-height: 110rem / 50;
+        font-size: 24rem / 50;
+        text-align: center;
+        color: #fff;
+        border-bottom: 1rem / 50 solid #fff;
+
+    }
+    .no_queding{
+        display: block;
+        width: 400rem / 50;
+        height: 70rem / 50;
+        line-height: 70rem / 50;
+        font-size: 24rem / 50;
+        text-align: center;
+        color: #fff;
+        -webkit-tap-highlight-color: transparent; 
+        
+
+    }
+}
+//学员/身份证输入有误
+.frm_info_no2{
+    display: none;
+    position: fixed;
+    width: 400rem / 50;
+    height: 180rem / 50;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    background-color: #0C8ECE;
+    opacity: .5;
+    .no_top2{
+        height: 110rem / 50;
+        line-height: 110rem / 50;
+        font-size: 24rem / 50;
+        text-align: center;
+        color: #fff;
+        border-bottom: 1rem / 50 solid #fff;
+
+    }
+    .no_queding2{
+        display: block;
+        width: 400rem / 50;
+        height: 70rem / 50;
+        line-height: 70rem / 50;
+        font-size: 24rem / 50;
+        text-align: center;
+        color: #fff;
+        -webkit-tap-highlight-color: transparent; 
+        
+
+    }
+}
+//密码输入有误,请重新输入
+
+.frm_info_pwderr{
+    display: none;
+    position: fixed;
+    width: 400rem / 50;
+    height: 180rem / 50;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    background-color: #0C8ECE;
+    opacity: .5;
+    .no_top3{
+        height: 110rem / 50;
+        line-height: 110rem / 50;
+        font-size: 24rem / 50;
+        text-align: center;
+        color: #fff;
+        border-bottom: 1rem / 50 solid #fff;
+
+    }
+    .no_queding3{
+        display: block;
+        width: 400rem / 50;
+        height: 70rem / 50;
+        line-height: 70rem / 50;
+        font-size: 24rem / 50;
+        text-align: center;
+        color: #fff;
+        -webkit-tap-highlight-color: transparent; 
+        
+
+    }
+}
+
+
+.main{
+    overflow: hidden;
+    min-width: 320px;
+    width: 15rem;
+    // height: 1334rem / 50;
+    height: 100%;
+    background: url(../imgs/bg-1.png) no-repeat center center;
+    background-size: 100% 100%;
+    .Logo_title{
+        height: 100rem / 50;
+        width: 100%;
+        padding-left: 190rem / 50;
+        
+        margin-top: 200rem / 50;
+        .logo{
+            float: left;
+            width: 100rem / 50;
+            height: 100rem / 50;
+            a{
+                display: block;
+                width: 100%;
+                height: 100%;
+                -webkit-tap-highlight-color: transparent; 
+                img{
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                }
+
+            }
+        }
+        .title{
+            float: left;
+            margin-left: 23rem / 50;
+            font-family: 'PingFang SC','黑体';
+            font-size: 40rem / 50;
+            color: #333;
+            font-weight: 700;
+            height: 100rem / 50;
+            line-height: 100rem / 50;
+        }
+    }
+
+    // 表单
+    .frm{
+        width: 100%;
+        overflow: hidden;
+        margin-top: 140rem / 50;
+        // padding-bottom: 320rem / 50;
+
+       form{
+           overflow: hidden;
+           width: 100%;
+
+        .frm_info{
+            width: 100%;
+            overflow: hidden;
+            font-size: 28rem / 50;
+            color: #333;
+            padding-left: 81rem / 50;
+            
+        }
+
+        .ipt{
+            display: block;
+            width: 590rem / 50;
+            height: 42rem / 50;
+            font-size: 26rem / 50;
+            border: 0;
+            border-bottom: 1rem / 50 solid #ccc;
+            background-color: rgba(0, 0, 0, 0);
+            outline: none;
+            margin-left: 81rem / 50;
+            margin-right: 81rem / 50;
+            margin-top: 30rem / 50;
+            margin-bottom: 30rem / 50;
+            color: #333;
+           
+           
+        }
+
+        .login_btn{
+            display: block;
+            width: 500rem / 50;
+            height: 80rem / 50;
+            font-size: 36rem / 50;
+            color: #fff;
+            border-radius: 40rem / 50;        
+            background-color: #cccccc;
+            border: 0;
+            outline: none;
+            margin: 90rem / 50 auto 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .login_btn_cur{
+           background-color: #0c8ece;
+
+        }
+
+
+       }
+    }
+
+}

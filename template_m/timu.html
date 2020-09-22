@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <style>
+        @font-face {
+            font-family: 'icomoon';
+            src: url('fonts/icomoon.eot?lrs8eq');
+            src: url('fonts/icomoon.eot?lrs8eq#iefix') format('embedded-opentype'), url('fonts/icomoon.ttf?lrs8eq') format('truetype'), url('fonts/icomoon.woff?lrs8eq') format('woff'), url('fonts/icomoon.svg?lrs8eq#icomoon') format('svg');
+            font-weight: normal;
+            font-style: normal;
+            font-display: block;
+        }
+    </style>
+    <link rel="stylesheet" href="./lib/layui/css/layui.css">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/timu.css">
+
+    <!-- 答题卡css -->
+    <link rel="stylesheet" href="./css/datika.css">
+    <title>科普考试</title>
+</head>
+
+<body>
+
+
+    <!-- 答题卡区域重调 -->
+    <div class="datika_Box">
+
+        <!-- 关闭按钮 -->
+        <div class="datika_close">X</div>
+        <!-- 答题区域 -->
+        <div class="area">
+            <div class="area_box">
+                <form>
+                    <div class="area_wenzi">单选题(共6题，合计12.0分)</div>
+                    <ul class="rad_ka_ul">
+                        <li>
+                            <a href="#ite1">
+                                <input type="text" value="1" name="rad_ka" disabled class="ipt_datika_area current_dati">
+                            </a>
+
+                        </li>
+                        <li>
+                            <a href="./timu.html?id=ite2">
+                                <input type="text " value="2" name="rad_ka" class="ipt_datika_area" disabled>
+                            </a>
+
+                        </li>
+                        <li>
+                            <input type="text " value="3" name="rad_ka" disabled class="ipt_datika_area">
+
+                        </li>
+                        <li>
+                            <input type="text " value="4" name="rad_ka" disabled class="ipt_datika_area">
+
+                        </li>
+                        <li>
+                            <input type="text " value="5" name="rad_ka" disabled class="ipt_datika_area">
+
+                        </li>
+                        <li>
+                            <input type="text " value="6" name="rad_ka" disabled class="ipt_datika_area">
+
+                        </li>
+                        <li>
+                            <input type="text " value="7" name="rad_ka" disabled class="ipt_datika_area">
+
+                        </li>
+                        <li>
+                            <input type="text " value="8" name="rad_ka" disabled class="ipt_datika_area">
+
+                        </li>
+                    </ul>
+                    <!-- 2多选题 -->
+                    <div class="area_wenzi ">多选题(共6题，合计12.0分)</div>
+                    <ul class="check_ka_ul">
+                        <li>
+                            <input type="text " value="1" name="check_ka" disabled class="ipt_datika_area">
+                        </li>
+                        <li>
+                            <input type="text " value="2" name="check_ka" disabled class="ipt_datika_area">
+
+                        </li>
+                        <li>
+                            <input type="text " value="3" name="check_ka" disabled class="ipt_datika_area">
+
+                        </li>
+                        <li>
+                            <input type="text " value="4" name="check_ka" disabled class="ipt_datika_area">
+
+                        </li>
+                        <li>
+                            <input type="text " value="5" name="check_ka" disabled class="ipt_datika_area">
+
+                        </li>
+                        <li>
+                            <input type="text " value="6" name="check_ka" disabled class="ipt_datika_area">
+
+                        </li>
+                        <li>
+                            <input type="text " value="7" name="check_ka" disabled class="ipt_datika_area">
+
+                        </li>
+                    </ul>
+                    <!-- 3判断题 -->
+                    <div class="area_wenzi ">判断题(共6题，合计12.0分)</div>
+                    <ul class="panduan_ka_ul">
+                        <li>
+                            <input type="text " value="1" name="panduan_ka" disabled class="ipt_datika_area">
+
+                        </li>
+                        <li>
+                            <input type="text " value="2" name="panduan_ka" disabled class="ipt_datika_area">
+
+                        </li>
+                        <li>
+                            <input type="text " value="3" name="panduan_ka" disabled class="ipt_datika_area">
+
+                        </li>
+
+                    </ul>
+                    <!-- 4填空题 -->
+                    <div class="area_wenzi ">填空题(共6题，合计12.0分)</div>
+                    <ul class="tiankong_ka_ul">
+                        <li>
+                            <input type="text " value="1" name="tiankong_ka" disabled class="ipt_datika_area">
+
+                        </li>
+                        <li>
+                            <input type="text " value="2" name="tiankong_ka" disabled class="ipt_datika_area">
+
+                        </li>
+                        <li>
+                            <input type="text " value="3" name="tiankong_ka" disabled class="ipt_datika_area">
+
+                        </li>
+
+                    </ul>
+                    <!-- 5问答题 -->
+                    <div class="area_wenzi ">问答题(共6题，合计12.0分)</div>
+                    <ul class="wenda_ka_ul">
+                        <li>
+                            <input type="text " value="1" name="wenda_ka" disabled class="ipt_datika_area">
+
+                        </li>
+
+                    </ul>
+
+                    <button class="datika_btn_hidden" style="display: none; ">提交试卷</button>
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+    <!-- 遮罩 -->
+    <div class="zhezhao"></div>
+
+    <!-- 考试15分钟后才可以交卷 -->
+    <div class="test_fifty_jiaojuan">
+        考试15分钟后才可以交卷!
+        <a href="javascript:;" class="test_time_fifty_btn">确定</a>
+
+    </div>
+
+    <!-- 考试时间已到！ -->
+    <div class="test_time_end">
+        考试时间已到！
+        <a href="javascript:;" class="test_time_end_btn">确定</a>
+
+    </div>
+
+    <!-- 确定交卷吗 -->
+    <div class="test_jiaojuan">
+        <h3>确定交卷吗？</h3>
+
+        <a href="javascript:;" class="test_jiaojuan_no">取消</a>
+        <a href="javascript:;" class="test_jiaojuan_yes">确定</a>
+
+    </div>
+
+    <!-- 你还有题目未做完
+    确定交卷吗？ -->
+
+    <div class="test_jiaojuan_timeno">
+        <h3>你还有题目未做完 确定交卷吗？</h3>
+
+        <a href="javascript:;" class="test_jiaojuan_timeno_btn">取消</a>
+        <a href="javascript:;" class="test_jiaojuan_timeyes_btn">确定</a>
+    </div>
+
+    <!-- 1 -->
+    <div class="datika_top">
+        <div class="datika_back">
+            <a href="javascript:;" class="back"></a>
+        </div>
+        <div class="clock"> <span>00</span>:<span>52</span>:<span>34</span> </div>
+        <div class="datika_wenzi">
+            <!-- <a href="./datika.html"> -->
+            <a href="javascript:;" id="datikaShow">
+                <img src="./imgs/datika_icon.png" alt="" style="cursor: pointer;">
+            </a>
+        </div>
+    </div>
+    <!-- 2 单选题-->
+    <div class="tiku_title">
+        <span class="ti_title radio_ti_title">单选题(共6题，合计12.0分)</span>
+        <span class="ti_title check_ti_title">多选题(共6题，合计12.0分)</span>
+        <span class="ti_title panduan_ti_title">判断题(共6题，合计12.0分)</span>
+        <span class="ti_title tiankong_ti_title">填空题(共6题，合计12.0分)</span>
+        <span class="ti_title wenda_ti_title">问答题(共6题，合计12.0分)</span>
+        <div class="tiku_right"><i class="end">1</i>/<span class="total_ti">7</span></div>
+    </div>
+    <!--  -->
+
+
+    <!-- 进度调 -->
+    <div class="process_tiao">
+
+        <div class="layui-progress" lay-showPercent="yes">
+            <div class="layui-progress-bar layui-bg-blue process_height" lay-percent="60%"></div>
+        </div>
+
+    </div>
+
+    <!-- 题目库 -->
+    <div class="tiku_box">
+
+        <form>
+            <!-- 第一题 -->
+            <div class="items items_radio" id="ite1">
+                <div class="timu_1">
+                    1、下列关于个性化功能介绍，正确的是？（ 2.0分 ）
+                </div>
+                <div class="rad_box">
+                    <input type="radio" name="a1" value="A" class="rad"><span class="span_link">&nbsp;&nbsp;可以，一个证书可以关联多场考试，这些考试中的学员满足发放规则皆可获得此证书</span>
+                    <em style="display: block;" class="fenge"></em>
+                    <input type="radio" name="a1" value="B" class="rad rad2"><span class="span_link">&nbsp;&nbsp;不可以</span>
+                </div>
+            </div>
+
+            <!-- 2 -->
+            <div class="items items_radio" id="ite2">
+                <div class="timu_1">
+                    2、下列关于个性化功能介绍，正确的是？（ 2.0分 ）
+                </div>
+                <div class="rad_box">
+                    <input type="radio" name="a2" value="A" class="rad"><span class="span_link">&nbsp;&nbsp;可以，一个证书可以关联多场考试，这些考试中的学员满足发放规则皆可获得此证书</span>
+                    <em style="display: block;" class="fenge"></em>
+                    <input type="radio" name="a2" value="B" class="rad rad2"><span class="span_link">&nbsp;&nbsp;不可以</span>
+                </div>
+            </div>
+            <!-- 3 -->
+            <div class="items items_radio">
+                <div class="timu_1">
+                    3、下列关于个性化功能介绍，正确的是？（ 2.0分 ）
+                </div>
+                <div class="rad_box">
+                    <input type="radio" name="a3" value="A" class="rad"><span class="span_link">&nbsp;&nbsp;可以，一个证书可以关联多场考试，这些考试中的学员满足发放规则皆可获得此证书</span>
+                    <em style="display: block;" class="fenge"></em>
+                    <input type="radio" name="a3" value="B" class="rad rad2"><span class="span_link">&nbsp;&nbsp;不可以</span>
+                </div>
+            </div>
+
+
+            <!-- 第二题 -->
+            <div class="items items_duoxuan">
+                <div class="timu_1">
+                    1、下列关于个性化功能介绍，正确的是？（ 2.0分 ）
+                </div>
+                <div class="rad_box">
+
+                    <!-- 多选题 -->
+
+                    <div class="cur_checkboxColor">
+                        <input type="checkbox" name="c1" value="1" class="checkbox_lm"> <span>A.  LOGO设置，可用于替换系统整体的logo，例如替换自己公司的LOGO，强化品牌效应。</span>
+                    </div>
+
+                    <div class="cur_checkboxColor">
+                        <input type="checkbox" name="c1" value="A" class="checkbox_lm checkbox_lm_B"><span>B.  自定义皮肤，可用于更换学员端系统的主题色。</span>
+                    </div>
+
+                    <div class="cur_checkboxColor">
+                        <input type="checkbox" name="c1" value="c" class="checkbox_lm checkbox_lm_C"><span>C.  自定义背景页，可用于更换登录界面的背景，例如替换为自己公司设计的登录背景。</span>
+                    </div>
+                    <div class="cur_checkboxColor">
+                        <input type="checkbox" name="c1" value="d" class="checkbox_lm checkbox_lm_D"><span>D. 自定义页签，可用于更改浏览器顶部的"网页标题”文案。</span>
+                    </div>
+                    <div class="cur_checkboxColor">
+                        <input type="checkbox" name="c1" value="e" class="checkbox_lm checkbox_lm_E"><span>E. 自定义考试页，可用于替换进入考试前的说明页的背景。</span>
+                    </div>
+
+                    <div class="cur_checkboxColor">
+                        <input type="checkbox" name="c1" value="f" class="checkbox_lm checkbox_lm_F"><span>F. 自定义学员端菜单，可用于控制学员端可见的模块，例如只在学员端限时考试模块，其他功能模块皆隐藏。</span>
+                    </div>
+
+
+                </div>
+
+            </div>
+            <!-- 第二题 -->
+            <div class="items items_duoxuan">
+                <div class="timu_1">
+                    2、下列关于个性化功能介绍，正确的是？（ 2.0分 ）
+                </div>
+                <div class="rad_box">
+
+                    <!-- 多选题 -->
+
+                    <div class="cur_checkboxColor">
+                        <input type="checkbox" name="c1" value="1" class="checkbox_lm"> <span>A.  LOGO设置，可用于替换系统整体的logo，例如替换自己公司的LOGO，强化品牌效应。</span>
+                    </div>
+
+                    <div class="cur_checkboxColor">
+                        <input type="checkbox" name="c1" value="A" class="checkbox_lm checkbox_lm_B"><span>B.  自定义皮肤，可用于更换学员端系统的主题色。</span>
+                    </div>
+
+                    <div class="cur_checkboxColor">
+                        <input type="checkbox" name="c1" value="c" class="checkbox_lm checkbox_lm_C"><span>C.  自定义背景页，可用于更换登录界面的背景，例如替换为自己公司设计的登录背景。</span>
+                    </div>
+                    <div class="cur_checkboxColor">
+                        <input type="checkbox" name="c1" value="d" class="checkbox_lm checkbox_lm_D"><span>D. 自定义页签，可用于更改浏览器顶部的"网页标题”文案。</span>
+                    </div>
+                    <div class="cur_checkboxColor">
+                        <input type="checkbox" name="c1" value="e" class="checkbox_lm checkbox_lm_E"><span>E. 自定义考试页，可用于替换进入考试前的说明页的背景。</span>
+                    </div>
+
+                    <div class="cur_checkboxColor">
+                        <input type="checkbox" name="c1" value="f" class="checkbox_lm checkbox_lm_F"><span>F. 自定义学员端菜单，可用于控制学员端可见的模块，例如只在学员端限时考试模块，其他功能模块皆隐藏。</span>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+            <!--判断 第三题 -->
+            <div class="items items_panduan">
+                <div class="timu_1">
+                    1、 发布一场考试需要先在系统中录入题目，如果是账号密码登录方式的考试，还需要在系统中准备好参加考试的学员准备，然后才能开始创建考试；此描述是否正确？（ 2.0分 ）
+                </div>
+                <div class="rad_box">
+                    <!-- 判断题 -->
+
+                    <input type="radio" name="c1" value="A" class="rad rad_right"><span>&nbsp;&nbsp;正确</span>
+
+                    <em style="display: block;" class="fenge"></em>
+
+                    <input type="radio" name="c1" value="B" class="rad rad2 j_error"><span>&nbsp;&nbsp;错误</span>
+
+                </div>
+
+            </div>
+            <!-- 第四题 -->
+            <div class="items items_panduan">
+                <div class="timu_1">
+                    2、 发布4一场考试需要先在系统中录入题目，如果是账号密码登录方式的考试，还需要在系统中准备好参加考试的学员准备，然后才能开始创建考试；此描述是否正确？（ 2.0分 ）
+                </div>
+                <div class="rad_box">
+
+                    <input type="radio" name="d1" value="A" class="rad rad_right"><span>&nbsp;&nbsp;正确</span>
+
+                    <em style="display: block;" class="fenge"></em>
+
+                    <input type="radio" name="d1" value="B" class="rad rad2 j_error"><span>&nbsp;&nbsp;错误</span>
+
+                </div>
+
+            </div>
+            <!-- 第五题 -->
+            <div class="items items_tiankong">
+                <div class="timu_1">
+                    1、 打招呼的方式一般有（ ）（ ）（ ）（ ）（ 2.0分 ）
+                </div>
+                <div class="rad_box">
+
+                    <!-- 填空题 -->
+
+                    <div class="cur_radColor">
+
+                        <div class="tiankong_shuzi">1</div>
+                        <input type="text" class="tiankong_ipt" name="tiankong" value="点击输入答案">
+
+                    </div>
+
+                    <div class="cur_radColor">
+                        <div class="tiankong_shuzi">2</div>
+                        <input type="text" class="tiankong_ipt" name="tiankong" value="点击输入答案">
+
+                    </div>
+
+                    <div class="cur_radColor">
+                        <div class="tiankong_shuzi">3</div>
+                        <input type="text" class="tiankong_ipt" name="tiankong" value="点击输入答案">
+
+                    </div>
+
+                    <div class="cur_radColor">
+                        <div class="tiankong_shuzi">4</div>
+                        <input type="text" class="tiankong_ipt" name="tiankong" value="点击输入答案">
+
+                    </div>
+                    <!-- 填空题end -->
+
+                </div>
+
+            </div>
+            <!--回答 第六题 -->
+            <div class="items fuwenben_box">
+                <div class="timu_1">
+                    1、 请描述一下中国在饮食方面上的礼仪。（ 2.0分 ）
+                </div>
+                <div class="rad_box">
+
+                    <textarea id="demo" style="display: none;"></textarea>
+
+                </div>
+
+            </div>
+
+            <button class="tijiao" style="display: none;">提交试卷</button>
+
+            <a href="javascript:;" class="prev_btn">上一题</a>
+            <a href="javascript:;" class="next_btn">下一题</a>
+            <a href="javascript:;" class="tijiao_btn">提交试卷</a>
+
+        </form>
+
+    </div>
+    <!-- 版权 -->
+    <div class="footer_copy ">
+        <span>Copyright(c)2011-2020 广州科普教育版权所有</span>
+    </div>
+
+</body>
+<script src="./js/jquery.min.js"></script>
+<script src="./lib/layui/layui.all.js"></script>
+<script src="./js/timu.js"></script>
+
+<script src="./js/datika.js"></script>
+
+</html>

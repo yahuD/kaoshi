@@ -1,0 +1,223 @@
+{include file="admin_header.html" title="后台-考试系统"}
+<link rel="stylesheet" type="text/css" href="/admin/css/student_grade.css" />
+<style>
+	a.cur{
+		color: #23527c!important;
+	    background-color: #eee!important;
+	    border-color: #ddd!important;
+    }
+</style>
+{include file="admin_top.html"}
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="main">
+			<div class="col-xs-2 leftmenu">
+				<ul class="list-group">
+					<li class="list-group-item active">
+						<a href="?ctl=exam&act=examTest">考试管理</a>
+					</li>
+				</ul>
+			</div>
+
+			<div id="datacontent">
+				<div class="box itembox" style="margin-bottom:0px;border-bottom:1px solid #CCCCCC;">
+					<div class="col-xs-12">
+						<ol class="breadcrumb">
+							<li><a href="#">考试</a></li>
+							<li>考试管理</li>
+							<li class="active">考试成绩</li>
+						</ol>
+					</div>
+				</div>
+
+				<!-- <div class="box itembox" style="margin-bottom:0px;border-bottom:1px solid #CCCCCC;">
+					<div class="col-xs-12">
+						<ol class="breadcrumb">
+							<li>考试名称</li>
+							<li>考试管理</li>
+							<li class="active">考试成绩</li>
+						</ol>
+					</div>
+				</div> -->
+				<div class="smain">
+					<div class="test_top">
+						<div class="item">考试名称</div>
+						<div class="item">考试类型</div>
+						<div class="item">考试时间</div>		
+					</div>
+					<div class="test_bottom">
+						<div class="item">{$test.title}</div>
+						<div class="item">{$test.section}</div>
+						<div class="item">{$test.begin_time}~{$test.end_time}</div>		
+					</div>
+					<input type="hidden" id="test_num" value="{$test.id}">
+					
+				</div>
+
+				<div class="box itembox" style="padding-top:10px;margin-bottom:0px;">
+					<h4 class="title" style="padding:10px;">
+						成绩列表
+					</h4>
+					<table class="table table-hover table-bordered">
+						<thead>
+							<tr class="info">
+								<th><input type="checkbox" name="all" id="check_all"></th>
+								<th>学号</th>
+								<th>姓名</th>
+								<th>所属专业</th>
+								<th>分数</th>
+								<th>及格</th>
+								<th>是否为补考</th>
+								<th>强制交卷</th>
+								<th>交卷时间</th>
+								<th>您的判分进度</th>
+								<th width="150">操作</th>
+							</tr>
+						</thead>
+						<tbody id="tb">
+							{foreach $list as $k => $v}
+								<tr>
+									<td><input type="checkbox" name="" value="{$v.uid}" class="item_check"></td>
+									<td>{$v.student_id}</td>
+									<td>{$v.student_name}</td>
+									<td>{$v.student_majors}</td>
+									<td>{$v.score}</td>
+									<td>{$v.is_jige}</td>
+									<td>否</td>
+									<td>{$v.is_qiangzhi}</td>
+									<td>{$v.create_time}</td>
+									<td>{$v.is_reviewe}</td>
+									<td>
+										<div class="btn-group">
+											<a class="btn" href="?ctl=exam&act=piyue&id={$test.id}&uid={$v.uid}" title="阅卷"><em class="glyphicon glyphicon-edit"></em></a>
+
+											<a class="btn" href="?ctl=exam&act=seeStudentGrade&id={$v.id}" title="导出试卷"><em class="glyphicon glyphicon-export"></em></a>
+											<a class="btn" href="?ctl=exam&act=seeStudentGrade&id={$v.id}" title="删除试卷"><em class="glyphicon glyphicon-remove"></em></a>
+										</div>
+									</td>
+								</tr>
+							{/foreach}
+							
+						</tbody>
+					</table>
+					<div class="jiluBtn">
+						<span>共有{$list_count}记录</span>
+						<button class="del_btn">批量删除</button>
+						<button class="daochu_btn">批量导出</button>
+						
+					</div>
+				</div>
+			</div>
+			<ul class="pagination" style="text-align: center;display: block;">
+				{$showpage}
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+
+{include file="admin_footer.html"}
+<script crossorigin="anonymous" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB" src="https://lib.baomitu.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-confirmation/1.0.7/bootstrap-confirmation.min.js"></script>
+<script> 
+$(function () { 
+	$('.delconfirm').confirmation({
+
+		animation: true, 
+		placement: "top", 
+		title: "确定要删除吗？", 
+		btnOkLabel: '确定', 
+		btnCancelLabel: '取消', 
+		onConfirm: function () { 
+			console.log(this.options.uid); 
+			var uid = this.options.uid;
+			var gourl = this.options.gourl;
+
+			$.post("/index.php?ctl=user&act=delStudent", { uid:uid,gourl:gourl },
+			function(data){
+				console.log(data);
+		    	window.location.href=data.gourl;
+			}, "json");
+			
+		}, 
+		onCancel: function () { 
+			//alert("点击了取消"); 
+		} 
+	}) 
+});
+</script> 
+<script>
+	$('#check_all').change(function(){
+		if($(this).attr('checked',true)){
+			$('.item_check').attr('checked',true)
+		}else{
+			$('.item_check').attr('checked',false)
+		}
+	})
+</script>
+<script type="text/javascript">
+	$(function(){
+		  var idarr =[];
+
+		$('.del_btn').click(function(){
+			var test_num = $("#test_num").val();
+            $.each($('input:checkbox:checked'),function(){
+            	
+               var id = $(this).attr("value");
+               if(id>0){               
+                    idarr.push(id);
+                }
+            });
+            var str = idarr.join(',');
+           $.ajax({
+           	   url:'/?ctl=exam&act=delAll ',
+           	   type:'get',
+           	   data:{
+           	   	 uid:str,
+           	   	 test_num:test_num
+           	   },
+           	   success:function(data){
+           	   	var obj = new Function("return" + data)();
+           	      if(obj.res == 'failed'){
+           	      	alert(obj.msg);
+           	      	location.reload();
+           	      }else{
+           	      	alert(obj.msg);
+           	      }
+           	   
+           	   }
+           })
+
+		})
+         //导出
+         	$('.daochu_btn').click(function(){
+			var test_num = $("#test_num").val();
+            $.each($('input:checkbox:checked'),function(){
+            	
+               var id = $(this).attr("value");
+               if(id>0){               
+                    idarr.push(id);
+                }
+            });
+            var str = idarr.join(',');
+            window.location.href = "/?ctl=exam&act=export&uid="+str+"&test_num="+test_num;
+           // $.ajax({
+           // 	   url:'/?ctl=exam&act=export ',
+           // 	   type:'get',
+           // 	   data:{
+           // 	   	 uid:str,
+           // 	   	 test_num:test_num
+           // 	   },
+           // 	   success:function(data){
+           // 	   	console.log(111);
+           	
+           // 	   }
+           // })
+
+		})
+	})
+</script>
+</body>
+
+</html>

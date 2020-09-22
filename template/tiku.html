@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>科普考试系统-答题</title>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="/template/lib/layui/css/layui.css">
+    <link rel="stylesheet" href="/template/lib/fonts/iconfont.css">
+    <link rel="stylesheet" href="/template/css/base.css">
+    <link rel="stylesheet" href="/template/css/common.css">
+    <link rel="stylesheet" href="/template/css/common2.css">
+    <link rel="stylesheet" href="/template/css/tiku.css">
+
+    <style>
+        .blues {
+            color: #0b80b9;
+        }
+
+        .body_zhezhao {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, .1);
+            z-index: 100;
+        }
+    </style>
+
+    <!-- 时间js -->
+    <script src="/template/js/date.js"></script>
+
+</head>
+
+<body>
+    <!-- 整体遮罩层 -->
+    <div class="body_zhezhao"></div>
+    <!-- 考试时间到 -->
+    <div class="text_dao" id="timeExec1">
+        <div class="close3" onclick="javascript:$('#timeExec1').hide();$('.body_zhezhao').hide();">X</div>
+        考试时间已到！
+    </div>
+
+    <!-- 考试开始15分钟后才能交卷 -->
+    <div class="fify_text" id="timeExec2">
+        <div class="close_fifty" onclick="javascript:$('#timeExec2').hide();$('.body_zhezhao').hide();">X</div>
+        考试开始15分钟后才能交卷！
+    </div>
+
+    <!-- 考试开始15分钟后才能交卷end -->
+
+    <!-- 有试题未完成，是否现在交卷 -->
+
+    <div class="shezhi_logout1" id="timeExec3">
+        <h3>有试题未完成，是否现在交卷？</h3>
+        <a href="javascript:;" class="quxiao_tiku" onclick="javascript:$('#timeExec3').hide();$('.body_zhezhao').hide();">取消</a>
+        <a href="javascript:;" class="queding_tiku" onclick="javascript:subTest()">确定</a>
+    </div>
+
+    <!-- 有试题未完成，是否现在交卷 -->
+
+    <!-- 是否现在交卷 -->
+    <div class="now_jiaojuan" id="timeExec4">
+        <h3>是否现在交卷？</h3>
+        <a href="javascript:;" class="quxiao_now" onclick="javascript:$('#timeExec4').hide();$('.body_zhezhao').hide();">取消</a>
+        <a href="javascript:;" class="queding_now" onclick="javascript:subTest()">确定</a>
+
+    </div>
+    <!-- 是否现在交卷 -->
+
+
+
+    <div class="header header_huan">
+        <div class="w">
+            <div class="logo_box">
+                <a href="javascript:;">
+                    <img src="/template/images/logo.png" alt="">
+                </a>
+                <div class="logo_info logo_info_tiku">{$test_title}</div>
+            </div>
+            <!-- 用户模块 -->
+        </div>
+    </div>
+    <!-- 题目部分 -->
+
+    <div class="main">
+        <div class="w">
+
+            <div class="tk_left">
+                <h3><span></span>答题卡</h3>
+                {foreach $question as $k => $v}
+                <div class="answer">{$k}（共{count($v)}题，合计{$score.$k.score|string_format:"%.2f"}分）</div>
+
+                <div class="rad_answer">
+                    <ul>
+                        {foreach $v as $key => $val}
+                        <li>
+                            <em class="moren em{$val.id}">{$key+1}</em>
+
+                            <!-- 题目答完调用answer_current这个类名显示蓝色 -->
+                        </li>
+                        {/foreach}
+                    </ul>
+                </div>
+                {/foreach}
+            </div>
+
+            <div class="tk_cen">
+                <form id="myForm" action="?ctl=index&act=testPost" method="post">
+                    {foreach $question as $k => $v}
+                    <div class="cen_title">{$k}（共{count($v)}题，合计{$score.$k.score|string_format:"%.2f"}分）</div>
+
+                    <div class="frm">
+
+                        <div class="frm_box">
+                            <!-- 1 -->
+                            {foreach $v as $m => $n}
+                            <div class="items">
+                                <label>{$m+1}、 {$n.question}（ {$n.score}分 ）</label>
+                                {if $n.questype == '单选题'}
+                                {foreach $n['option'] as $e => $r}
+                                <div class="cur_radColor">
+                                    <input type="radio" name="rad_lm{$n.id}" data-id="{$n.id}" value="{$e}"
+                                        class="rad_lm"> <span>{$e}.&nbsp;{$r}</span><br><br>
+                                </div>
+                                {/foreach}
+                                {else if $n.questype == '判断题'}
+                                <div class="cur_radColor">
+                                    <input type="radio" name="binary{$n.id}" value="yes" data-id="{$n.id}"
+                                        class="binary binary{$n.id}"> <span>正确</span><br><br>
+                                    <input type="radio" name="binary{$n.id}" value="no" data-id="{$n.id}"
+                                        class="binary binary{$n.id}"> <span>错误</span><br><br>
+                                </div>
+                                {else if $n.questype == '填空题'}
+
+                                {foreach $n.anwswerNum as $g => $h}
+                                <div class="cur_radColor">
+                                    <div class="tiankong_shuzi">{$g+1}</div>
+                                    <input type="text" name="fill[{$n.id}_{$g+1}]" value="" data-id="{$n.id}"
+                                        class="tiankong_ipt fill fill{$n.id}"><br><br>
+                                </div>
+                                {/foreach}
+
+                                {else if $n.questype == '多选题'}
+                                {foreach $n['option'] as $e => $r}
+                                <div class="cur_radColor">
+                                    <input type="checkbox" name="duoxuan[{$n.id}]" value="{$e}" data-id="{$n.id}"
+                                        class="duoxuan{$n.id} duoxuan"> <span>{$e}. {$r}</span><br><br>
+                                </div>
+                                {/foreach}
+                                {else if $n.questype == '计算题'}
+                                <div class="cur_radColor">
+                                    <div class="cur_radColor cur_fuwenben_box">
+                                        <textarea id="jisuan{$n.id}" name="jisuan{$n.id}" class="jisuan"
+                                            data-id="{$n.id}" style="display: none; padding-left: 30px;"></textarea>
+                                    </div>
+                                </div>
+                                {else if $n.questype == '作品题'}
+                                <div class="cur_radColor cur_fuwenben_box">
+
+                                    <!-- 富文本 -->
+                                    <textarea id="zuopin{$n.id}" name="zuopin{$n.id}" class="zuopin" data-id="{$n.id}"
+                                        style="display: none; padding-left: 30px;"></textarea>
+
+                                </div>
+                                {else if $n.questype == '简答题'}
+                                <div class="cur_radColor cur_fuwenben_box">
+
+                                    <!-- 富文本 -->
+                                    <textarea id="jianda{$n.id}" name="jianda{$n.id}" class="jianda" data-id="{$n.id}"
+                                        style="display: none; padding-left: 30px;"></textarea>
+
+                                </div>
+                                {else if $n.questype == '问答题'}
+                                <div class="cur_radColor cur_fuwenben_box">
+
+                                    <!-- 富文本 -->
+                                    <textarea id="wenda{$n.id}" name="wenda{$n.id}" class="wenda" data-id="{$n.id}"
+                                        style="display: none; padding-left: 30px;"></textarea>
+
+                                </div>
+                                {/if}
+                            </div>
+                            {/foreach}
+                        </div>
+                    </div>
+                    {/foreach}
+                    <input type="hidden" name="test_num" value="{$id}">
+                    <button class="form_bottom"></button>
+
+                    <div class="shijuan_sub" id="shijuan_sub">试卷提交</div>
+                </form>
+            </div>
+
+            <div class="tk_right">
+                <div class="time1">剩余时间</div>
+                <div class="time2">
+                    <span class="t_time hourse">00</span>&nbsp;:
+                    <span class="t_time minter">00</span>&nbsp;:
+                    <span class="t_time second">00</span>
+                </div>
+                <!-- 进度 -->
+                <div class="process">当前进度</div>
+                <div class="process_bottom" data-id='{$total}'><span id="progress">0</span>/{$total}</div>
+                <!-- 进度调 xian -->
+                <div class="pro_xian">
+                    <div class="layui-progress" lay-showPercent="yes">
+                        <div class="layui-progress-bar layui-bg-blue" lay-percent="0%"></div>
+                    </div>
+                </div>
+
+
+                <div class="font">
+                    <a href="javascript:;" id="descFont">-</a> <em>字号</em> <a href="javascript:;" id="addFont">+</a>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <!-- 导入 layui 的JS文件 -->
+    <input type="hidden" value="{$lefttime}" id="hidelefttime" />
+    <input type="hidden" value="0" id="nowefttime" />
+    <script src="/template/js/jquery.min.js"></script>
+    <script src="/template/lib/layui/layui.all.js"></script>
+    <script src="/template/lib/layui/layui.js"></script>
+    <script src="/admin/js/common.js"></script>
+    <script src="/template/js/tiku.js"></script>
+
+
+    <script>
+        $(function () {
+            $(window).on("beforeunload", function () {
+                return "您尚未交卷！此操作将导致您的回答丢失。";
+            });
+        });
+
+
+        var runtimes = 0;
+        var totaltimes = { $lefttime };
+        function GetRTime() {
+            var nMS = totaltimes * 1000 - runtimes * 1000;
+            var nH = Math.floor(nMS / (1000 * 60 * 60)) % 24;
+            var nM = Math.floor(nMS / (1000 * 60)) % 60;
+            var nS = Math.floor(nMS / 1000) % 60;
+            if (nMS > 0) {
+                $(".hourse").html(nH)
+                $(".minter").html(nM)
+                $(".second").html(nS)
+            } else {
+                //考试时间到
+                $(".body_zhezhao").show();
+                $('#timeExec1').show();
+                subTest();
+            }
+            $("#nowefttime").val(runtimes * 1000)
+
+
+            runtimes++;
+            setTimeout("GetRTime()", 1000);
+        }
+        function subTest() {
+            var data = getFromData()
+            $.post("?ctl=index&act=testPost", data,
+                function (data) {
+                    console.log(data);
+                    if (data.res == 'failed') {
+                        console.log(data.msg)
+                    } else {
+                        window.location.href="?/ctl=index";
+                    }
+                }, "json");
+        }
+        function getFromData() {
+            var formData = {};
+            tmp_rad_lm = [];
+            tmp_binary = [];
+            tmp_duoxuan = [];
+            tmp_jisuan = [];
+            tmp_zuopin = [];
+            tmp_jianda = [];
+            tmp_wenda = [];
+            tmp_fill = {};
+            //获取单选题数据
+            $(".rad_lm").each(function(){
+                tmpId = $(this).attr("data-id");
+                if(tmp_rad_lm.indexOf(tmpId) < 0){
+                    formData.single.push({tmpId:$("input[name=rad_lm"+tmpId+"]").val()})
+                    tmp_rad_lm.push(tmpId)
+                }
+                
+            })
+            //获取判断题数据
+            $(".binary").each(function(){
+                tmpId = $(this).attr("data-id");
+                if(tmp_binary.indexOf(tmpId) < 0){
+                    formData.binary.push({tmpId:$("input[name=binary"+tmpId+"]").val()})
+                    tmp_binary.push(tmpId)
+                }
+            })
+            //获取填空题数据
+            $(".fill").each(function(){
+                tmpId = $(this).attr("data-id");
+                tmp_fill.tmpId.push($(this).val())
+            })
+            for (const tmpId in tmp_fill) {
+                if (tmp_fill.hasOwnProperty(tmpId)) {
+                    const element = tmp_fill[tmpId];
+                    formData.fill.push({tmpId:element})
+                }
+            }
+
+            //获取多选题数据
+            $(".duoxuan").each(function(){
+                tmpId = $(this).attr("data-id");
+                if(tmp_duoxuan.indexOf(tmpId) < 0){
+                    formData.duoxuan.push({tmpId:$("input[name=duoxuan"+tmpId+"]").val()})
+                    tmp_duoxuan.push(tmpId)
+                }
+            })
+            //获取计算题数据
+            $(".jisuan").each(function(){
+                tmpId = $(this).attr("data-id");
+                if(tmp_jisuan.indexOf(tmpId) < 0){
+                    formData.jisuan.push({tmpId:$("textarea[name=jisuan"+tmpId+"]").val()})
+                    tmp_jisuan.push(tmpId)
+                }
+            })
+            //获取作品题数据
+            $(".zuopin").each(function(){
+                tmpId = $(this).attr("data-id");
+                if(tmp_zuopin.indexOf(tmpId) < 0){
+                    formData.zuopin.push({tmpId:$("textarea[name=zuopin"+tmpId+"]").val()})
+                    tmp_zuopin.push(tmpId)
+                }
+            })
+            //获取简答题数据
+            $(".jianda").each(function(){
+                tmpId = $(this).attr("data-id");
+                if(tmp_jianda.indexOf(tmpId) < 0){
+                    formData.jianda.push({tmpId:$("textarea[name=jianda"+tmpId+"]").val()})
+                    tmp_jianda.push(tmpId)
+                }
+            })
+            //获取问答题数据
+            $(".wenda").each(function(){
+                tmpId = $(this).attr("data-id");
+                if(tmp_wenda.indexOf(tmpId) < 0){
+                    formData.wenda.push({tmpId:$("textarea[name=wenda"+tmpId+"]").val()})
+                    tmp_wenda.push(tmpId)
+                }
+            })
+            return formData;
+        }
+        window.onload = GetRTime;
+    </script>
+</body>
+
+</html>

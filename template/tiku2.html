@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>科普考试系统-答题</title>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+  <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+  <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+    <style>
+        .body_zhezhao {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 150%;
+            background-color: rgba(0, 0, 0, .1);
+            z-index: 100;
+        }
+    </style>
+    <link rel="stylesheet" href="/template/lib/layui/css/layui.css">
+    <link rel="stylesheet" href="/template/lib/fonts/iconfont.css">
+    <link rel="stylesheet" href="/template/css/base.css">
+    <link rel="stylesheet" href="/template/css/common2.css">
+    <link rel="stylesheet" href="/template/css/tiku.css">
+
+    <style>
+        .blues {
+            color: #0b80b9;
+        }
+    </style>
+
+    <!-- 时间js -->
+    <script src="/template/js/date.js"></script>
+
+</head>
+
+<body>
+
+    <!-- 整体遮罩层 -->
+    <div class="body_zhezhao"></div>
+
+
+    <!-- user点击退出盒子 -->
+    <div class="shezhi_logout">
+        <h3>您确定要退出登录？</h3>
+        <a href="javascript:;" class="quxiao">取消</a>
+        <a href="javascript:;" class="queding">确定</a>
+    </div>
+
+
+    <!-- 考试时间到 -->
+    <div class="text_dao">
+        <div class="close3">X</div>
+        考试时间已到！
+    </div>
+
+    <!-- 考试开始15分钟后才能交卷 -->
+    <div class="fify_text">
+        <div class="close_fifty">X</div>
+        考试开始15分钟后才能交卷！
+
+    </div>
+    <!-- 考试开始15分钟后才能交卷end -->
+
+    <!-- 有试题未完成，是否现在交卷 -->
+
+    <div class="shezhi_logout1">
+        <h3>有试题未完成，是否现在交卷？</h3>
+        <a href="javascript:;" class="quxiao_tiku">取消</a>
+        <a href="javascript:;" class="queding_tiku">确定</a>
+    </div>
+
+    <!-- 有试题未完成，是否现在交卷 -->
+
+    <!-- 是否现在交卷 -->
+    <div class="now_jiaojuan">
+        <h3>是否现在交卷？</h3>
+        <a href="javascript:;" class="quxiao_now">取消</a>
+        <a href="javascript:;" class="queding_now">确定</a>
+
+    </div>
+    <!-- 是否现在交卷 -->
+
+    <!-- 点击个人信息显示用户模块 -->
+
+    <div class="fix_user">
+        <div class="close">x</div>
+        <div class="top_bg"></div>
+        <div class="user_head_box">
+            <img src="/template/images/user.png" alt=""><span>李玉玉</span>
+        </div>
+        <!-- info -->
+        <div class="fix_info">
+
+            <div class="fix_itmes">
+                <span>性别 :</span><span>女</span>
+            </div>
+
+            <div class="fix_itmes">
+                <span>学号/身份证：</span><span>tz867551</span>
+            </div>
+
+            <div class="fix_itmes">
+                <span>院校：</span><span>安徽建筑大学</span>
+            </div>
+
+            <div class="fix_itmes">
+                <span>年级：</span><span>2020</span>
+            </div>
+
+            <div class="fix_itmes">
+                <span>班级：</span><span>电子商务20本科</span>
+            </div>
+
+            <div class="fix_itmes">
+                <span>专业：</span><span>电子商务</span>
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+    <div class="header header_huan">
+        <div class="w">
+            <div class="logo_box">
+                <a href="javascript:;">
+                    <img src="/template/images/logo.png" alt="">
+                </a>
+                <div class="logo_info logo_info_tiku">电子商务考试</div>
+            </div>
+            <!-- 用户模块 -->
+            <div class="user">
+                <a href="javascript:;" class="user_info">李玉玉</a>
+
+                <div class="shezhi">
+                    <div class="xian_tiao"></div>
+                    <ul>
+                        <li>
+                            <a href="javascript:;" class="showUser">考生信息</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" id="btnLogOut">退 出</a>
+                        </li>
+                    </ul>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <!-- 题目部分 -->
+
+    <div class="main">
+        <div class="w">
+
+            <div class="tk_left">
+                <h3><span></span>答题卡</h3>
+                <!-- 填空题 -->
+                <div class="answer">填空题（共6题，合计12.0分）</div>
+
+                <div class="rad_answer">
+                    <ul>
+                        <li>
+                            <em class="answer_current">1</em>
+
+                        </li>
+                        <li>
+                            <em>2</em>
+                        </li>
+                        <li>
+                            <em>3</em>
+                        </li>
+                        <li>
+                            <em>4</em>
+
+                        </li>
+                        <li>
+                            <em>5</em>
+
+                        </li>
+                        <li>
+                            <em>6</em>
+
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- 单选题 -->
+                <div class="answer">单选题（共6题，合计12.0分）</div>
+
+                <div class="rad_answer">
+                    <ul>
+                        <li>
+                            <em class="answer_current">1</em>
+
+                        </li>
+                        <li>
+                            <em>2</em>
+
+                        </li>
+                        <li>
+                            <em>3</em>
+
+                        </li>
+                        <li>
+                            <em>4</em>
+
+                        </li>
+                        <li>
+                            <em>5</em>
+
+                        </li>
+                        <li>
+                            <em>6</em>
+
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- 多 -->
+                <div class="answer">多选题（共6题，合计12.0分）</div>
+
+                <div class="rad_answer">
+                    <ul>
+                        <li>
+                            <em class="answer_current">1</em>
+
+                        </li>
+                        <li>
+                            <em>2</em>
+
+                        </li>
+                        <li>
+                            <em>3</em>
+
+                        </li>
+                        <li>
+                            <em>4</em>
+
+                        </li>
+                        <li>
+                            <em>5</em>
+
+                        </li>
+                        <li>
+                            <em>6</em>
+
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- 判断题 -->
+                <div class="answer">判断题（共6题，合计12.0分）</div>
+
+                <div class="rad_answer">
+                    <ul>
+                        <li>
+                            <em class="answer_current">1</em>
+
+                        </li>
+                        <li>
+                            <em>2</em>
+                        </li>
+                        <li>
+                            <em>3</em>
+
+                        </li>
+                        <li>
+                            <em>4</em>
+
+                        </li>
+                        <li>
+                            <em>5</em>
+
+                        </li>
+                        <li>
+                            <em>6</em>
+
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- 问答题 -->
+                <div class="answer">问答题（共6题，合计12.0分）</div>
+
+                <div class="rad_answer">
+                    <ul>
+                        <li>
+                            <em class="answer_current">1</em>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+            <div class="tk_cen">
+                <!-- <div class="cen_title">单选题（共6题，合计12.0分）</div> -->
+
+                <div class="frm">
+
+                    <form class="frm_box">
+
+                        <!-- 1 -->
+                        <div class="cen_title">单选题（共1题，合计2.0分）</div>
+                        <div class="items">
+                            <label>1、 发布一场考试需要先在系统中录入题目，如果是账号密码登录方式的考试，还需要在系统中准备好参加考试的学员准备，然后才能开始创建考试；此描述是否正确？（ 2.0分 ）</label>
+                            <div class="cur_radColor blues">
+                                <input type="radio" name="a1" value="A" class="rad_lm" checked="checked"> <span>A. 正确</span><br><br>
+                            </div>
+                            <div class="cur_radColor">
+                                <input type="radio" name="a1" value="B" class="rad_lm rad_lm2"> <span>B. 不正确</span>
+                            </div>
+                            <!-- 0.2 -->
+                            <label>2、 发布一场考试需要先在系统中录入题目，如果是账号密码登录方式的考试，还需要在系统中准备好参加考试的学员准备，然后才能开始创建考试；此描述是否正确？（ 2.0分 ）</label>
+                            <div class="cur_radColor">
+                                <input type="radio" name="a1" value="A" class="rad_lm"> <span>A. 正确</span><br><br>
+                            </div>
+                            <div class="cur_radColor">
+                                <input type="radio" name="a1" value="B" class="rad_lm rad_lm2"> <span>B. 不正确</span>
+                            </div>
+                            <!-- 0.2 -->
+
+
+
+                        </div>
+                        <!-- 2 -->
+
+                        <!-- 3 -->
+                        <div class="cen_title">多选题（共2题，合计4.0分，漏选错选不得分）</div>
+
+                        <div class="items">
+                            <label>1、下列关于个性化功能介绍，正确的是？（ 2.0分 ）</label>
+
+                            <div class="cur_checkboxColor">
+                                <input type="checkbox" name="c1" value="A" class="checkbox_lm"> <span>A.  LOGO设置，可用于替换系统整体的logo，例如替换自己公司的LOGO，强化品牌效应。</span>
+                            </div>
+
+                            <div class="cur_checkboxColor">
+                                <input type="checkbox" name="c1" value="B" class="checkbox_lm"><span>B.  自定义皮肤，可用于更换学员端系统的主题色。</span>
+                            </div>
+                            <div class="cur_checkboxColor">
+                                <input type="checkbox" name="c1" value="c" class="checkbox_lm"><span>C.  自定义背景页，可用于更换登录界面的背景，例如替换为自己公司设计的登录背景。</span>
+                            </div>
+                            <div class="cur_checkboxColor">
+                                <input type="checkbox" name="c1" value="d" class="checkbox_lm"><span>D. 自定义页签，可用于更改浏览器顶部的"网页标题”文案。</span>
+                            </div>
+                            <div class="cur_checkboxColor">
+                                <input type="checkbox" name="c1" value="e" class="checkbox_lm"><span>E. 自定义考试页，可用于替换进入考试前的说明页的背景。</span>
+                            </div>
+                            <div class="cur_checkboxColor">
+                                <input type="checkbox" name="c1" value="f" class="checkbox_lm"><span>F. 自定义学员端菜单，可用于控制学员端可见的模块，例如只在学员端限时考试模块，其他功能模块皆隐藏。</span>
+                            </div>
+                            <!-- 0.2 -->
+                            <label>2、下列关于个性化功能介绍，正确的是？（ 2.0分 ）</label>
+
+                            <div class="cur_checkboxColor">
+                                <input type="checkbox" name="c1" value="A" class="checkbox_lm"> <span>A.  LOGO设置，可用于替换系统整体的logo，例如替换自己公司的LOGO，强化品牌效应。</span>
+                            </div>
+
+                            <div class="cur_checkboxColor">
+                                <input type="checkbox" name="c1" value="B" class="checkbox_lm"><span>B.  自定义皮肤，可用于更换学员端系统的主题色。</span>
+                            </div>
+                            <div class="cur_checkboxColor">
+                                <input type="checkbox" name="c1" value="c" class="checkbox_lm"><span>C.  自定义背景页，可用于更换登录界面的背景，例如替换为自己公司设计的登录背景。</span>
+                            </div>
+                            <div class="cur_checkboxColor">
+                                <input type="checkbox" name="c1" value="d" class="checkbox_lm"><span>D. 自定义页签，可用于更改浏览器顶部的"网页标题”文案。</span>
+                            </div>
+                            <div class="cur_checkboxColor">
+                                <input type="checkbox" name="c1" value="e" class="checkbox_lm"><span>E. 自定义考试页，可用于替换进入考试前的说明页的背景。</span>
+                            </div>
+                            <div class="cur_checkboxColor">
+                                <input type="checkbox" name="c1" value="f" class="checkbox_lm"><span>F. 自定义学员端菜单，可用于控制学员端可见的模块，例如只在学员端限时考试模块，其他功能模块皆隐藏。</span>
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- 4 -->
+                        <div class="cen_title">判断题（共1题，合计2.0分）</div>
+                        <div class="items">
+                            <label>1、 发布一场考试需要先在系统中录入题目，如果是账号密码登录方式的考试，还需要在系统中准备好参加考试的学员准备，然后才能开始创建考试；此描述是否正确？（ 2.0分 ） 
+                            </label>
+                            <div class="cur_radColor">
+                                <input type="radio" name="d1" value="A" class="rad_lm"> <span>A. 正确</span><br><br>
+                            </div>
+                            <div class="cur_radColor">
+                                <input type="radio" name="d1" value="B" class="rad_lm rad_lm2"> <span>B. 不正确</span>
+                            </div>
+                            <!-- 0.2 -->
+                            <label>2、 发布一场考试需要先在系统中录入题目，如果是账号密码登录方式的考试，还需要在系统中准备好参加考试的学员准备，然后才能开始创建考试；此描述是否正确？（ 2.0分 ） 
+                            </label>
+                            <div class="cur_radColor">
+                                <input type="radio" name="d1" value="A" class="rad_lm"> <span>A. 正确</span><br><br>
+                            </div>
+                            <div class="cur_radColor">
+                                <input type="radio" name="d1" value="B" class="rad_lm rad_lm2"> <span>B. 不正确</span>
+                            </div>
+
+
+                        </div>
+                        <!-- 5 -->
+
+                        <div class="cen_title">填空题（共2题，合计4.0分，漏选错选不得分）</div>
+                        <div class="items">
+                            <label>1、 打招呼的方式一般有（  ）（  ）（  ）（  ）（ 2.0分 ） </label>
+
+
+                            <div class="cur_radColor">
+
+                                <div class="tiankong_shuzi">1</div>
+                                <input type="text" class="tiankong_ipt" name="tiankong">
+
+
+
+                            </div>
+
+                            <div class="cur_radColor">
+                                <div class="tiankong_shuzi">2</div>
+                                <input type="text" class="tiankong_ipt" name="tiankong">
+
+                            </div>
+
+                            <div class="cur_radColor">
+                                <div class="tiankong_shuzi">3</div>
+                                <input type="text" class="tiankong_ipt" name="tiankong">
+
+                            </div>
+
+                            <div class="cur_radColor">
+                                <div class="tiankong_shuzi">4</div>
+                                <input type="text" class="tiankong_ipt" name="tiankong">
+
+                            </div>
+                            <!-- 0.2 -->
+                            <label>1、 打招呼的方式一般有（  ）（  ）（  ）（  ）（ 2.0分 ） </label>
+
+
+                            <div class="cur_radColor">
+
+                                <div class="tiankong_shuzi">1</div>
+                                <input type="text" class="tiankong_ipt" name="tiankong">
+
+                            </div>
+
+                            <div class="cur_radColor">
+                                <div class="tiankong_shuzi">2</div>
+                                <input type="text" class="tiankong_ipt" name="tiankong">
+
+                            </div>
+
+                            <div class="cur_radColor">
+                                <div class="tiankong_shuzi">3</div>
+                                <input type="text" class="tiankong_ipt" name="tiankong">
+
+                            </div>
+
+                            <div class="cur_radColor">
+                                <div class="tiankong_shuzi">4</div>
+                                <input type="text" class="tiankong_ipt" name="tiankong">
+
+                            </div>
+
+
+                        </div>
+                        <!-- 6 -->
+                        <div class="items">
+                            <label>6、管理端首页，页面正中上方显示的是常用功能的快捷入口，比如创建考试‘创建课程、添加题目、上传课件、添加学员等；此描述是否正确？（ 2.0分 ）
+
+                            </label>
+
+                            <div class="cur_radColor">
+
+
+                       
+                            <textarea id="demo" style="display: none;" name="content" lay-verify="content" class="field-content"></textarea> 
+        
+                
+
+
+                            </div>
+                            <!-- <div class="cur_radColor">
+                                <input type="radio" name="f1" value="B" class="rad_lm rad_lm2"> <span>B. 不正确</span>
+                            </div> -->
+
+
+                        </div>
+
+
+
+
+
+
+                        <button class="form_bottom"></button>
+
+
+                        <div class="shijuan_sub" id="shijuan_sub">试卷提交</div>
+
+
+                    </form>
+                </div>
+
+            </div>
+
+            <div class="tk_right">
+                <div class="time1">剩余时间</div>
+                <div class="time2">
+                    <span class="t_time hourse">00</span>&nbsp;:
+                    <span class="t_time minter">24</span>&nbsp;:
+                    <span class="t_time second">36</span>
+                </div>
+                <!-- 进度 -->
+                <div class="process">当前进度</div>
+                <div class="process_bottom">3/10</div>
+                <!-- 进度调 xian -->
+                <div class="pro_xian">
+                    <div class="layui-progress" lay-showPercent="yes">
+                        <div class="layui-progress-bar layui-bg-blue" lay-percent="30%"></div>
+                    </div>
+                </div>
+
+
+                <div class="font">
+                    <a href="javascript:;" id="descFont">-</a> <em>字号</em> <a href="javascript:;" id="addFont">+</a>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+    <!-- 底部版权 -->
+
+    <div class="footer_copy">
+        <span>Copyright(c)2011-2020 www.kepuedu.com 广州科普教育版权所有</span>
+    </div>
+
+    <!-- 导入 layui 的JS文件 -->
+
+    <script src="/template/js/jquery.min.js"></script>
+    <script src="/template/lib/layui/layui.all.js"></script>
+    <script src="/template/lib/layui/layui.js"></script>
+    <script src="/template/js/tiku.js"></script>
+    <script src="/template/js/user_tiku.js"></script>
+
+
+</body>
+
+</html>

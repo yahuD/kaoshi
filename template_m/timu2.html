@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <style>
+        @font-face {
+            font-family: 'icomoon';
+            src: url('/template_m/fonts/icomoon.eot?oqi124');
+            src: url('/template_m/fonts/icomoon.eot?oqi124#iefix') format('embedded-opentype'),
+                url('/template_m/fonts/icomoon.ttf?oqi124') format('truetype'),
+                url('/template_m/fonts/icomoon.woff?oqi124') format('woff'),
+                url('/template_m/fonts/icomoon.svg?oqi124#icomoon') format('svg');
+            font-weight: normal;
+            font-style: normal;
+            font-display: block;
+        }
+    </style>
+    <link rel="stylesheet" href="/template_m/lib/layui/css/layui.css">
+    <link rel="stylesheet" href="/template_m/css/base.css">
+    <link rel="stylesheet" href="/template_m/css/normalize.css">
+    <link rel="stylesheet" href="/template_m/css/timu.css">
+
+    <!-- 答题卡css -->
+    <link rel="stylesheet" href="/template_m/css/datika.css">
+
+    <!-- <script src="/template_m/js/jquery.min.js"></script> -->
+    <script crossorigin="anonymous" integrity="sha384-rY/jv8mMhqDabXSo+UCggqKtdmBfd3qC2/KvyTDNQ6PcUJXaxK1tMepoQda4g5vB"
+        src="https://lib.baomitu.com/jquery/2.2.4/jquery.min.js"></script>
+    <title>{$test_title}</title>
+</head>
+
+<body>
+
+    <!-- 答题卡区域重调 -->
+    <div class="datika_Box">
+        <!-- 关闭按钮 -->
+        <div class="datika_close">X</div>
+        <!-- 答题区域 -->
+        <div class="area">
+            <div class="area_box">
+                <form>
+                    {foreach $question as $key=>$v}
+                    <div class="area_wenzi">{$key}(共{count($v)}题，合计{$score.$key.score|string_format:"%.2f"}分)</div>
+                    <ul class="rad_ka_ul">
+                        {foreach $v as $key=>$vo}
+                        <li class="tiao" data-id="{$vo.id}" data-pre-array-len="{$vo.length}"
+                            data-question-type="{$vo.questype}" data-key="{$key+1}">
+                            <a>
+                                <input type="text" value="{$key+1}" name="rad_ka" disabled
+                                    class="em{$vo.id} ipt_datika_area">
+                            </a>
+                        </li>
+                        {/foreach}
+                    </ul>
+                    {/foreach}
+                    <button class="datika_btn_hidden" style="display: none; ">提交试卷</button>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+    <!-- 遮罩 -->
+    <div class="zhezhao"></div>
+    <!-- 考试15分钟后才可以交卷 -->
+    <div class="test_fifty_jiaojuan" id="timeExec2">
+        考试15分钟后才可以交卷!
+        <a href="javascript:;" class="test_time_fifty_btn"
+            onclick="javascript:$('#timeExec2').hide();$('.zhezhao').hide();">确定</a>
+    </div>
+    <!-- 考试时间已到！ -->
+    <div class="test_time_end" id="timeExec1">
+        考试时间已到！
+        <a href="javascript:;" class="test_time_end_btn"
+            onclick="javascript:$('#timeExec1').hide();$('.zhezhao').hide();">确定</a>
+    </div>
+    <!-- 确定交卷吗 -->
+    <div class="test_jiaojuan" id="timeExec4">
+        <h3>确定交卷吗？</h3>
+
+        <a href="javascript:;" class="test_jiaojuan_no"
+            onclick="javascript:$('#timeExec4').hide();$('.zhezhao').hide();">取消</a>
+        <a href="javascript:;" class="test_jiaojuan_yes" onclick="javascript:subTest()">确定</a>
+
+    </div>
+
+    <!-- 你还有题目未做完
+    确定交卷吗？ -->
+
+    <div class="test_jiaojuan_timeno" id="timeExec3">
+        <h3>你还有题目未做完 确定交卷吗？</h3>
+
+        <a href="javascript:;" class="test_jiaojuan_timeno_btn"
+            onclick="javascript:$('#timeExec3').hide();$('.zhezhao').hide();">取消</a>
+        <a href="javascript:;" class="test_jiaojuan_timeyes_btn" onclick="javascript:subTest()">确定</a>
+    </div>
+    <input type="hidden" id="end_time" value="">
+
+    <!-- 1 -->
+    <div class="datika_top">
+        <div class="datika_back">
+            <a href="javascript:;" class="back"></a>
+        </div>
+        <div class="clock"><span id="shi">00</span>:<span id="fen">00</span>:<span id="miao">00</span> </div>
+        <div class="datika_wenzi">
+            <a href="javascript:;" id="datikaShow">
+                <img src="/template_m/imgs/datika_icon.png" alt="" style="cursor: pointer;">
+            </a>
+        </div>
+    </div>
+    <!-- 2 单选题-->
+    <div class="tiku_title">
+
+        {foreach $question as $k => $v}
+            {if $k=='单选题'}
+            <span class="ti_title radio_ti_title">
+            {elseif $k=='多选题'}
+            <span class="ti_title check_ti_title">
+            {elseif $k=='判断题'}
+            <span class="ti_title panduan_ti_title">
+            {elseif $k=='填空题'}
+            <span class="ti_title tiankong_ti_title">
+            {elseif $k=='问答题'}
+            <span class="ti_title wenda_ti_title">
+            {elseif $k=='计算题'}
+            <span class="ti_title jisuan_ti_title">
+            {elseif $k=='简答题'}
+            <span class="ti_title jianda_ti_title">
+            {elseif $k=='作品题'}
+            <span class="ti_title zuopin_ti_title">
+            {/if}
+            {$k}（共{count($v)}题，合计{$score.$k.score|string_format:"%.2f"}分）
+            </span>
+            <div class="tiku_right">
+                <i class="end">{$key+1}</i>/<span class="total_ti">{$question_count}</span>
+            </div>
+        {/foreach}
+
+
+    </div>
+    <!--  -->
+
+
+    <!-- 进度调 -->
+    <div class="process_tiao">
+
+        <div class="layui-progress" lay-showPercent="yes">
+            <div class="layui-progress-bar layui-bg-blue process_height" lay-percent="0%"></div>
+        </div>
+
+    </div>
+
+    <!-- 题目库 -->
+    <div class="tiku_box">
+
+        <form id='mobilePostForm' action="?ctl=index&act=testPost" method="post">
+            <!-- 第一题 -->
+            {foreach $question as $key=>$vo}
+                {foreach $vo as $k=>$v}
+                    {if $v.questype=='单选题'}
+                        <div class="items items_radio">
+                            <div class="timu_1">
+                                {$k+1}、{$v.question}（ {$v.score}分 ）
+                            </div>
+                            <div class="rad_box">
+                                {foreach $v.option as $kk=>$vv}
+
+                                <label><input type="radio" name="danxuan[{$v.id}]" data-id="{$v.id}" value="{$kk}"
+                                        class="rad rad{$kk}">
+                                    <span class="span_link">&nbsp;&nbsp;{$vv}</span></label>
+                                <em style="display: block;" class="fenge"></em>
+                                {/foreach}
+                            </div>
+                        </div>
+                    {elseif $v.questype=='多选题'}
+                        <div class="items items_duoxuan">
+                            <div class="timu_1">
+                                {$k+1}、{$v.question}（ {$v.score}分 ）
+                            </div>
+                            <div class="rad_box">
+                                <!-- 多选题 -->
+                                {foreach $v.option as $kk=>$vv}
+                                <div class="cur_checkboxColor">
+                                    <label><input type="checkbox" name="duoxuan[{$v.id}]" value="{$kk}" data-id="{$v.id}"
+                                            class="checkbox_lm checkbox_lm_{$kk}"> <span>{$kk}. {$vv}</span></label>
+                                </div>
+                                {/foreach}
+
+                            </div>
+
+                        </div>
+                    {elseif $v.questype=='判断题'}
+                        <div class="items items_panduan">
+                            <div class="timu_1">
+                                {$k+1}、 {$v.question}（ {$v.score}分 ）
+                            </div>
+                            <div class="rad_box">
+                                <!-- 判断题 -->
+                                <input type="radio" name="binary[{$v.id}]" data-id="{$v.id}" value="yes"
+                                    class="rad rad_right"><span>&nbsp;&nbsp;正确</span>
+                                <em style="display: block;" class="fenge"></em>
+
+                                <input type="radio" data-id="{$v.id}" name="binary[{$v.id}]" value="no"
+                                    class="rad rad2 j_error"><span>&nbsp;&nbsp;错误</span>
+
+                            </div>
+
+                        </div>
+                    {elseif $v.questype=='填空题'}
+                        <div class="items items_tiankong">
+                            <div class="timu_1">
+                                {$k+1}、 {$v.question}（ {$v.score}分 ）
+                            </div>
+                            <div class="rad_box">
+                                <!-- 填空题 -->
+                                {foreach $v.anwswerNum as $g => $h}
+                                <div class="cur_radColor">
+
+                                    <div class="tiankong_shuzi">{$g+1}</div>
+                                    <input type="text" class="tiankong_ipt" data-id="{$v.id}" name="fill[{$v.id}]" value="点击输入答案">
+                                </div>
+                                {/foreach}
+                            </div>
+                        </div>
+                    {elseif $v.questype=='计算题'}
+                        <div class="items items_jisuan">
+                            <div class="timu_1">
+                                {$k+1}、 {$v.question}（ {$v.score}分 ）
+                            </div>
+                            <div class="rad_box">
+                                <textarea id="jisuan{$v.id}" name="jisuan{$v.id}" class="jisuan" data-id="{$v.id}"></textarea>
+                            </div>
+                        </div>
+                    {elseif $v.questype=='问答题'}
+                        <div class="items items_wenda">
+                            <div class="timu_1">
+                                {$k+1}、 {$v.question}（ {$v.score}分 ）
+                            </div>
+                            <div class="rad_box">
+                                <!-- 填空题 -->
+                                <div class="rad_box">
+
+                                    <textarea id="wenda{$v.id}" name="wenda{$v.id}" class="wenda" data-id="{$v.id}"></textarea>
+
+                                </div>
+                            </div>
+                        </div>
+                    {elseif $v.questype=='简答题'}
+                        <div class="items items_jianda">
+                            <div class="timu_1">
+                                {$k+1}、 {$v.question}（ {$v.score}分 ）
+                            </div>
+                            <div class="rad_box">
+                                <!-- 填空题 -->
+                                <div class="rad_box">
+
+                                    <textarea id="jianda{$v.id}" name="jianda{$v.id}" class="jianda" data-id="{$v.id}"></textarea>
+
+                                </div>
+                            </div>
+                        </div>
+                    {elseif $v.questype=='作品题'}
+                        <div class="items items_zuopin">
+                            <div class="timu_1">
+                                {$k+1}、 {$v.question}（ {$v.score}分 ）
+                            </div>
+                            <div class="rad_box">
+                                <textarea id="zuopin{$v.id}" name="zuopin{$v.id}" class="zuopin" data-id="{$v.id}"></textarea>
+                            </div>
+                        </div>
+                    {/if}
+                {/foreach}
+            {/foreach}
+            <button class="tijiao" style="display: none;">提交试卷</button>
+
+            <a href="javascript:;" class="prev_btn">上一题</a>
+            <a href="javascript:;" class="next_btn">下一题</a>
+            <a href="javascript:;" class="tijiao_btn">提交试卷</a>
+
+        </form>
+
+        <input type="hidden" value="{$lefttime}" id="hidelefttime" />
+        <input type="hidden" value="0" id="nowefttime" />
+    </div>
+    <!-- 版权 -->
+    <div class="footer_copy ">
+        <span>Copyright(c)2011-2020 广州科普教育版权所有</span>
+    </div>
+
+</body>
+<script src="/template_m/js/jquery.min.js"></script>
+<script type="text/javascript">
+    $('.tiao').click(function (el) {
+        var id = $(this).attr('data-id');
+        var liArr = $(".area_box li");
+        var dataIdArr = liArr.map(it => {
+            return $(liArr[it]).attr('data-id');
+        });
+        var index = 0;
+        for (var i = 0; i < dataIdArr.length; i++) {
+            if (id == dataIdArr[i]) {
+                index = i;
+            }
+        }
+
+        demo(index);
+        $('.datika_Box').css("display", "none");
+    })
+
+</script>
+<script src="/template_m/lib/layui/layui.all.js"></script>
+<script src="/admin/js/jquery-form-min.js"></script>
+<script src="/template_m/js/timu.js"></script>
+
+<script src="/template_m/js/datika.js"></script>
+
+<script>
+    $(function () {
+        var lefttime = Number({ $lefttime }) / 1000;
+        var nowTime = setInterval(function () {
+            lefttime = lefttime < 0 ? 0 : lefttime;
+            var h = parseInt(lefttime / (60 * 60) % 24);
+            var strH = h > 9 ? h : '0' + h;
+            var m = parseInt(lefttime / 60 % 60);
+            var strM = m > 9 ? m : '0' + m;
+            var s = parseInt(lefttime % 60);
+            var strS = s > 9 ? s : '0' + s;
+            $('#shi').text(strH)
+            $('#fen').text(strM)
+            $('#miao').text(strS)
+            lefttime--;
+            if (lefttime == -1) {
+                $('.zhezhao').show();
+                $('#timeExec1').show();
+                subTest();
+                clearInterval(nowTime);
+            }
+        }, 1000);
+    })
+    function subTest() {
+        $("#mobilePostForm").ajaxSubmit(function (message) {
+            console.log(message)
+            location.href = 'index.php?ctl=index&act=index_more';
+            // 对于表单提交成功后处理，message为提交页面saveReport.htm的返回内容 
+        });
+    }
+
+</script>
+
+
+</html>

@@ -1,0 +1,313 @@
+a {
+  text-decoration: none;
+}
+html {
+  font-size: 50px;
+}
+@media screen and (min-width: 320px) {
+  html {
+    font-size: 21.33333333px;
+  }
+}
+@media screen and (min-width: 360px) {
+  html {
+    font-size: 24px;
+  }
+}
+@media screen and (min-width: 375px) {
+  html {
+    font-size: 25px;
+  }
+}
+@media screen and (min-width: 384px) {
+  html {
+    font-size: 25.6px;
+  }
+}
+@media screen and (min-width: 400px) {
+  html {
+    font-size: 26.66666667px;
+  }
+}
+@media screen and (min-width: 414px) {
+  html {
+    font-size: 27.6px;
+  }
+}
+@media screen and (min-width: 424px) {
+  html {
+    font-size: 28.26666667px;
+  }
+}
+@media screen and (min-width: 480px) {
+  html {
+    font-size: 32px;
+  }
+}
+@media screen and (min-width: 540px) {
+  html {
+    font-size: 36px;
+  }
+}
+@media screen and (min-width: 720px) {
+  html {
+    font-size: 48px;
+  }
+}
+@media screen and (min-width: 750px) {
+  html {
+    font-size: 50px;
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  min-width: 320px;
+  width: 15rem;
+  height: 100%;
+  margin: 0 auto;
+  font-family: Arial, Helvetica;
+  box-sizing: border-box;
+  background-color: #efefef;
+}
+input[type="text"] {
+  -webkit-appearance: none;
+}
+.zhezhao {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+.test_jiaojuan {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 9.6rem;
+  height: 6.6rem;
+  background-color: #fff;
+  z-index: 2;
+  box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.1);
+  border-radius: 0.16rem;
+  font-size: 0.64rem;
+  z-index: 11;
+}
+.test_jiaojuan h3 {
+  font-size: 0.64rem;
+  color: #111;
+  text-align: center;
+  padding-top: 1.7rem;
+  font-weight: 400;
+}
+.test_jiaojuan .test_jiaojuan_no {
+  float: left;
+  display: block;
+  width: 3.2rem;
+  height: 1.4rem;
+  line-height: 1.4rem;
+  border-radius: 0.4rem;
+  background-color: #cccccc;
+  font-size: 0.64rem;
+  text-align: center;
+  color: #FFF;
+  margin-left: 1.2rem;
+  margin-top: 1.4rem;
+  -webkit-tap-highlight-color: transparent;
+}
+.test_jiaojuan .test_jiaojuan_yes {
+  float: right;
+  width: 3.2rem;
+  height: 1.4rem;
+  line-height: 1.4rem;
+  border-radius: 0.4rem;
+  background-color: #0c8ece;
+  font-size: 0.64rem;
+  text-align: center;
+  color: #FFF;
+  margin-right: 1.2rem;
+  margin-top: 1.4rem;
+  -webkit-tap-highlight-color: transparent;
+}
+.datika_top {
+  position: relative;
+  width: 100%;
+  height: 2.56rem;
+  background-color: #0C8ECE;
+}
+.datika_top .datika_back {
+  position: absolute;
+  top: 0.7rem;
+  left: 0.4rem;
+  width: 1.6rem;
+}
+.datika_top .datika_back .back {
+  position: absolute;
+  top: 0.4rem;
+  left: 0.2rem;
+  display: block;
+  width: 0.52rem;
+  height: 0.52rem;
+  color: #FFF;
+  font-size: 1.4rem;
+  font-weight: 400;
+  border: 0.06rem solid #FFF;
+  border-right: 0;
+  border-bottom: 0;
+  transform: rotate(-45deg);
+  -webkit-tap-highlight-color: transparent;
+}
+.datika_top .clock {
+  position: absolute;
+  left: 50%;
+  top: 55%;
+  transform: translate(-50%, -50%);
+  font-family: 'icomoon';
+  color: #FFF;
+  font-size: 0.72rem;
+  vertical-align: middle;
+}
+.datika_top .datika_wenzi {
+  position: absolute;
+  right: 0.3rem;
+  top: 55%;
+  transform: translateY(-50%);
+  font-size: 0.56rem;
+  color: #FFF;
+}
+.dati_1 {
+  width: 100%;
+  height: 1.8rem;
+  background-color: #fff;
+  box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.1);
+}
+.dati_1 .yida {
+  float: left;
+  width: 3rem;
+  font-size: 0.4rem;
+  color: #1491cf;
+  padding-top: 0.7rem;
+}
+.dati_1 .yida em {
+  float: left;
+  display: block;
+  width: 0.52rem;
+  height: 0.52rem;
+  background-color: #0c8ece;
+  margin-left: 1.1rem;
+}
+.dati_1 .weida {
+  float: left;
+  width: 3rem;
+  font-size: 0.4rem;
+  color: #cccccc;
+  padding-top: 0.7rem;
+}
+.dati_1 .weida em {
+  float: left;
+  display: block;
+  width: 0.52rem;
+  height: 0.52rem;
+  background-color: #eeeeee;
+  margin-left: 1.1rem;
+}
+.datika_Box {
+  display: none;
+  overflow: hidden;
+  width: 85%;
+  position: fixed;
+  left: 50%;
+  top: 53%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+}
+.datika_close {
+  width: 0.7rem;
+  height: 0.7rem;
+  position: absolute;
+  right: 0.4rem;
+  top: 0.8rem;
+  font-size: 0.6rem;
+  color: #ccc;
+}
+.area {
+  overflow: hidden;
+  width: 100%;
+  padding: 0 0.4rem;
+  margin-top: 0.6rem;
+  padding-bottom: 5rem;
+}
+.area .area_box {
+  overflow-y: scroll;
+  height: 500px;
+  width: 100%;
+  border-radius: 0.16rem;
+  /*box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.1);*/
+  box-shadow: 1px 1px 10px 1px #999;
+  background-color: #fff;
+  padding-bottom: 1rem;
+}
+.area .area_box .area_wenzi {
+  font-size: 0.56rem;
+  color: #333;
+  padding: 0.9rem 0.6rem 0.3rem 0.6rem;
+}
+.area .area_box ul {
+  overflow: hidden;
+  width: 100%;
+  padding-left: 0.7rem;
+  padding-top: 0.5rem;
+}
+.area .area_box ul li {
+  float: left;
+  width: 1.8rem;
+  height: 1rem;
+  margin-right: 0.4rem;
+  font-size: 0.72rem;
+}
+.area .area_box ul li .ipt_datika_area {
+  position: relative;
+  display: block;
+  width: 1.8rem;
+  height: 1rem;
+  color: #999;
+  background-color: #eee;
+  text-align: center;
+  line-height: 1rem;
+  outline: none;
+  border: 0;
+  font-size: 0.7rem;
+  font-weight: 400;
+  -webkit-appearance: none!important;
+  -webkit-tap-highlight-color: transparent;
+}
+.area .area_box ul li .current_dati {
+  color: #fff !important;
+  background: #0c8ece !important;
+}
+.area .area_box ul li:nth-child(n+6) {
+  margin-top: 0.4rem;
+}
+.datika_btn {
+  display: block;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 1.8rem;
+  width: 12rem;
+  height: 1.6rem;
+  background-color: #0c8ece;
+  border-radius: 0.8rem;
+  color: #FFF;
+  text-align: center;
+  line-height: 1.6rem;
+  font-weight: 700;
+  font-size: 0.72rem;
+  -webkit-tap-highlight-color: transparent;
+}

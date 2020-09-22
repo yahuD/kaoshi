@@ -1,0 +1,193 @@
+
+错误编号(ERRNO): 2
+错误信息(TEXT): require_once(/includes/PHPExcel/Classes/PHPExcel.php): failed to open stream: No such file or directory
+错误文件(LOCATION): D:\www\kaoshi\App\Action\userAction.class.php, 行号(line) 107, 
+发生时间(at) September 2, 2020, 3:00 pm
+调用回溯(Showing backtrace):
+userAction.batAddStudent() # line  107, file: D:\www\kaoshi\App\Action\userAction.class.php
+userAction.batAddStudent() # line    0, file: unknown
+call_user_func_array(Array[2], Array[0]) # line   82, file: D:\www\kaoshi\App\FrameWork\DTC.php
+DTC.instance("userAction", "batAddStudent") # line   60, file: D:\www\kaoshi\App\FrameWork\DTC.php
+DTC.action(Array[2]) # line   27, file: D:\www\kaoshi\App\FrameWork\DTC.php
+DTC.appRun() # line   26, file: D:\www\kaoshi\index.php
+
+
+
+错误编号(ERRNO): 2
+错误信息(TEXT): require_once(../../includes/PHPExcel/Classes/PHPExcel.php): failed to open stream: No such file or directory
+错误文件(LOCATION): D:\www\kaoshi\App\Action\userAction.class.php, 行号(line) 107, 
+发生时间(at) September 2, 2020, 3:01 pm
+调用回溯(Showing backtrace):
+userAction.batAddStudent() # line  107, file: D:\www\kaoshi\App\Action\userAction.class.php
+userAction.batAddStudent() # line    0, file: unknown
+call_user_func_array(Array[2], Array[0]) # line   82, file: D:\www\kaoshi\App\FrameWork\DTC.php
+DTC.instance("userAction", "batAddStudent") # line   60, file: D:\www\kaoshi\App\FrameWork\DTC.php
+DTC.action(Array[2]) # line   27, file: D:\www\kaoshi\App\FrameWork\DTC.php
+DTC.appRun() # line   26, file: D:\www\kaoshi\index.php
+
+
+
+错误编号(ERRNO): 2
+错误信息(TEXT): require_once(../../include/PHPExcel/Classes/PHPExcel.php): failed to open stream: No such file or directory
+错误文件(LOCATION): D:\www\kaoshi\App\Action\userAction.class.php, 行号(line) 107, 
+发生时间(at) September 2, 2020, 3:02 pm
+调用回溯(Showing backtrace):
+userAction.batAddStudent() # line  107, file: D:\www\kaoshi\App\Action\userAction.class.php
+userAction.batAddStudent() # line    0, file: unknown
+call_user_func_array(Array[2], Array[0]) # line   82, file: D:\www\kaoshi\App\FrameWork\DTC.php
+DTC.instance("userAction", "batAddStudent") # line   60, file: D:\www\kaoshi\App\FrameWork\DTC.php
+DTC.action(Array[2]) # line   27, file: D:\www\kaoshi\App\FrameWork\DTC.php
+DTC.appRun() # line   26, file: D:\www\kaoshi\index.php
+
+
+
+错误编号(ERRNO): 2
+错误信息(TEXT): PDO::__construct(): MySQL server has gone away
+错误文件(LOCATION): D:\www\kaoshi\App\FrameWork\DatabaseHandler.class.php, 行号(line) 28, 
+发生时间(at) September 2, 2020, 4:18 pm
+调用回溯(Showing backtrace):
+PDO.__construct("mysql:host=127.0.0.1;dbname=kuks", "root", "root", Array[2]) # line   28, file: D:\www\kaoshi\App\FrameWork\DatabaseHandler.class.php
+DatabaseHandler.GetHandler() # line   58, file: D:\www\kaoshi\App\FrameWork\DatabaseHandler.class.php
+DatabaseHandler.Execute("INSERT INTO kp_user (name, student_id, password, school, majors,...", null) # line  188, file: D:\www\kaoshi\App\FrameWork\DatabaseHandler.class.php
+DatabaseHandler.ExecuteInsert("INSERT INTO kp_user (name, student_id, password, school, majors,...") # line   25, file: D:\www\kaoshi\App\Model\userModel.class.php
+userModel.batAddStudent("...") # line  153, file: D:\www\kaoshi\App\Action\userAction.class.php
+userAction.batAddStudent() # line    0, file: unknown
+call_user_func_array(Array[2], Array[0]) # line   82, file: D:\www\kaoshi\App\FrameWork\DTC.php
+DTC.instance("userAction", "batAddStudent") # line   60, file: D:\www\kaoshi\App\FrameWork\DTC.php
+DTC.action(Array[2]) # line   27, file: D:\www\kaoshi\App\FrameWork\DTC.php
+DTC.appRun() # line   26, file: D:\www\kaoshi\index.php
+
+
+
+错误编号(ERRNO): 2
+错误信息(TEXT): PDO::__construct(): MySQL server has gone away
+错误文件(LOCATION): D:\www\kaoshi\App\FrameWork\DatabaseHandler.class.php, 行号(line) 28, 
+发生时间(at) September 2, 2020, 4:24 pm
+调用回溯(Showing backtrace):
+PDO.__construct("mysql:host=127.0.0.1;dbname=kuks", "root", "root", Array[2]) # line   28, file: D:\www\kaoshi\App\FrameWork\DatabaseHandler.class.php
+DatabaseHandler.GetHandler() # line   58, file: D:\www\kaoshi\App\FrameWork\DatabaseHandler.class.php
+DatabaseHandler.Execute("INSERT INTO kp_user (name, student_id, password, school, majors,...", null) # line  188, file: D:\www\kaoshi\App\FrameWork\DatabaseHandler.class.php
+DatabaseHandler.ExecuteInsert("INSERT INTO kp_user (name, student_id, password, school, majors,...") # line   25, file: D:\www\kaoshi\App\Model\userModel.class.php
+userModel.batAddStudent("...") # line  153, file: D:\www\kaoshi\App\Action\userAction.class.php
+userAction.batAddStudent() # line    0, file: unknown
+call_user_func_array(Array[2], Array[0]) # line   82, file: D:\www\kaoshi\App\FrameWork\DTC.php
+DTC.instance("userAction", "batAddStudent") # line   60, file: D:\www\kaoshi\App\FrameWork\DTC.php
+DTC.action(Array[2]) # line   27, file: D:\www\kaoshi\App\FrameWork\DTC.php
+DTC.appRun() # line   26, file: D:\www\kaoshi\index.php
+
+
+
+错误编号(ERRNO): 2
+错误信息(TEXT): PDO::__construct(): MySQL server has gone away
+错误文件(LOCATION): D:\www\kaoshi\App\FrameWork\DatabaseHandler.class.php, 行号(line) 28, 
+发生时间(at) September 2, 2020, 5:04 pm
+调用回溯(Showing backtrace):
+PDO.__construct("mysql:host=127.0.0.1;dbname=kuks", "root", "root", Array[2]) # line   28, file: D:\www\kaoshi\App\FrameWork\DatabaseHandler.class.php
+DatabaseHandler.GetHandler() # line  158, file: D:\www\kaoshi\App\FrameWork\DatabaseHandler.class.php
+DatabaseHandler.GetOne("SELECT count(*) AS num FROM kp_user") # line   21, file: D:\www\kaoshi\App\Action\userAction.class.php
+userAction.studentLists() # line    0, file: unknown
+call_user_func_array(Array[2], Array[0]) # line   82, file: D:\www\kaoshi\App\FrameWork\DTC.php
+DTC.instance("userAction", "studentLists") # line   60, file: D:\www\kaoshi\App\FrameWork\DTC.php
+DTC.action(Array[3]) # line   27, file: D:\www\kaoshi\App\FrameWork\DTC.php
+DTC.appRun() # line   26, file: D:\www\kaoshi\index.php
+
+
+
+错误编号(ERRNO): 2
+错误信息(TEXT): PDO::__construct(): MySQL server has gone away
+错误文件(LOCATION): D:\www\kaoshi\App\FrameWork\DatabaseHandler.class.php, 行号(line) 28, 
+发生时间(at) September 2, 2020, 5:11 pm
+调用回溯(Showing backtrace):
+PDO.__construct("mysql:host=127.0.0.1;dbname=kuks", "root", "root", Array[2]) # line   28, file: D:\www\kaoshi\App\FrameWork\DatabaseHandler.class.php
+DatabaseHandler.GetHandler() # line  158, file: D:\www\kaoshi\App\FrameWork\DatabaseHandler.class.php
+DatabaseHandler.GetOne("SELECT count(*) AS num FROM kp_user") # line   21, file: D:\www\kaoshi\App\Action\userAction.class.php
+userAction.studentLists() # line    0, file: unknown
+call_user_func_array(Array[2], Array[0]) # line   82, file: D:\www\kaoshi\App\FrameWork\DTC.php
+DTC.instance("userAction", "studentLists") # line   60, file: D:\www\kaoshi\App\FrameWork\DTC.php
+DTC.action(Array[2]) # line   27, file: D:\www\kaoshi\App\FrameWork\DTC.php
+DTC.appRun() # line   26, file: D:\www\kaoshi\index.php
+
+
+
+错误编号(ERRNO): 2
+错误信息(TEXT): PDO::__construct(): MySQL server has gone away
+错误文件(LOCATION): D:\www\kaoshi\App\FrameWork\DatabaseHandler.class.php, 行号(line) 28, 
+发生时间(at) September 2, 2020, 5:23 pm
+调用回溯(Showing backtrace):
+PDO.__construct("mysql:host=127.0.0.1;dbname=kuks", "root", "root", Array[2]) # line   28, file: D:\www\kaoshi\App\FrameWork\DatabaseHandler.class.php
+DatabaseHandler.GetHandler() # line  158, file: D:\www\kaoshi\App\FrameWork\DatabaseHandler.class.php
+DatabaseHandler.GetOne("SELECT count(*) AS num FROM kp_user") # line   21, file: D:\www\kaoshi\App\Action\userAction.class.php
+userAction.studentLists() # line    0, file: unknown
+call_user_func_array(Array[2], Array[0]) # line   82, file: D:\www\kaoshi\App\FrameWork\DTC.php
+DTC.instance("userAction", "studentLists") # line   60, file: D:\www\kaoshi\App\FrameWork\DTC.php
+DTC.action(Array[2]) # line   27, file: D:\www\kaoshi\App\FrameWork\DTC.php
+DTC.appRun() # line   26, file: D:\www\kaoshi\index.php
+
+
+
+错误编号(ERRNO): 2
+错误信息(TEXT): PDO::__construct(): MySQL server has gone away
+错误文件(LOCATION): D:\www\kaoshi\include\database.php, 行号(line) 50, 
+发生时间(at) September 4, 2020, 10:02 am
+调用回溯(Showing backtrace):
+PDO.__construct("mysql:host=127.0.0.1;port=3306;dbname=kuks", "root", "root", Array[2]) # line   50, file: D:\www\kaoshi\include\database.php
+include_database.connect(Array[2]) # line   33, file: D:\www\kaoshi\include\database.php
+include_database.__construct() # line   81, file: D:\www\kaoshi\App\FrameWork\DTC.php
+DTC.instance("include_database") # line   17, file: D:\www\kaoshi\include\init.php
+include_init.__construct() # line   12, file: D:\www\kaoshi\App\Action\examAction.class.php
+examAction.__construct() # line   81, file: D:\www\kaoshi\App\FrameWork\DTC.php
+DTC.instance("examAction", "examCategoryPage") # line   61, file: D:\www\kaoshi\App\FrameWork\DTC.php
+DTC.action(Array[2]) # line   27, file: D:\www\kaoshi\App\FrameWork\DTC.php
+DTC.appRun() # line   26, file: D:\www\kaoshi\index.php
+
+
+
+错误编号(ERRNO): 2
+错误信息(TEXT): PDO::__construct(): MySQL server has gone away
+错误文件(LOCATION): D:\www\kaoshi\App\FrameWork\DatabaseHandler.class.php, 行号(line) 28, 
+发生时间(at) September 4, 2020, 10:02 am
+调用回溯(Showing backtrace):
+PDO.__construct("mysql:host=127.0.0.1;dbname=kuks", "root", "root", Array[2]) # line   28, file: D:\www\kaoshi\App\FrameWork\DatabaseHandler.class.php
+DatabaseHandler.GetHandler() # line  158, file: D:\www\kaoshi\App\FrameWork\DatabaseHandler.class.php
+DatabaseHandler.GetOne("SELECT count(*) AS num FROM kp_section") # line   20, file: D:\www\kaoshi\App\Action\examAction.class.php
+examAction.examCategoryPage() # line    0, file: unknown
+call_user_func_array(Array[2], Array[0]) # line   83, file: D:\www\kaoshi\App\FrameWork\DTC.php
+DTC.instance("examAction", "examCategoryPage") # line   61, file: D:\www\kaoshi\App\FrameWork\DTC.php
+DTC.action(Array[2]) # line   27, file: D:\www\kaoshi\App\FrameWork\DTC.php
+DTC.appRun() # line   26, file: D:\www\kaoshi\index.php
+
+
+
+错误编号(ERRNO): 2
+错误信息(TEXT): PDO::__construct(): MySQL server has gone away
+错误文件(LOCATION): D:\www\kaoshi\include\database.php, 行号(line) 50, 
+发生时间(at) September 4, 2020, 10:21 am
+调用回溯(Showing backtrace):
+PDO.__construct("mysql:host=127.0.0.1;port=3306;dbname=kuks", "root", "root", Array[2]) # line   50, file: D:\www\kaoshi\include\database.php
+include_database.connect(Array[2]) # line   33, file: D:\www\kaoshi\include\database.php
+include_database.__construct() # line   81, file: D:\www\kaoshi\App\FrameWork\DTC.php
+DTC.instance("include_database") # line   17, file: D:\www\kaoshi\include\init.php
+include_init.__construct() # line   12, file: D:\www\kaoshi\App\Action\examAction.class.php
+examAction.__construct() # line   81, file: D:\www\kaoshi\App\FrameWork\DTC.php
+DTC.instance("examAction", "editExamCategory") # line   61, file: D:\www\kaoshi\App\FrameWork\DTC.php
+DTC.action(Array[2]) # line   27, file: D:\www\kaoshi\App\FrameWork\DTC.php
+DTC.appRun() # line   26, file: D:\www\kaoshi\index.php
+
+
+
+错误编号(ERRNO): 2
+错误信息(TEXT): PDO::__construct(): MySQL server has gone away
+错误文件(LOCATION): D:\www\kaoshi\include\database.php, 行号(line) 50, 
+发生时间(at) September 8, 2020, 2:25 pm
+调用回溯(Showing backtrace):
+PDO.__construct("mysql:host=127.0.0.1;port=3306;dbname=kuks", "root", "root", Array[2]) # line   50, file: D:\www\kaoshi\include\database.php
+include_database.connect(Array[2]) # line   33, file: D:\www\kaoshi\include\database.php
+include_database.__construct() # line   81, file: D:\www\kaoshi\App\FrameWork\DTC.php
+DTC.instance("include_database") # line   17, file: D:\www\kaoshi\include\init.php
+include_init.__construct() # line    6, file: D:\www\kaoshi\App\Action\indexAction.class.php
+indexAction.__construct() # line   81, file: D:\www\kaoshi\App\FrameWork\DTC.php
+DTC.instance("indexAction", "userCenter") # line   61, file: D:\www\kaoshi\App\FrameWork\DTC.php
+DTC.action(Array[2]) # line   27, file: D:\www\kaoshi\App\FrameWork\DTC.php
+DTC.appRun() # line   26, file: D:\www\kaoshi\index.php
+
+

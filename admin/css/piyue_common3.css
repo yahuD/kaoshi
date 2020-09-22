@@ -1,0 +1,53 @@
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 80px;
+    /* background: linear-gradient(180deg, #0088CC 0%, #D1E9F5 100%); */
+    background: #fff;
+    z-index: 333333;
+    border-bottom: 1px solid #ccc;
+}
+
+.header .w {
+    position: relative;
+    min-height: 80px;
+    height: 80px;
+}
+
+.header .w .logo_box {
+    float: left;
+    width: 500px;
+    height: 80px;
+    padding-top: 15px;
+}
+
+.header .w .logo_box .logo_info {
+    float: left;
+    height: 70px;
+    line-height: 70px;
+    color: #FFF;
+    margin-left: 10px;
+}
+
+.header .w .logo_box .logo_info_tiku {
+    float: left;
+    height: 70px;
+    line-height: 50px;
+    font-size: 18px;
+    color: #333;
+    margin-left: 280px;
+}
+
+.header .w .user {
+    position: relative;
+    float: right;
+    width: 200px;
+    height: 80px;
+}
+
+.header .w .user .user_kepu {
+    float: left;
+    line-height: 80px;
+    font-size: 16px;
+}

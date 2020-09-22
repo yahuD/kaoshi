@@ -1,0 +1,43 @@
+<div class="container-fluid navbar" style="margin-top:0px;margin-bottom:0px;background-color:#337AB7;">
+	<div class="row-fluid">
+		<div class="main">
+			<div class="col-xs-12">
+				<ul class="list-unstyled list-inline">
+					<li>
+						<span class="logo">科普教育</span>
+					</li>
+					<!-- <li class="menu  {if $smarty.server.REQUEST_URI == '/index.php?ctl=registerLogin&act=adminindex'}active{/if}"> -->
+					<li class="menu {if $show == 'index'}active{/if}">
+						<a href="?ctl=registerLogin&act=adminindex">首页</a>
+					</li>
+					<!-- <li class="menu {if $smarty.server.REQUEST_URI == '/index.php?ctl=user&act=studentLists'}active{/if}"> -->
+
+					<li class="menu {if $show == 'user'}active{/if}">
+						<a href="?ctl=user&act=studentLists">用户管理</a>
+					</li>
+					<li class="menu {if $show == 'exam'}active{/if}">
+						<a href="?ctl=exam&act=examLists">试卷管理</a>
+					</li>
+					<li class="menu {if $show == 'test'}active{/if}">
+						<a href="?ctl=exam&act=examTest">考试管理</a>
+					</li>
+
+					<li class="pull-right">
+						<div class="btn-group" style="margin-top: 15px;">
+							<button type="button" class="btn btn-info"><em class="glyphicon glyphicon-user"></em> admin</button>
+							<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<span class="caret"></span>
+								<span class="sr-only">Toggle Dropdown</span>
+							</button>
+							<ul class="dropdown-menu">
+								<!-- <li><a href="index.php?user-center"><em class="glyphicon glyphicon-user"></em> 用户中心</a></li>
+                                <li><a href="index.php?core-master"><em class="glyphicon glyphicon-dashboard"></em> 后台管理</a></li> -->
+                                <li><a class="ajax" href="/index.php?ctl=registerLogin&act=adminLogout"><em class="glyphicon glyphicon-log-out"></em> 退出</a></li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

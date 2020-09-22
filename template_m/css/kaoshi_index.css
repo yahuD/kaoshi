@@ -1,0 +1,569 @@
+a {
+  text-decoration: none;
+}
+html {
+  font-size: 50px;
+}
+@media screen and (min-width: 320px) {
+  html {
+    font-size: 21.33333333px;
+  }
+}
+@media screen and (min-width: 360px) {
+  html {
+    font-size: 24px;
+  }
+}
+@media screen and (min-width: 375px) {
+  html {
+    font-size: 25px;
+  }
+}
+@media screen and (min-width: 384px) {
+  html {
+    font-size: 25.6px;
+  }
+}
+@media screen and (min-width: 400px) {
+  html {
+    font-size: 26.66666667px;
+  }
+}
+@media screen and (min-width: 414px) {
+  html {
+    font-size: 27.6px;
+  }
+}
+@media screen and (min-width: 424px) {
+  html {
+    font-size: 28.26666667px;
+  }
+}
+@media screen and (min-width: 480px) {
+  html {
+    font-size: 32px;
+  }
+}
+@media screen and (min-width: 540px) {
+  html {
+    font-size: 36px;
+  }
+}
+@media screen and (min-width: 720px) {
+  html {
+    font-size: 48px;
+  }
+}
+@media screen and (min-width: 750px) {
+  html {
+    font-size: 50px;
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  min-width: 320px;
+  width: 15rem;
+  height: 100%;
+  margin: 0 auto;
+  font-family: Arial, Helvetica;
+  box-sizing: border-box;
+  background-color: #efefef;
+}
+.zhezhao {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+.test_time_no {
+  display: none;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 9.6rem;
+  height: 6.6rem;
+  background-color: #FFF;
+  border-radius: 0.16rem;
+  font-size: 0.64rem;
+  text-align: center;
+  padding-top: 1.9rem;
+  z-index: 11;
+}
+.test_time_no .test_time_no_btn {
+  position: absolute;
+  display: block;
+  width: 3.2rem;
+  height: 1.4rem;
+  background-color: #0c8ece;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #FFF;
+  border-radius: 0.4rem;
+  line-height: 1.4rem;
+}
+.datika_top {
+  position: relative;
+  width: 100%;
+  height: 2.56rem;
+  background-color: #0C8ECE;
+}
+.datika_top .datika_back {
+  position: absolute;
+  top: 0.7rem;
+  left: 0.4rem;
+  width: 1.6rem;
+}
+.datika_top .datika_back .back {
+  position: absolute;
+  top: 0.4rem;
+  left: 0.2rem;
+  display: block;
+  width: 0.52rem;
+  height: 0.52rem;
+  font-weight: 400;
+  border: 0.06rem solid #FFF;
+  border-right: 0;
+  border-bottom: 0;
+  transform: rotate(-45deg);
+  -webkit-tap-highlight-color: transparent;
+}
+.datika_top .clock {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 55%;
+  transform: translate(-50%, -50%);
+  font-family: 'icomoon';
+  color: #FFF;
+  font-size: 0.72rem;
+  vertical-align: middle;
+}
+.datika_top .tab_kaoshi {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 55%;
+  transform: translate(-50%, -50%);
+  font-family: 'icomoon';
+  color: #FFF;
+  font-size: 0.72rem;
+}
+.datika_top .datika_wenzi {
+  position: absolute;
+  right: 0.3rem;
+  top: 55%;
+  transform: translateY(-50%);
+  font-size: 0.48rem;
+  color: #FFF;
+}
+.kaoshi_220 {
+  overflow: hidden;
+  width: 100%;
+  height: 4.4rem;
+  background-color: #fff;
+}
+.kaoshi_220 .ks_icon {
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+  background-color: pink;
+  background: url(../imgs/kaoshi_icon.png) no-repeat;
+  background-size: 100% 100%;
+  margin-top: 0.9rem;
+  margin-left: 1.1rem;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.kaoshi_220 .ks_icon .shuzi {
+  display: block;
+  right: 0.1rem;
+  top: 0rem;
+  position: absolute;
+  width: 0.5rem;
+  height: 0.5rem;
+  color: #fff;
+  text-align: center;
+  line-height: 0.5rem;
+  border-radius: 50%;
+  background-color: #ff0000;
+  font-size: 0.3rem;
+  font-weight: 400;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.kaoshi_220 .title {
+  font-size: 0.48rem;
+  color: #333;
+  padding-left: 1.6rem;
+  margin-top: 0.3rem;
+}
+.current_test_more {
+  position: relative;
+  width: 100%;
+  height: 2.4rem;
+  padding: 0 0.4rem;
+}
+.current_test_more .left_bg_4 {
+  position: absolute;
+  left: 0.4rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0.08rem;
+  height: 0.6rem;
+  background-color: #0c8ece;
+}
+.current_test_more em {
+  position: absolute;
+  left: 0.72rem;
+  font-size: 0.6rem;
+  color: #333;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.current_test_more .more {
+  position: absolute;
+  font-family: 'icomoon';
+  right: 0.4rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.48rem;
+  color: #666;
+  vertical-align: middle;
+  -webkit-tap-highlight-color: transparent;
+}
+.current_test_more .more::after {
+  content: '\ea50';
+  font-family: 'icomoon';
+  font-size: 0.64rem;
+  vertical-align: top;
+  margin-left: -0.2rem;
+}
+.current_test_more .more:hover {
+  color: #F40;
+}
+.current_list {
+  display: none;
+  width: 100%;
+  height: 5.2rem;
+  padding: 0 0.4rem;
+}
+.current_list .current_list_box {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background-color: #FFF;
+  z-index: 2;
+  border-radius: 0.16rem;
+  box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.1);
+}
+.current_list .current_list_box .current_list_top {
+  position: relative;
+  height: 0.8rem;
+  line-height: 0.8rem;
+  width: 100%;
+  margin-top: 0.8rem;
+  font-size: 0.56rem;
+  color: #666;
+  padding-left: 0.8rem;
+}
+.current_list .current_list_box .current_list_top::before {
+  float: left;
+  display: block;
+  content: '';
+  width: 0.6rem;
+  height: 0.66rem;
+  background: url(../imgs/book_icon.png) no-repeat;
+  background-size: 100% 100%;
+  margin-right: 0.5rem;
+}
+.current_list .current_list_box .weikaishi {
+  position: absolute;
+  left: 5.6rem;
+  top: -0.2rem;
+  height: 0.56rem;
+  background-color: #0c8ece;
+  font-size: 0.32rem;
+  line-height: 0.56rem;
+  color: #FFF;
+  text-align: center;
+  padding: 0 0.2rem;
+  border-radius: 0.28rem 0.28rem 0.28rem 0;
+}
+.current_list .current_list_box .xian {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 1.8rem;
+  width: 12.4rem;
+  height: 0.02rem;
+  border-bottom: 0.02rem solid #f4f4f4;
+}
+.current_list .current_list_box .current_time {
+  font-size: 0.4rem;
+  color: #999;
+  padding-left: 0.8rem;
+  margin-top: 0.7rem;
+}
+.current_list .current_list_box .xianshi {
+  font-size: 0.4rem;
+  color: #999;
+  margin-top: 0.5rem;
+  padding-left: 0.8rem;
+}
+.current_list .current_list_box .begin_test {
+  position: absolute;
+  display: block;
+  width: 2.8rem;
+  height: 1.1rem;
+  line-height: 1.13rem;
+  background-color: #0c8ece;
+  border-radius: 0.12rem;
+  color: #FFF;
+  font-size: 0.48rem;
+  text-align: center;
+  right: 1rem;
+  bottom: 1.1rem;
+  -webkit-tap-highlight-color: transparent;
+}
+.current_list2 {
+  display: block;
+  width: 100%;
+  height: 5.2rem;
+  padding: 0 0.4rem;
+}
+.current_list2 .current_list_box {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background-color: #FFF;
+  z-index: 2;
+  border-radius: 0.16rem;
+  box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.1);
+  margin-top:2%;
+}
+.current_list2 .current_list_box .current_list_top {
+  position: relative;
+  height: 0.8rem;
+  line-height: 0.8rem;
+  width: 100%;
+  margin-top: 0.8rem;
+  font-size: 0.56rem;
+  color: #666;
+  padding-left: 0.8rem;
+}
+.current_list2 .current_list_box .current_list_top::before {
+  float: left;
+  display: block;
+  content: '';
+  width: 0.6rem;
+  height: 0.66rem;
+  background: url(../imgs/book_icon.png) no-repeat;
+  background-size: 100% 100%;
+  margin-right: 0.5rem;
+}
+.current_list2 .current_list_box .jinxingzhong {
+  position: absolute;
+  left: 5.6rem;
+  top: -0.2rem;
+  height: 0.56rem;
+  background-color: #5ce68e;
+  font-size: 0.32rem;
+  line-height: 0.56rem;
+  color: #FFF;
+  text-align: center;
+  padding: 0 0.2rem;
+  border-radius: 0.28rem 0.28rem 0.28rem 0;
+}
+.current_list2 .current_list_box .xian {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 1.8rem;
+  width: 12.4rem;
+  height: 0.02rem;
+  border-bottom: 0.02rem solid #f4f4f4;
+}
+.current_list2 .current_list_box .current_time {
+  font-size: 0.4rem;
+  color: #999;
+  padding-left: 0.8rem;
+  margin-top: 0.7rem;
+}
+.current_list2 .current_list_box .xianshi {
+  font-size: 0.4rem;
+  color: #999;
+  margin-top: 0.5rem;
+  padding-left: 0.8rem;
+}
+.current_list2 .current_list_box .begin_test2 {
+  position: absolute;
+  display: block;
+  width: 2.8rem;
+  height: 1.1rem;
+  line-height: 1.13rem;
+  background-color: #0c8ece;
+  border-radius: 0.12rem;
+  color: #FFF;
+  font-size: 0.48rem;
+  text-align: center;
+  right: 1rem;
+  bottom: 1.1rem;
+  -webkit-tap-highlight-color: transparent;
+}
+.current_list1 {
+  display: none;
+  width: 100%;
+  height: 5.2rem;
+  padding: 0 0.4rem;
+}
+.current_list1 .current_list_box {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background-color: #FFF;
+  z-index: 2;
+  border-radius: 0.16rem;
+  box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.1);
+}
+.current_list1 .current_list_box .current_list_top {
+  position: relative;
+  height: 0.8rem;
+  line-height: 0.8rem;
+  width: 100%;
+  margin-top: 0.8rem;
+  font-size: 0.56rem;
+  color: #666;
+  padding-left: 0.8rem;
+}
+.current_list1 .current_list_box .current_list_top::before {
+  float: left;
+  display: block;
+  content: '';
+  width: 0.6rem;
+  height: 0.66rem;
+  background: url(../imgs/book_icon.png) no-repeat;
+  background-size: 100% 100%;
+  margin-right: 0.5rem;
+}
+.current_list1 .current_list_box .weikaishi {
+  position: absolute;
+  left: 5.6rem;
+  top: -0.2rem;
+  height: 0.56rem;
+  background-color: #0c8ece;
+  font-size: 0.32rem;
+  line-height: 0.56rem;
+  color: #FFF;
+  text-align: center;
+  padding: 0 0.2rem;
+  border-radius: 0.28rem 0.28rem 0.28rem 0;
+}
+.current_list1 .current_list_box .xian {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 1.8rem;
+  width: 12.4rem;
+  height: 0.02rem;
+  border-bottom: 0.02rem solid #f4f4f4;
+}
+.current_list1 .current_list_box .current_time {
+  font-size: 0.4rem;
+  color: #999;
+  padding-left: 0.8rem;
+  margin-top: 0.7rem;
+}
+.current_list1 .current_list_box .xianshi {
+  font-size: 0.4rem;
+  color: #999;
+  margin-top: 0.5rem;
+  padding-left: 0.8rem;
+}
+.current_list1 .current_list_box .begin_test1 {
+  position: absolute;
+  display: block;
+  width: 2.8rem;
+  height: 1.1rem;
+  line-height: 1.13rem;
+  background-color: #ccc;
+  border-radius: 0.12rem;
+  color: #FFF;
+  font-size: 0.48rem;
+  text-align: center;
+  right: 1rem;
+  bottom: 1.1rem;
+  -webkit-tap-highlight-color: transparent;
+}
+.footer {
+  min-width: 320px;
+  width: 15rem;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 1.96rem;
+  background-color: #fff;
+  padding-top: 0.1rem;
+}
+.footer .home {
+  float: left;
+  display: block;
+  width: 1.04rem;
+  height: 100%;
+  margin-left: 3rem;
+  -webkit-tap-highlight-color: transparent;
+}
+.footer .home .home_img {
+  width: 1.04rem;
+  height: 1.04rem;
+}
+.footer .home .home_img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.footer .home .shouye_wenzi {
+  width: 1.1rem;
+  font-size: 0.4rem;
+  color: #666;
+  text-align: center;
+  margin-top: 0.1rem;
+}
+.footer .person {
+  float: right;
+  display: block;
+  width: 1.04rem;
+  height: 100%;
+  margin-right: 3rem;
+  -webkit-tap-highlight-color: transparent;
+}
+.footer .person .person_img {
+  width: 1.04rem;
+  height: 1.04rem;
+}
+.footer .person .person_img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.footer .person .person_wenzi {
+  width: 1.1rem;
+  font-size: 0.4rem;
+  color: #666;
+  text-align: center;
+  margin-top: 0.1rem;
+}
+.footer .cur {
+  color: #0C8ECE !important;
+}

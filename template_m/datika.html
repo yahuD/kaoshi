@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <style>
+        @font-face {
+            font-family: 'icomoon';
+            src: url('fonts/icomoon.eot?lrs8eq');
+            src: url('fonts/icomoon.eot?lrs8eq#iefix') format('embedded-opentype'), url('fonts/icomoon.ttf?lrs8eq') format('truetype'), url('fonts/icomoon.woff?lrs8eq') format('woff'), url('fonts/icomoon.svg?lrs8eq#icomoon') format('svg');
+            font-weight: normal;
+            font-style: normal;
+            font-display: block;
+        }
+    </style>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/datika.css">
+    <title>答题卡</title>
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/datika.js"></script>
+</head>
+
+<body>
+
+
+    <!-- 遮罩 -->
+    <div class="zhezhao"></div>
+
+
+    <!-- 确定交卷吗 -->
+    <div class="test_jiaojuan">
+        <h3>确定交卷吗？</h3>
+
+        <a href="javascript:;" class="test_jiaojuan_no">取消</a>
+        <a href="javascript:;" class="test_jiaojuan_yes">确定</a>
+
+    </div>
+
+
+    <div class="datika_top">
+        <div class="datika_back">
+
+            <a href="./timu.html" class="back"></a>
+        </div>
+        <div class="clock"> 00:52:44</div>
+        <div class="datika_wenzi">答题卡</div>
+    </div>
+    <!-- 2 -->
+    <div class="dati_1">
+        <div class="yida">
+            <em></em> &nbsp;&nbsp;已答
+        </div>
+        <div class="weida">
+            <em></em> &nbsp;&nbsp;未答
+        </div>
+    </div>
+    <!-- 答题区域 -->
+    <div class="area">
+        <div class="area_box">
+            <form>
+                <div class="area_wenzi">单选题(共6题，合计12.0分)</div>
+                <ul>
+                    <li>
+                        <em class="current_dati">1</em>
+                        <!-- <i>A</i> -->
+                        <input type="text" value="A" name="a1">
+
+
+                    </li>
+                    <li>
+                        <em>2</em>
+                        <input type="text" value="" name="b1">
+                    </li>
+                    <li>
+                        <em>3</em>
+                        <input type="text" value="" name="c1">
+                    </li>
+                    <li>
+                        <em>4</em>
+                        <input type="text" value="" name="d1">
+                    </li>
+                    <li>
+                        <em>5</em>
+                        <input type="text" value="" name="e1">
+                    </li>
+                    <li>
+                        <em>6</em>
+                        <input type="text" value="" name="f1">
+                    </li>
+                </ul>
+
+                <button class="datika_btn_hidden" style="display: none;">提交试卷</button>
+            </form>
+
+        </div>
+
+    </div>
+
+    <a href="javascript:;" class="datika_btn">提交试卷</a>
+
+</body>
+
+</html>

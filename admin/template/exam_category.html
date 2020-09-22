@@ -1,0 +1,117 @@
+{include file="admin_header.html" title="后台-考试系统"}
+<style>
+	a.cur{
+		color: #23527c!important;
+	    background-color: #eee!important;
+	    border-color: #ddd!important;
+    }
+</style>
+
+{include file="admin_top.html"}
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="main">
+			<div class="col-xs-2 leftmenu">
+				<ul class="list-group">
+					<li class="list-group-item active">
+						<a href="?ctl=exam&act=examCategoryPage">试卷分类</a>
+					</li>
+					<li class="list-group-item">
+						<a href="?ctl=exam&act=examLists">试卷列表</a>
+					</li>
+					<li class="list-group-item">
+						<a href="?ctl=exam&act=examQuestype">题型管理</a>
+					</li>
+				</ul>
+			</div>
+
+			<div id="datacontent">
+				<div class="box itembox" style="margin-bottom:0px;border-bottom:1px solid #CCCCCC;">
+					<div class="col-xs-12">
+						<ol class="breadcrumb">
+							<li><a href="#">试卷管理</a></li>
+							<li class="active">试卷分类</li>
+						</ol>
+					</div>
+				</div>
+
+				<div class="box itembox" style="padding-top:10px;margin-bottom:0px;">
+					<h4 class="title" style="padding:10px;">
+						试卷分类
+						<span class="pull-right">
+							<a class="btn btn-primary" href="?ctl=exam&act=AddExamCategoryPage">添加分类</a>
+						</span>
+					</h4>
+					<table class="table table-hover table-bordered">
+						<thead>
+							<tr class="info">
+								<th>ID</th>
+								<th>学校</th>
+								<th>专业</th>
+								<th>年级</th>
+								<th>学期</th>
+								<th>科目</th>
+								<th width="200">操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							{foreach $row as $k => $v}
+							<tr>
+								<td>{$v.id}</td>
+								<td>{$v.school}</td>
+								<td>{$v.majors}</td>
+								<td>{$v.grade}</td>
+								<td>{$v.term}</td>
+								<td>{$v.course}</td>
+								<td>
+									<div class="btn-group">
+										<a class="btn" href="?ctl=exam&act=creatExamForCPage&id={$v.id}"  title="添加试卷"><em class="glyphicon glyphicon-plus-sign"></em></a>
+										<a class="btn" href="?ctl=exam&act=editExamCategoryPage&id={$v.id}" title="编辑分类"><em class="glyphicon glyphicon-edit"></em></a>
+										<!-- <a class="btn  delconfirm" data-id="{$v.id}" data-gourl="{$smarty.server.REQUEST_URI}"><em class="glyphicon glyphicon-remove"></em></a> -->
+									</div>
+								</td>
+							</tr>
+							{/foreach}
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<ul class="pagination" style="text-align: center;display: block;">
+				{$showpage}
+			</ul>
+		</div>
+	</div>
+</div>
+
+{include file="admin_footer.html"}
+<script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-confirmation/1.0.7/bootstrap-confirmation.min.js"></script>
+<script> 
+$(function () { 
+	$('.delconfirm').confirmation({
+
+		animation: true, 
+		placement: "top", 
+		title: "确定要删除吗？", 
+		btnOkLabel: '确定', 
+		btnCancelLabel: '取消', 
+		onConfirm: function () { 
+			console.log(this.options.id); 
+			var id = this.options.id;
+			var gourl = this.options.gourl;
+
+			$.post("/index.php?ctl=exam&act=delExamCategory", { id:id,gourl:gourl },
+			function(data){
+				console.log(data);
+		    	window.location.href=data.gourl;
+			}, "json");
+			
+		}, 
+		onCancel: function () { 
+			//alert("点击了取消"); 
+		} 
+	}) 
+});
+</script> 
+</body>
+
+</html>

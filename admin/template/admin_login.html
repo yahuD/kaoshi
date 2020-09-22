@@ -1,0 +1,84 @@
+{include file="admin_header.html" title="管理员登录-考试系统"}
+
+{*include file="admin_top.html"*}
+
+<div class="container-fluid" style="margin-top: 120px;">
+	<div class="row-fluid">
+		<div class="main box" style="width: 1200px;">
+			<div class="col-xs-7" style="padding:15px;">
+				<img src="/images/admin/admin_login.jpg" />
+			</div>
+			<div class="col-xs-4 pull-right" style="margin:30px 30px 0px auto;background-color:#FFFFFF;">
+				<form class="col-xs-12" id="adminLogin">
+					<h4 class="title" style="line-height:3em;margin-bottom:40px;">管理员登录</h4>
+					<div class="form-group input-group">
+						<span class="input-group-addon" id="basic-addon1"><a class="glyphicon glyphicon-user" style="font-size:16px;"></a></span>
+						<input class="form-control" name="username" datatype="username" id="username" needle="needle" placeholder="请输入用户名" style="height:44px;line-height:24px;font-size:16px;">
+					</div>
+					<div class="form-group input-group">
+						<span class="input-group-addon" id="basic-addon1"><a class="glyphicon glyphicon-lock" style="font-size:16px;"></a></span>
+						<input class="form-control" name="password" datatype="password" needle="needle" id="password" placeholder="请输入密码" type="password" style="height:44px;line-height:24px;font-size:16px;">
+					</div>
+					<div class="form-group">
+						<div class="col-sm-7" style="padding-left:0px;">
+							<div class="input-group">
+								<span class="input-group-addon" id="basic-addon1"><a class="glyphicon glyphicon-lock" style="font-size:16px;"></a></span>
+								<input class="form-control" type="text" maxlength="4" placeholder="请输入验证码" name="randcode" id="randcode" style="height:44px;line-height:24px;font-size:16px;width:130px;"/>
+							</div>
+						</div>
+						<label class="control-label col-sm-3" for="inputPassword"><img src="/index.php?ctl=registerLogin&act=getRandCode" id="randcode" class="randCode img-rounded"/></label>
+					</div>
+
+					<button class="btn btn-primary btn-block goLogin" style="height:44px;line-height:32px;font-size:16px;margin-top:80px;">登录</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="/admin/js/jquery.min.js"></script>
+<script src="/admin/js/jquery-ui.min.js"></script>
+<script src="/admin/js/bootstrap.min.js"></script>
+<script src="/admin/js/common.js"></script>
+{*include file="admin_footer.html"*}
+
+</body>
+<script>
+$(".randCode").on('click',function(){
+	$(this).attr('src',$(this).attr('src')+'&'+Math.random());
+});
+
+$('.goLogin').click(function(e){
+	e.preventDefault();//禁止冒泡
+	var username = $('#username').val();
+	var password = $('#password').val();
+	var randcode = $('#randcode').val();
+
+	if(username == ''){
+		dtAlert({ message:'请输入用户名',title:'<i class="glyphicon glyphicon-remove"></i>',style:'primary' });
+		return false;
+	}
+	if(password == ''){
+		dtAlert({ message:'请输入密码',title:'<i class="glyphicon glyphicon-remove"></i>',style:'primary' });
+		return false;
+	}
+	if(randcode == ''){
+		dtAlert({ message:'请输入验证码',title:'<i class="glyphicon glyphicon-remove"></i>',style:'primary' });
+		return false;
+	}
+
+	$.post("/index.php?ctl=registerLogin&act=adminLogin", $('#adminLogin').serialize(),
+		function(data){
+		console.log(data);
+		if(data.res == 'failed'){
+			dtAlert({ message:data.msg,title:'<i class="glyphicon glyphicon-remove"></i>',style:'primary' });
+			return false;
+		}else{
+			dtAlert({ message:'登录成功,正在跳转',title:'<i class="glyphicon glyphicon-ok"></i>',style:'primary',callback:'window.location.href="?ctl=registerLogin&act=adminindex";' });
+		}
+
+	    	
+	}, "json");
+	
+})
+</script>
+</html>

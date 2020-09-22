@@ -1,0 +1,590 @@
+@import 'common';
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-width: 320px;
+    width: 15rem;
+    height: 100%;
+    margin: 0 auto;
+    font-family: Arial, Helvetica;
+    box-sizing: border-box;
+    background-color: #efefef;
+    
+}
+// 遮罩背景
+.zhezhao{
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.1);
+    z-index: 10;
+}
+// .考试未开始提示
+.test_time_no{
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 480rem / 50;
+    height: 330rem / 50;
+    background-color: #FFF;
+    border-radius: 8rem / 50;
+    font-size: 32rem / 50;
+    text-align: center;
+    padding-top: 95rem / 50;
+    z-index: 11;
+    .test_time_no_btn{
+        position: absolute;
+        display: block;
+        width: 160rem / 50;
+        height: 70rem / 50;
+        background-color: #0c8ece;
+        bottom: 75rem / 50;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #FFF;
+        border-radius: 20rem / 50;
+        line-height: 70rem / 50;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 1
+.datika_top{
+    position: relative;
+    width: 100%;
+    height: 128rem / 50;
+    background-color: #0C8ECE;
+    .datika_back{
+        position: absolute;
+        top: 35rem / 50;
+        left: 20rem / 50;
+        width: 80rem / 50;
+        // height: 100%;
+        // padding-top: 40rem / 50;
+        .back{
+            position: absolute;
+            top: 20rem / 50;
+            left: 10rem / 50;
+            display: block;
+            width: 26rem / 50;
+            height: 26rem / 50;
+            font-weight: 400;
+            border: 3rem / 50 solid #FFF;
+            border-right: 0;
+            border-bottom: 0;
+            transform: rotate(-45deg);
+            -webkit-tap-highlight-color: transparent; 
+            
+        }
+
+    }
+    .clock{
+        display: none;
+        position: absolute;
+        left: 50%;
+        top: 55%;
+        transform: translate(-50%,-50%);
+        font-family: 'icomoon';
+        color:#FFF;
+        font-size: 36rem / 50;
+        vertical-align: middle;
+    }
+    .tab_kaoshi{
+        display: block;
+        position: absolute;
+        left: 50%;
+        top: 55%;
+        transform: translate(-50%,-50%);
+        font-family: 'icomoon';
+        color:#FFF;
+        font-size: 36rem / 50;
+        // vertical-align: middle;
+
+    }
+    .datika_wenzi{
+        position: absolute;
+        right: 15rem / 50;
+        top: 55%;
+        transform: translateY(-50%);
+        font-size: 24rem / 50;
+        color: #FFF;
+    }
+}
+// 2
+.kaoshi_220{
+    overflow: hidden;
+    width: 100%;
+    height: 220rem / 50;
+    background-color: #fff;
+    .ks_icon{
+        position: relative;
+        width: 100rem / 50;
+        height: 100rem / 50;
+        background-color: pink;
+        background: url(../imgs/kaoshi_icon.png) no-repeat;
+        background-size: 100% 100%;
+        margin-top: 45rem / 50;
+        margin-left: 55rem / 50;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+        .shuzi{
+            display: block;
+            right: 5rem / 50;
+            top: 0rem / 50;
+            position: absolute;
+            width: 25rem / 50;
+            height: 25rem / 50;
+            color: #fff;
+            text-align: center;
+            line-height: 25rem / 50;
+            border-radius: 50%;
+            background-color: #ff0000;
+            font-size: 15rem / 50;
+            font-weight: 400;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+    }
+    .title{
+        font-size: 24rem / 50;
+        color: #333;
+        padding-left: 80rem / 50;
+        margin-top: 15rem / 50;
+    }
+}
+// 3
+.current_test_more{
+    position: relative;
+    width: 100%;
+    height: 120rem / 50;
+    // background-color: pink;
+    padding: 0 20rem / 50;
+    .left_bg_4{
+        position: absolute;
+        left: 20rem / 50;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 4rem / 50;
+        height: 30rem / 50;
+        background-color: #0c8ece;
+    }
+    em{
+        position: absolute;
+        left: 36rem / 50;
+        font-size: 30rem / 50;
+        color: #333;
+        top: 50%;
+        transform: translateY(-50%);
+
+    }
+    .more{
+        position: absolute;
+        font-family: 'icomoon';
+        right: 20rem / 50;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 24rem / 50;
+        color: #666;
+        vertical-align: middle;
+        -webkit-tap-highlight-color: transparent;
+        &::after{
+            content: '\ea50';
+            font-family: 'icomoon';
+            font-size: 32rem / 50;
+            vertical-align: top;
+            margin-left: -10rem / 50;
+        }
+    }
+    .more:hover{
+        color: #F40;
+    }
+}
+// 4
+.current_list{
+    display: none;
+    width: 100%;
+    height: 260rem / 50;
+    padding: 0 20rem / 50;
+
+    .current_list_box{
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        background-color: #FFF;
+        // margin-top: -120rem / 50;
+        z-index: 2;
+        border-radius: 8rem / 50;
+        box-shadow: 0 0 20rem / 50 rgba(0, 0, 0, .1);
+        .current_list_top{
+            position: relative;
+            height: 40rem / 50;
+            line-height: 40rem / 50;
+            width: 100%;
+            margin-top: 40rem / 50;
+            font-size: 28rem / 50;
+            color: #666; 
+            padding-left: 40rem / 50; 
+        }
+        .current_list_top::before{
+            float: left;
+            display: block;
+            content: '';
+            width: 30rem / 50;
+            height: 33rem / 50;
+            background: url(../imgs/book_icon.png) no-repeat;
+            background-size: 100% 100%;
+            margin-right: 25rem / 50;
+
+        }
+        .weikaishi{
+            position: absolute;
+            left: 280rem / 50;
+            top: -10rem / 50;
+            // width: 70rem / 50;
+            height: 28rem / 50;
+            background-color: #0c8ece;
+            font-size: 16rem / 50;
+            line-height: 28rem / 50;
+            color: #FFF;
+            text-align: center;
+            padding:0 10rem / 50;
+            border-radius: 14rem / 50 14rem / 50 14rem / 50 0;
+        }
+        .xian{
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 90rem / 50;
+            width: 620rem / 50;
+            height: 1rem / 50;
+            // background-color: red;
+            border-bottom: 1rem / 50 solid #f4f4f4;
+        }
+
+        .current_time{
+            font-size: 20rem / 50;
+            color: #999;
+            padding-left: 40rem / 50;
+            margin-top: 35rem / 50;
+        }
+        .xianshi{
+            font-size: 20rem / 50;
+            color: #999;
+            margin-top: 25rem / 50;
+            padding-left: 40rem / 50;
+        }
+        .begin_test{
+            position: absolute;
+            display: block;
+            width: 140rem / 50;
+            height: 55rem / 50;
+            line-height: 56.5rem / 50;
+            background-color:#0c8ece;
+            border-radius: 6rem / 50;
+            color: #FFF;
+            font-size: 24rem / 50;
+            text-align: center;
+            right: 50rem / 50;
+            bottom: 55rem / 50;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        
+    }
+
+}
+
+//4-2 考试进行中
+
+.current_list2{
+    display: block;
+    width: 100%;
+    height: 260rem / 50;
+    padding: 0 20rem / 50;
+
+    .current_list_box{
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        background-color: #FFF;
+        z-index: 2;
+        border-radius: 8rem / 50;
+        box-shadow: 0 0 20rem / 50 rgba(0, 0, 0, .1);
+        .current_list_top{
+            position: relative;
+            height: 40rem / 50;
+            line-height: 40rem / 50;
+            width: 100%;
+            margin-top: 40rem / 50;
+            font-size: 28rem / 50;
+            color: #666; 
+            padding-left: 40rem / 50; 
+        }
+        .current_list_top::before{
+            float: left;
+            display: block;
+            content: '';
+            width: 30rem / 50;
+            height: 33rem / 50;
+            background: url(../imgs/book_icon.png) no-repeat;
+            background-size: 100% 100%;
+            margin-right: 25rem / 50;
+
+        }
+        .jinxingzhong{
+            position: absolute;
+            left: 280rem / 50;
+            top: -10rem / 50;
+            height: 28rem / 50;
+            background-color: #5ce68e;
+            font-size: 16rem / 50;
+            line-height: 28rem / 50;
+            color: #FFF;
+            text-align: center;
+            padding:0 10rem / 50;
+            border-radius: 14rem / 50 14rem / 50 14rem / 50 0;
+        }
+        .xian{
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 90rem / 50;
+            width: 620rem / 50;
+            height: 1rem / 50;
+            // background-color: red;
+            border-bottom: 1rem / 50 solid #f4f4f4;
+        }
+
+        .current_time{
+            font-size: 20rem / 50;
+            color: #999;
+            padding-left: 40rem / 50;
+            margin-top: 35rem / 50;
+        }
+        .xianshi{
+            font-size: 20rem / 50;
+            color: #999;
+            margin-top: 25rem / 50;
+            padding-left: 40rem / 50;
+        }
+        .begin_test2{
+            position: absolute;
+            display: block;
+            width: 140rem / 50;
+            height: 55rem / 50;
+            line-height: 56.5rem / 50;
+            background-color:#0c8ece;
+            border-radius: 6rem / 50;
+            color: #FFF;
+            font-size: 24rem / 50;
+            text-align: center;
+            right: 50rem / 50;
+            bottom: 55rem / 50;
+            -webkit-tap-highlight-color: transparent; 
+            
+        }
+
+        
+    }
+
+}
+// 4-2end
+
+
+// 4-3
+//当前考试已结束end
+.current_list1{
+    display: none;
+    width: 100%;
+    height: 260rem / 50;
+    padding: 0 20rem / 50;
+
+    .current_list_box{
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        background-color: #FFF;
+        // margin-top: -120rem / 50;
+        z-index: 2;
+        border-radius: 8rem / 50;
+        box-shadow: 0 0 20rem / 50 rgba(0, 0, 0, .1);
+        .current_list_top{
+            position: relative;
+            height: 40rem / 50;
+            line-height: 40rem / 50;
+            width: 100%;
+            margin-top: 40rem / 50;
+            font-size: 28rem / 50;
+            color: #666; 
+            padding-left: 40rem / 50; 
+        }
+        .current_list_top::before{
+            float: left;
+            display: block;
+            content: '';
+            width: 30rem / 50;
+            height: 33rem / 50;
+            background: url(../imgs/book_icon.png) no-repeat;
+            background-size: 100% 100%;
+            margin-right: 25rem / 50;
+
+        }
+        .weikaishi{
+            position: absolute;
+            left: 280rem / 50;
+            top: -10rem / 50;
+            // width: 70rem / 50;
+            height: 28rem / 50;
+            background-color: #0c8ece;
+            font-size: 16rem / 50;
+            line-height: 28rem / 50;
+            color: #FFF;
+            text-align: center;
+            padding:0 10rem / 50;
+            border-radius: 14rem / 50 14rem / 50 14rem / 50 0;
+        }
+        .xian{
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 90rem / 50;
+            width: 620rem / 50;
+            height: 1rem / 50;
+            // background-color: red;
+            border-bottom: 1rem / 50 solid #f4f4f4;
+        }
+
+        .current_time{
+            font-size: 20rem / 50;
+            color: #999;
+            padding-left: 40rem / 50;
+            margin-top: 35rem / 50;
+        }
+        .xianshi{
+            font-size: 20rem / 50;
+            color: #999;
+            margin-top: 25rem / 50;
+            padding-left: 40rem / 50;
+        }
+        .begin_test1{
+            position: absolute;
+            display: block;
+            width: 140rem / 50;
+            height: 55rem / 50;
+            line-height: 56.5rem / 50;
+            background-color:#ccc;
+            border-radius: 6rem / 50;
+            color: #FFF;
+            font-size: 24rem / 50;
+            text-align: center;
+            right: 50rem / 50;
+            bottom: 55rem / 50;
+            -webkit-tap-highlight-color: transparent; 
+        }
+
+        
+    }
+
+}
+
+
+// 5 footer
+.footer{
+    min-width: 320px;
+    width: 15rem;
+    position: fixed;
+    bottom: 0;   
+    left: 50%;
+    transform: translateX(-50%);
+    height: 98rem / 50;
+    background-color: #fff;
+    padding-top: 5rem / 50;
+
+    .home{
+       
+        float: left;
+        display:block;
+        width: 52rem / 50;
+        height: 100%;
+        margin-left: 150rem / 50;
+        -webkit-tap-highlight-color: transparent; 
+        .home_img{
+            width: 52rem / 50;
+            height: 52rem / 50;
+            img{
+                display: block;
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .shouye_wenzi{
+            width: 55rem / 50;
+            font-size: 20rem / 50;
+            color: #666;
+            text-align: center;
+            margin-top: 5rem / 50;
+        }
+
+    }
+
+    .person{
+        float: right;
+        display: block;
+        width: 52rem / 50;
+        height: 100%;
+        margin-right: 150rem / 50;
+        -webkit-tap-highlight-color: transparent; 
+        .person_img{
+            width: 52rem / 50;
+            height: 52rem / 50;
+            img{
+                display: block;
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .person_wenzi{
+            width: 55rem / 50;
+            font-size: 20rem / 50;
+            color: #666;
+            text-align: center;
+            margin-top: 5rem / 50;
+        }
+       
+    }
+    .cur{
+        color: #0C8ECE!important;
+        // font-weight: 700!important;
+    }
+
+}

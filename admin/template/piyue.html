@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>批阅试卷-界面</title>
+
+
+    <link rel="stylesheet" href="/admin/lib/layui/css/layui.css">
+    <link rel="stylesheet" href="/admin/lib/fonts/iconfont.css">
+    <link rel="stylesheet" href="/template/css/base.css">
+    <link rel="stylesheet" href="/admin/css/piyue_common3.css">
+    <link rel="stylesheet" href="/admin/css/piyue.css">
+
+    <style>
+        .blues {
+            color: #0b80b9;
+        }
+        
+        @font-face {
+            font-family: 'icomoon';
+            src: url('fonts/icomoon.eot?oqi124');
+            src: url('fonts/icomoon.eot?oqi124#iefix') format('embedded-opentype'), url('fonts/icomoon.ttf?oqi124') format('truetype'), url('fonts/icomoon.woff?oqi124') format('woff'), url('fonts/icomoon.svg?oqi124#icomoon') format('svg');
+            font-weight: normal;
+            font-style: normal;
+            font-display: block;
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+
+
+
+    <!-- 是否退出？ -->
+    <div class="now_jiaojuan">
+        <h3>是否退出？</h3>
+        <a href="javascript:;" class="quxiao_now">取消</a>
+        <a href="javascript:;" class="queding_now">确定</a>
+
+    </div>
+    <!-- 是否退出？ -->
+
+    <div class="header header_huan">
+        <div class="w">
+            <div class="logo_box">
+
+                <div class="logo_info logo_info_tiku">{$test.title}</div>
+            </div>
+            <!-- 用户模块 -->
+            <div class="user">
+                <div class="user_kepu">账号信息</div>
+
+            </div>
+
+
+        </div>
+    </div>
+    <!-- 题目部分 -->
+
+    <div class="main">
+        <div class="w">
+            <div class="tk_left">
+                <h3><span></span>答题卡</h3>
+                {foreach $question as $k => $v}
+                    <div class="answer">{$k}（共{count($v)}题，合计{$score.$k.score|string_format:"%.2f"}分）</div>
+
+                    <div class="rad_answer">
+                        <ul>
+                            {foreach $v as $key => $val}
+                            <li>
+                                {if $val.is_true == 0}
+                                
+                                <input type="text" value="2" class="answer_error" disabled></input>
+                                {else}
+                                <input type="text" value="1" class="answer_right" disabled></input>
+                                {/if}
+                            </li>
+                            {/foreach}
+                        </ul>
+                    </div>
+                {/foreach}
+            </div>
+
+
+            
+
+
+            <!-- 中间部分 -->
+            <div class="tk_cen">
+
+                <div class="frm">
+
+                    <form class="frm_box" id="myForm" action="?ctl=exam&act=piyuePost" method="post">
+                        {foreach $question as $k => $v}
+                        <!-- 1 -->
+                        <div class="cen_title">{$k}（共{count($v)}题，合计{$score.$k.score|string_format:"%.2f"}分）</div>
+                        {foreach $v as $m => $n}
+                        <div class="items">
+                            <label>{$m+1}、 {$n.question}（ {$n.score}分 ）
+                                {if $n.is_true == 1}
+                                <span class="right_dui"></span>
+                                {else}
+                                <span class="err_x">X</span>
+                                {/if}
+                                <div class="fens">
+                                    <input type="text" name="fens[]" value="{$n.score}" class="fen_ipt">
+                                    <input type="hidden" name="tiid[]" value="{$n.id}">
+                                </div>
+                            </label>
+
+
+                            {if $n.questype == '单选题'}
+                                {foreach $n['option'] as $e => $r}
+                                <div class="cur_radColor {$n.user_anwser} {$e}">
+                                    {if $n.user_anwser == $e}
+                                        <input type="radio" name="single[{$n.id}]" value="{$e}" class="rad_lm" data-id="{$n.id}" checked>
+                                    {else}
+                                        <input type="radio" name="single[{$n.id}]" value="{$e}" class="rad_lm" data-id="{$n.id}">
+                                    {/if}
+                                    
+                                    <span>{$e}. {$r}</span><br><br>
+                                    
+                                </div>
+                                {/foreach}
+                                
+                            {else if $n.questype == '判断题'}
+                                <div class="cur_radColor">
+                                    {if $n.user_anwser == 'yes'}
+                                        <input type="radio" name="binary[{$n.id}]" value="yes" class="rad_lm binary{$n.id}" data-id="{$n.id}" checked><span>正确</span><br><br>
+                                        <input type="radio" name="binary[{$n.id}]" value="no" class="rad_lm binary{$n.id}" data-id="{$n.id}"><span>错误</span><br><br>
+                                    {else}
+                                        <input type="radio" name="binary[{$n.id}]" value="yes" class="rad_lm binary{$n.id}" data-id="{$n.id}"><span>正确</span><br><br>
+                                        <input type="radio" name="binary[{$n.id}]" value="no" class="rad_lm binary{$n.id}" data-id="{$n.id}" checked><span>错误</span><br><br>
+                                    {/if}
+                                </div>
+
+                            {else if $n.questype == '填空题'}
+                                <div class="cur_radColor">
+                                    {foreach $n.anwswerNum as $g => $h}
+                                    <input type="text" name="fill[{$n.id}]" value="{$n.user_anwser}" data-id="{$n.id}" data-score="{$n.score}" class="fill fill{$n.id}"><br><br>
+                                    {/foreach}
+                                </div>
+                            {else if $n.questype == '多选题'}
+                                {foreach $n['option'] as $e => $r}
+                                    <div class="cur_radColor">
+                                        {if $n.user_anwser == $e}
+                                            <input type="checkbox" name="duoxuan[{$n.id}]" value="{$e}" class="rad_lm" data-id="{$n.id}" checked>
+                                        {else}
+                                            <input type="checkbox" name="duoxuan[{$n.id}]" value="{$e}" class="rad_lm" data-id="{$n.id}">
+                                        {/if}
+                                        <span>{$e}. {$r}</span><br><br>
+                                    </div>
+                                {/foreach}
+                            {else if $n.questype == '计算题'}
+                                <div class="cur_radColor">
+                                    {foreach $n.anwswerNum as $g => $h}
+                                    <div class="cur_radColor cur_fuwenben_box">
+                                        <textarea id="demo" name="jisuan" style="display: none; padding-left: 30px;">{$e}</textarea>
+                                    </div>
+                                    {/foreach}
+                                </div>
+                            {/if}
+                            {if $n.user_anwswer==$n.anwswer}
+                                <span style="display: none;" class="calcuFen" data-fen='{$n.score}'>{$n.score}</span>
+                            {else}
+                                <span style="display: none;" class="calcuFen" data-fen='0'>0</span>
+                            {/if}
+
+                            <p class="answer_info">学生答案：<span class="xuesheng_answer1">{$n.user_anwser}</span></p>
+                            <p class="answer_info">正确答案：<span class="zhengque_answer">{$n.anwswer}</span></p>
+
+                        </div>
+                        {/foreach}
+
+                        {/foreach}
+                        
+
+
+                    </form>
+
+                    <button class="form_bottom"></button>
+                    <input type="hidden" name="test_num" value="{$test.id}">
+                    <input type="hidden" name="uid" value="{$user.uid}">
+
+
+                    <div style="border-radius: 5px;cursor: pointer;border: 1px solid #999;margin-left: 10px;background-color: #fff;width: 130px;padding: 7px;text-align: center;" class="shijuan_sub" id="shijuan_sub">提交判卷记录</div>
+                </div>
+
+            </div>
+            <!-- 右边 -->
+
+            <div class="tk_right">
+                <div class="time1">学员姓名</div>
+                <div class="time2">
+                    <span class="t_time">{$user.name}</span>
+                </div>
+                <!-- 进度 -->
+                <div class="process">考试成绩</div>
+                <div class="process_bottom">{$studentScore}</div>
+                <!-- 状态 -->
+                <div class="status">考试状态</div>
+                <div class="status_end">
+                    {if $user.jige == 0}
+                        <div class="weitongguo">不及格</div>
+                    {else}
+                        <div class="tongguo">及格</div>
+                    {/if}
+                    
+                    
+                </div>
+
+                <!-- 关闭按钮 -->
+
+                <div class="closeBtn_right">关闭</div>
+
+
+
+            </div>
+
+
+
+        </div>
+    </div>
+    <!-- 底部版权 -->
+
+    <div class="footer_copy">
+        <span>Copyright(c)2011-2020 www.kepuedu.com 广州科普教育版权所有</span>
+    </div>
+
+    <!-- 导入 layui 的JS文件 -->
+
+    <script src="/admin/js/jquery.min.js"></script>
+    <script src="/admin/js/jquery-form-min.js"></script>
+    <script src="/admin/js/tiku.js"></script>
+    <script src="/admin/lib/layui/layui.all.js"></script>
+    <script src="/admin/lib/layui/layui.js"></script>
+    
+    <script src="/admin/js/fenzhi.js"></script>
+
+</body>
+
+</html>

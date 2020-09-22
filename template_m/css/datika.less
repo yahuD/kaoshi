@@ -1,0 +1,320 @@
+@import 'common';
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-width: 320px;
+    width: 15rem;
+    height: 100%;
+    margin: 0 auto;
+    font-family: Arial, Helvetica;
+    box-sizing: border-box;
+    background-color: #efefef;
+    
+}
+// 苹果兼容
+input[type="text"]{
+    -webkit-appearance: none;
+}
+
+// 遮罩背景
+.zhezhao{
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.1);
+    z-index: 10;
+}
+
+
+// 确定交卷吗？
+.test_jiaojuan{
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 480rem / 50;
+    height: 330rem / 50;
+    background-color: #fff;
+    z-index: 2;
+    box-shadow: 0 0 20rem / 50 rgba(0, 0, 0, .1);
+    border-radius: 8rem / 50;
+
+    font-size: 32rem / 50;
+    z-index: 11;
+    h3{
+        font-size: 32rem / 50;
+        color: #111;
+        text-align: center;
+        padding-top: 85rem / 50;
+        font-weight: 400;
+    }
+
+    
+    .test_jiaojuan_no{
+        float: left;
+        display: block;
+        width: 160rem / 50;
+        height: 70rem / 50;
+        line-height: 70rem / 50;
+        border-radius: 20rem / 50;
+        background-color: #cccccc;
+        font-size: 32rem / 50;
+        text-align: center;
+        color: #FFF;
+        margin-left:60rem / 50;
+        margin-top: 70rem / 50;
+        -webkit-tap-highlight-color: transparent; 
+
+
+
+
+    }
+    .test_jiaojuan_yes{
+        float: right;
+        width: 160rem / 50;
+        height: 70rem / 50;
+        line-height: 70rem / 50;
+        border-radius: 20rem / 50;
+        background-color: #0c8ece;
+        font-size: 32rem / 50;
+        text-align: center;
+        color: #FFF;
+        margin-right:60rem / 50;
+        margin-top: 70rem / 50;
+        -webkit-tap-highlight-color: transparent;     
+
+    }
+
+}
+
+.datika_top{
+    position: relative;
+    width: 100%;
+    height: 128rem / 50;
+    background-color: #0C8ECE;
+    .datika_back{
+        position: absolute;
+        top: 35rem / 50;
+        left: 20rem / 50;
+        width: 80rem / 50;
+        // height: 100%;
+        // padding-top: 40rem / 50;
+        .back{
+            position: absolute;
+            top: 20rem / 50;
+            left: 10rem / 50;
+            display: block;
+            // font-family: 'icomoon';
+            width: 26rem / 50;
+            height: 26rem / 50;
+            // height: 100%;
+            color: #FFF;
+            font-size: 70rem / 50;
+            font-weight: 400;
+            border: 3rem / 50 solid #FFF;
+            border-right: 0;
+            border-bottom: 0;
+            transform: rotate(-45deg);
+            -webkit-tap-highlight-color: transparent; 
+        }
+
+    }
+    .clock{
+        position: absolute;
+        left: 50%;
+        top: 55%;
+        transform: translate(-50%,-50%);
+        font-family: 'icomoon';
+        color:#FFF;
+        font-size: 36rem / 50;
+        vertical-align: middle;
+    }
+    .datika_wenzi{
+        position: absolute;
+        right: 15rem / 50;
+        top: 55%;
+        transform: translateY(-50%);
+        font-size: 28rem / 50;
+        color: #FFF;
+    }
+}
+// 2
+.dati_1{
+    width: 100%;
+    height: 90rem / 50;
+    background-color: #fff;
+    box-shadow: 0 0 20rem / 50 rgba(0, 0, 0, .1);
+    .yida{
+        float: left;
+        width: 150rem / 50;
+           
+        font-size: 20rem / 50;
+        color: #1491cf;
+        padding-top: 35rem / 50;
+       em{
+        float: left;
+        display: block;
+        width: 26rem / 50;
+        height: 26rem / 50;
+        background-color: #0c8ece;
+        margin-left:55rem / 50
+        
+
+
+       }
+    }
+    .weida{
+        float: left;
+        width: 150rem / 50;          
+        font-size: 20rem / 50;
+        color: #cccccc;
+        padding-top: 35rem / 50;
+     
+       em{
+        float: left;
+        display: block;
+        width: 26rem / 50;
+        height: 26rem / 50;
+        background-color: #eeeeee;
+        margin-left:55rem / 50
+    
+       }
+
+    }
+}
+// area 答题卡区域
+.datika_Box{
+    display: none;
+    overflow: hidden;
+    width: 85%;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 100;
+}
+.datika_close{
+    width: 35rem / 50;
+    height: 35rem / 50;
+    position: absolute;
+    right: 20rem / 50;
+    top: 40rem / 50;
+    font-size: 30rem / 50;
+    color: #ccc;
+    
+}
+
+.area{
+    overflow: hidden;
+    width: 100%;
+    // height: 300rem / 50;
+    padding: 0 20rem / 50;
+    margin-top: 30rem / 50;
+    padding-bottom: 250rem / 50;
+   
+    .area_box{
+        overflow: hidden;
+        width: 100%;
+        // height: 100%;
+        background-color: #fff;
+        border-radius: 8rem / 50;
+        box-shadow: 0 0 20rem / 50 rgba(0, 0, 0, .1);
+        background-color: #fff;
+        padding-bottom: 50rem / 50;
+        .area_wenzi{
+            font-size: 28rem / 50;
+            color: #333;
+            padding: 45rem / 50 30rem / 50 15rem / 50 30rem / 50;
+        }
+        ul{
+            overflow: hidden;
+            width: 100%;
+            // height: 200rem / 50;
+            padding-left: 35rem / 50;
+            padding-top: 25rem / 50;
+            li{
+                float: left;
+                width: 90rem / 50;
+                height: 50rem / 50;
+                margin-right: 20rem / 50;
+                font-size: 36rem / 50;
+              
+               
+               
+                .ipt_datika_area{
+                    // 
+                    position: relative;
+                    display: block;
+                    width: 90rem / 50;
+                    height: 50rem / 50;
+                    color: #999;
+                    background-color: #eee;
+                    text-align: center;
+                    line-height:50rem / 50;
+                    outline: none;
+                    border: 0;
+                    font-size: 35rem / 50;
+                    font-weight: 400;
+                    -webkit-appearance: none!important;
+                    -webkit-tap-highlight-color:transparent;
+                  
+              
+                    // -ms-touch-action: manipulation;
+                    // touch-action: manipulation;
+                    // cursor: pointer;
+                    // -webkit-user-select: none;
+                    // -moz-user-select: none;
+                    // -ms-user-select: none;
+                    // user-select: none;
+                    // -webkit-appearance: none!important;
+                    // -webkit-tap-highlight-color: transparent; 
+                    
+
+
+
+                }
+                
+                .current_dati{
+                    color: #fff!important;
+                    background: #0c8ece!important;
+                }
+
+            }
+            li:nth-child(n+6){
+                margin-top: 20rem / 50;
+            }
+        }
+    }
+}
+.datika_btn{
+    display: block;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 90rem / 50;
+    width: 600rem / 50;
+    height: 80rem / 50;
+    background-color: #0c8ece;
+    border-radius: 40rem / 50;
+    color: #FFF;
+    text-align: center;
+    line-height: 80rem / 50;
+    font-weight: 700;
+    font-size: 36rem / 50;
+    -webkit-tap-highlight-color: transparent; 
+    
+    
+}
+// 版权
+// .footer_copy{
+//     font-size: 16rem / 50;
+//     text-align: center;
+//     margin-bottom: 20rem / 50;
+//     color: #999999;
+// }

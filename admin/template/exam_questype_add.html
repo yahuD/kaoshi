@@ -1,0 +1,85 @@
+{include file="admin_header.html" title="添加题型-考试系统"}
+
+{include file="admin_top.html"}
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="main">
+			<div class="col-xs-2 leftmenu">
+				<ul class="list-group">
+					<li class="list-group-item">
+						<a href="?ctl=exam&act=examCategoryPage">试卷分类</a>
+					</li>
+					<li class="list-group-item">
+						<a href="?ctl=exam&act=examLists">试卷列表</a>
+					</li>
+					<li class="list-group-item active">
+						<a href="?ctl=exam&act=examQuestype">题型管理</a>
+					</li>
+				</ul>
+			</div>
+
+			<div id="datacontent">
+				<div class="box itembox" style="margin-bottom:0px;border-bottom:1px solid #CCCCCC;">
+					<div class="col-xs-12">
+						<ol class="breadcrumb">
+							<li>题型管理</li>
+							<li><a href="?ctl=exam&act=examQuestype">题型列表</a></li>
+							<li class="active">添加题型</li>
+						</ol>
+					</div>
+				</div>
+
+				<div class="box itembox" style="padding-top:10px;margin-bottom:0px;">
+					<h4 class="title" style="padding:10px;">
+						添加题型
+						<a class="pull-right btn btn-primary" href="?ctl=exam&act=examQuestype">题型列表</a>
+					</h4>
+					<form class="form-horizontal" id="addquestype" style="margin-top:40px;">
+						<div class="form-group">
+							<label for="password2" class="control-label col-sm-2">题型名称</label>
+							<div class="col-sm-4">
+								<input class="form-control" type="text" id="questype" equ="questype" needle="needle" datatype="questype" msg="请输入学校" name="questype"/>
+								<span class="help-block">请填写题型名称</span>
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<label for="groupid" class="control-label col-sm-2"></label>
+							<div class="col-sm-4">
+								<button class="btn btn-primary addquestype">添加</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{include file="admin_footer.html"}
+
+</body>
+<script>
+	$('.addquestype').click(function(e){
+		e.preventDefault();//禁止冒泡
+		var questype = $('#questype').val();
+
+		if(questype == ''){
+			dtAlert({ message:'请输入题型名称',title:'<i class="glyphicon glyphicon-remove"></i>',style:'primary' });
+			return false;
+		}
+
+		$.post("/index.php?ctl=exam&act=addExamQuestype", $('#addquestype').serialize(),
+			function(data){
+				console.log(data);
+		    	if(data.res == 'failed'){
+		    		dtAlert({ message:data.msg,title:'<i class="glyphicon glyphicon-remove"></i>',style:'primary' });
+					return false;
+		    	}else{
+		    		dtAlert({ message:'添加成功',title:'<i class="glyphicon glyphicon-ok"></i>',style:'primary',callback:"window.location.href='?ctl=exam&act=examQuestype';" });
+		    	}
+		}, "json");
+	})
+
+</script>
+</html>

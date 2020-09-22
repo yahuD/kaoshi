@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <style>
+        @font-face {
+            font-family: 'icomoon';
+            src: url('fonts/icomoon.eot?lrs8eq');
+            src: url('fonts/icomoon.eot?lrs8eq#iefix') format('embedded-opentype'), url('fonts/icomoon.ttf?lrs8eq') format('truetype'), url('fonts/icomoon.woff?lrs8eq') format('woff'), url('fonts/icomoon.svg?lrs8eq#icomoon') format('svg');
+            font-weight: normal;
+            font-style: normal;
+            font-display: block;
+        }
+    </style>
+    <link rel="stylesheet" href="/template_m/css/base.css">
+    <link rel="stylesheet" href="/template_m/css/normalize.css">
+    <link rel="stylesheet" href="/template_m/css/index.css">
+    <title>考试</title>
+</head>
+
+<body>
+
+    <!-- 遮罩 -->
+    <div class="zhezhao"></div>
+    <!-- 考试时间未到 -->
+    <div class="test_time_no">
+        考试还没开始，请耐心等待！
+        <a href="javascript:;" class="test_time_no_btn">确定</a>
+    </div>
+
+    <!-- 考试时间结束 -->
+    <div class="test_time_end">
+        考试已结束！
+        <a href="javascript:;" class="test_time_end_btn">确定</a>
+    </div>
+
+
+    <div class="content">
+        <!-- 头部高400 -->
+        <div class="test_index">
+            <div class="index_back">
+                <div class="cur_test_info">当前考试</div>
+                <div class="history_test_info">历史考试</div>
+            </div>
+            <!-- 返回箭头 -->
+            <a href="?ctl=index&act=mindex" class="back"></a>
+            <button class="index_btn current_test current">当前考试</button>
+            <button class="index_btn hositry_test">历史考试</button>
+        </div>
+        <!--  头部高400-->
+
+        <!-- 当前考试列表项目 -->
+        <div class="current_list1">
+            {foreach $lists as $k => $v}
+            <div class="current_list_box">
+
+                <div class="current_list_top"> {$v.title}
+                    {if time() < strtotime($v.begin_time)}
+                    <div class="weikaishi">未开始</div>
+                    {else if time() >= strtotime($v.begin_time) && time() < strtotime($v.end_time)}
+                    <div class="jinxingzhong">进行中</div>
+                    {else if time() >= strtotime($v.end_time)}
+                    <div class="weikaishi" style="background:red ;">已结束</div>
+                    {/if}
+                </div>
+                <div class="xian"></div>
+
+                <div class="current_time">{$v.begin_time}~{$v.end_time}</div>
+
+                <a href="#" onclick="goTest( {strtotime($v.begin_time)},{strtotime($v.end_time)},{$v.id} );" class="begin_test1" {if time() >= strtotime($v.end_time)}style="background-color: #ccc;color: #fff;cursor: default;"{/if}>开始考试</a>
+            </div>
+            {/foreach}
+
+        </div>
+        <div class="history_list">
+            {foreach $list3 as $k => $v}
+                <div class="histroy_list_box">
+                    <div class="current_list_top"> {$v.title} </div>
+                    {if $v.is_quekao == 1}
+                    <div class="current_time">
+                        <div class="xian"></div>
+                        考试成绩：<em style="color: red;">缺考</em>
+                    </div>
+                    {else if $v.is_quekao == 0}
+                    <div class="xian"></div>
+                    <div class="current_time">考试成绩：请登录科普官网查看</div>
+                    <div class="xianshi">{$v.begin_time}</div>
+                    {/if}
+                    <a href="https://m.kepuedu.com" class="begin_test">查看</a>
+                </div>
+            {/foreach}
+
+
+            
+        </div>
+
+
+
+
+
+        <div class="footer">
+
+            <a href="./index.html" class="home">
+                <div class="home_img">
+                    <img src="./imgs/home2.png" alt="">
+                </div>
+                <div class="shouye_wenzi cur">首页</div>
+            </a>
+
+
+            <a href="./gerenzhongxin.html" class="person">
+                <div class="person_img">
+                    <img src="./imgs/person1.png" alt="">
+                </div>
+                <div class="person_wenzi">个人</div>
+            </a>
+        </div>
+
+    </div>
+
+</body>
+<script src="/template_m/js/jquery.min.js"></script>
+<script src="/template_m/js/index.js"></script>
+
+<script type="text/javascript">
+    function goTest($begin_time,$end_time,id=0){
+        var now = Math.round(new Date().getTime()/1000);
+        console.log(now);
+        console.log($begin_time);
+        console.log($end_time);
+
+        if(now < $begin_time){
+            $('.text_notime').show();
+             return false;
+        }
+        if(now >= $end_time){
+            $('.end_text').show();
+            return false;
+        }
+
+        window.location.href = "?ctl=index&act=timu&id="+id;
+    }
+</script>
+</html>

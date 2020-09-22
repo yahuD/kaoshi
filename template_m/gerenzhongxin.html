@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <title>个人中心</title>
+    <link rel="stylesheet" href="/template_m/css/base.css">
+    <link rel="stylesheet" href="/template_m/css/normalize.css">
+    <link rel="stylesheet" href="/template_m/css/gerenzhongxin.css">
+</head>
+
+<body>
+    <!-- 退出表单 遮罩 -->
+    <div class="exit_zhezhao"></div>
+    <!-- 退出表单 遮罩 end-->
+    <!-- 退出盒子 -->
+    <div class="exit_box">
+        <h3>您是否要退出登录？</h3>
+        <a href="javascript:;" class="exit_box_qx">取消</a>
+        <a href="/logout" class="exit_box_qd">确定</a>
+    </div>
+    <!-- 退出盒子end -->
+
+
+    <div class="user">
+        <div class="top_box">
+            <div class="user_pic_box">
+                <div class="user_header">
+                    <img src="/template_m/imgs/user_head.png" alt="">
+                </div>
+                <div class="use_name">{$user.name}</div>
+            </div>
+        </div>
+
+        <!--items_120  -->
+        <div class="items_120">
+            <div class="item_120_con">
+                <div class="user_icon">
+                    <img src="/template_m/imgs/user_icon.png" alt="">
+                </div>
+
+                <div class="use_icon_info">个人信息</div>
+            </div>
+        </div>
+
+        <!-- items_580 -->
+        <div class="items_580">
+            <div class="items_580_box">
+                <ul>
+                    <li>
+                        <span>学号/身份证</span>
+                        <em>{$user.student_id}</em>
+                    </li>
+                    <li>
+                        <span>姓名</span>
+                        <em>{$user.name}</em>
+                    </li>
+                    <li>
+                        <span>性别</span>
+                        <em>{if $user.sex == 'm'}男{else}女{/if}</em>
+                    </li>
+                    <li>
+                        <span>院校</span>
+                        <em>{$user.school}</em>
+                    </li>
+                    <li>
+                        <span>年级</span>
+                        <em>{$user.grade}</em>
+                    </li>
+                    <li>
+                        <span>专业</span>
+                        <em>{$user.majors}</em>
+                    </li>
+                    <li>
+                        <span>班级</span>
+                        <em>{$user.course}</em>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        <!-- 退出登录 -->
+        <div class="logOut_exit">
+            <a href="javascript:;" class="exit">退出登录</a>
+        </div>
+
+
+        <div class="footer">
+
+            <a href="?ctl=index&act=mindex" class="home">
+                <div class="home_img">
+                    <img src="/template_m/imgs/home.png" alt="">
+                </div>
+                <div class="shouye_wenzi">首页</div>
+            </a>
+
+
+            <a href="javascript:;" class="person">
+                <div class="person_img">
+                    <img src="/template_m/imgs/person2.png" alt="">
+                </div>
+                <div class="person_wenzi cur">个人</div>
+            </a>
+        </div>
+
+    </div>
+
+</body>
+<script src="/template_m/js/jquery.min.js"></script>
+<script src="/template_m/js/gerenzhongxin.js"></script>
+
+</html>

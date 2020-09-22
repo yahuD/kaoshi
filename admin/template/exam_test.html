@@ -1,0 +1,112 @@
+{include file="admin_header.html" title="后台-考试系统"}
+<style>
+	a.cur{
+		color: #23527c!important;
+	    background-color: #eee!important;
+	    border-color: #ddd!important;
+    }
+</style>
+{include file="admin_top.html"}
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="main">
+			<div class="col-xs-2 leftmenu">
+				<ul class="list-group">
+					<li class="list-group-item active">
+						<a href="?ctl=exam&act=examTest">考试管理</a>
+					</li>
+				</ul>
+			</div>
+
+			<div id="datacontent">
+				<div class="box itembox" style="margin-bottom:0px;border-bottom:1px solid #CCCCCC;">
+					<div class="col-xs-12">
+						<ol class="breadcrumb">
+							<li><a href="#">考试</a></li>
+							<li class="active">考试管理</li>
+						</ol>
+					</div>
+				</div>
+
+				<div class="box itembox" style="padding-top:10px;margin-bottom:0px;">
+					<h4 class="title" style="padding:10px;">
+						考试列表
+						<span class="pull-right">
+							<a href="?ctl=exam&act=addExamTestPage" class="btn btn-primary">发布考试</strong></a>
+						</span>
+					</h4>
+					<table class="table table-hover table-bordered">
+						<thead>
+							<tr class="info">
+								<th>ID</th>
+								<th>分类</th>
+								<th>考试名称</th>
+								<th>开始时间</th>
+								<th>结束时间</th>
+								<th>批卷人</th>
+								<th>状态</th>
+								<th>是否补考</th>
+								<th width="100">操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							{foreach $row as $k => $v}
+							<tr>
+								<td>{$v.id}</td>
+								<td>{$v.school}/{$v.majors}/{$v.grade}/{$v.term}/{$v.course}</td>
+								<td>{$v.title}</td>
+								<td>{$v.begin_time}</td>
+								<td>{$v.end_time}</td>
+								<td>{$v.name}</td>
+								<td>{if $v.status == 0}暂未开始{else if $v.status == 1}正在进行{else}已结束{/if}</td>
+								<td>{if $v.is_make_up == 0}否{else}是{/if}</td>
+								<td>
+									<div class="btn-group">
+										<a class="btn" href="?ctl=exam&act=seeStudentGrade&id={$v.id}" title="查看成绩"><em class="glyphicon glyphicon-eye-open"></em></a>
+									</div>
+								</td>
+							</tr>
+							{/foreach}
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<ul class="pagination" style="text-align: center;display: block;">
+				{$showpage}
+			</ul>
+		</div>
+	</div>
+</div>
+
+{include file="admin_footer.html"}
+<script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-confirmation/1.0.7/bootstrap-confirmation.min.js"></script>
+<script> 
+$(function () { 
+	$('.delconfirm').confirmation({
+
+		animation: true, 
+		placement: "top", 
+		title: "确定要删除吗？", 
+		btnOkLabel: '确定', 
+		btnCancelLabel: '取消', 
+		onConfirm: function () { 
+			console.log(this.options.uid); 
+			var uid = this.options.uid;
+			var gourl = this.options.gourl;
+
+			$.post("/index.php?ctl=user&act=delStudent", { uid:uid,gourl:gourl },
+			function(data){
+				console.log(data);
+		    	window.location.href=data.gourl;
+			}, "json");
+			
+		}, 
+		onCancel: function () { 
+			//alert("点击了取消"); 
+		} 
+	}) 
+});
+</script> 
+</body>
+
+</html>

@@ -1,0 +1,706 @@
+@import 'common';
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-width: 320px;
+    width: 15rem;
+    height: 100%;
+    margin: 0 auto;
+    font-family: Arial, Helvetica;
+    box-sizing: border-box;
+    background-color: #efefef;
+    
+}
+
+// 遮罩背景
+.zhezhao{
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.1);
+    z-index: 10;
+}
+
+// 考试15分钟后才可以交卷
+.test_fifty_jiaojuan{
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 480rem / 50;
+    height: 330rem / 50;
+    background-color: #FFF;
+    border-radius: 8rem / 50;
+    font-size: 32rem / 50;
+    text-align: center;
+    padding-top: 95rem / 50;
+    z-index: 11;
+    .test_time_fifty_btn{
+        position: absolute;
+        display: block;
+        width: 160rem / 50;
+        height: 70rem / 50;
+        background-color: #0c8ece;
+        bottom: 75rem / 50;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #FFF;
+        border-radius: 20rem / 50;
+        line-height: 70rem / 50;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+}
+
+// 考试时间已到！
+.test_time_end{
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 480rem / 50;
+    height: 330rem / 50;
+    background-color: #FFF;
+    border-radius: 8rem / 50;
+    font-size: 32rem / 50;
+    text-align: center;
+    padding-top: 95rem / 50;
+    z-index: 11;
+    .test_time_end_btn{
+        position: absolute;
+        display: block;
+        width: 160rem / 50;
+        height: 70rem / 50;
+        background-color: #0c8ece;
+        bottom: 75rem / 50;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #FFF;
+        border-radius: 20rem / 50;
+        line-height: 70rem / 50;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+}
+
+// 确定交卷吗？
+.test_jiaojuan{
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 480rem / 50;
+    height: 330rem / 50;
+    background-color: #fff;
+    z-index: 2;
+    box-shadow: 0 0 20rem / 50 rgba(0, 0, 0, .1);
+    border-radius: 8rem / 50;
+
+    font-size: 32rem / 50;
+    z-index: 11;
+    h3{
+        font-size: 32rem / 50;
+        color: #111;
+        text-align: center;
+        padding-top: 85rem / 50;
+        font-weight: 400;
+    }
+
+    
+    .test_jiaojuan_no{
+        float: left;
+        display: block;
+        width: 160rem / 50;
+        height: 70rem / 50;
+        line-height: 70rem / 50;
+        border-radius: 20rem / 50;
+        background-color: #cccccc;
+        font-size: 32rem / 50;
+        text-align: center;
+        color: #FFF;
+        margin-left:60rem / 50;
+        margin-top: 70rem / 50;
+        -webkit-tap-highlight-color: transparent;
+
+
+
+
+    }
+    .test_jiaojuan_yes{
+        float: right;
+        width: 160rem / 50;
+        height: 70rem / 50;
+        line-height: 70rem / 50;
+        border-radius: 20rem / 50;
+        background-color: #0c8ece;
+        font-size: 32rem / 50;
+        text-align: center;
+        color: #FFF;
+        margin-right:60rem / 50;
+        margin-top: 70rem / 50;
+        -webkit-tap-highlight-color: transparent;
+
+
+
+        
+
+    }
+
+}
+// 你还有题目未做完 
+//确定交卷吗？
+
+.test_jiaojuan_timeno{
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 480rem / 50;
+    height: 330rem / 50;
+    background-color: #fff;
+    z-index: 2;
+    box-shadow: 0 0 20rem / 50 rgba(0, 0, 0, .1);
+    border-radius: 8rem / 50;
+
+    font-size: 32rem / 50;
+    z-index: 11;
+    h3{
+        font-size: 32rem / 50;
+        color: #111;
+        text-align: center;
+        padding-top: 85rem / 50;
+        font-weight: 400;
+        padding-left: 110rem / 50;
+        padding-right: 110rem / 50;
+        text-align: center;
+    }
+
+    
+    .test_jiaojuan_timeno_btn{
+        float: left;
+        display: block;
+        width: 160rem / 50;
+        height: 70rem / 50;
+        line-height: 70rem / 50;
+        border-radius: 20rem / 50;
+        background-color: #cccccc;
+        font-size: 32rem / 50;
+        text-align: center;
+        color: #FFF;
+        margin-left:60rem / 50;
+        margin-top: 50rem / 50;
+        -webkit-tap-highlight-color: transparent;
+
+
+
+
+    }
+    .test_jiaojuan_timeyes_btn{
+        float: right;
+        width: 160rem / 50;
+        height: 70rem / 50;
+        line-height: 70rem / 50;
+        border-radius: 20rem / 50;
+        background-color: #0c8ece;
+        font-size: 32rem / 50;
+        text-align: center;
+        color: #FFF;
+        margin-right:60rem / 50;
+        margin-top: 50rem / 50;
+        -webkit-tap-highlight-color: transparent;
+
+
+
+        
+
+    }
+
+}
+
+
+
+// 1
+.datika_top{
+    position: relative;
+    width: 100%;
+    height: 128rem / 50;
+    background-color: #0C8ECE;
+    .datika_back{
+        position: absolute;
+        top: 35rem / 50;
+        left: 20rem / 50;
+        width: 80rem / 50;
+        // height: 100%;
+        // padding-top: 40rem / 50;
+        .back{
+            position: absolute;
+            top: 20rem / 50;
+            left: 10rem / 50;
+            display: block;
+            width: 26rem / 50;
+            height: 26rem / 50;     
+            font-weight: 400;
+            border: 3rem / 50 solid #FFF;
+            border-right: 0;
+            border-bottom: 0;
+            transform: rotate(-45deg);
+            -webkit-tap-highlight-color: transparent; 
+        }
+
+    }
+    .clock{
+        display: block;
+        position: absolute;
+        left: 50%;
+        top: 55%;
+        transform: translate(-50%,-50%);
+        font-family: 'icomoon';
+        color:#FFF;
+        font-size: 36rem / 50;
+        // vertical-align: middle;
+    }
+    .tab_kaoshi{
+        display: block;
+        position: absolute;
+        left: 50%;
+        top: 55%;
+        transform: translate(-50%,-50%);
+        font-family: 'icomoon';
+        color:#FFF;
+        font-size: 36rem / 50;
+        // vertical-align: middle;
+
+    }
+    .datika_wenzi{
+        position: absolute;
+        right: 15rem / 50;
+        top: 55%;
+        transform: translateY(-50%);
+        font-size: 24rem / 50;
+        color: #FFF;
+        img{
+            width: 40rem / 50;
+            height: 41rem / 50;
+        }
+    }
+}
+// 2
+.tiku_title{
+    position: relative;
+    width: 100%;
+    height: 85rem / 50;
+    font-size: 28rem / 50;
+    color: #333;
+    background-color: #fff;
+    padding: 30rem / 50 0 0 20rem / 50;
+    box-shadow: 0 5rem / 50 10rem / 50 rgba(0,0,0,.2);
+    .ti_title{
+        display: none;
+    }
+    .check_ti_title{
+        display: none;
+    }
+    .panduan_ti_title{
+        display: none;
+    }
+    .tiankong_ti_title{
+        display: none;
+    }
+    .wenda_ti_title{
+        display: none;
+    }
+  
+
+    .radio_ti_title{
+        display: block;
+    }
+   
+
+    .tiku_right{
+        position: absolute;
+        right: 20rem / 50;
+        top: 55%;
+        transform: translateY(-50%);
+        .end{
+            color: #0c8ece;
+        }
+    }
+}
+// 进度条
+.process_tiao{
+    width: 100%;
+    height: 10rem / 50;
+    // background-color: skyblue;
+    .process_height{
+        height: 10rem / 50!important;
+        border-radius: 0;
+    }
+}
+// 题目部分
+.tiku_box{
+    overflow: hidden;
+    width: 100%;
+    padding: 0 20rem / 50;
+    margin-top: 50rem / 50;
+   form{
+    .items{
+        overflow: hidden;
+        width: 100%;
+        background-color: #fff;
+        border-radius: 8rem / 50;
+        box-shadow: 0 0 20rem / 50 rgba(0, 0, 0, .1);
+        padding-bottom: 50em / 50;
+        // margin-bottom: 300rem / 50;
+    
+     
+            .timu_1{
+                font-size: 26rem / 50;
+                color: #666;
+                line-height: 38rem / 50;
+                padding: 50rem / 50 45rem / 50;
+    
+            }
+            .rad_box{
+                overflow:hidden;
+                width: 100%;
+                // height: 30rem / 50;
+                padding-left: 40rem / 50;
+                // background-color: pink;
+                padding-right: 10rem / 50;
+                padding-bottom: 30rem / 50;
+
+                .span_link{
+                    color:#333
+                }
+
+                // 填空题
+                .cur_radColor{
+                    overflow: hidden;
+                    width: 100%;     
+                    margin-bottom: 15rem / 50;
+
+                    .tiankong_shuzi{
+                        float: left;
+                        width: 54rem / 50;
+                        height: 54rem / 50;
+                        background: #F5F5F5;
+                        border: 1px solid #CCCCCC;
+                        opacity: 1;
+                        border-radius: 4rem / 50 0px 0px 4rem / 50;
+                        font-size: 24rem / 50;
+                        color: #666;
+                        text-align: center;
+                        line-height: 54rem / 50;
+
+                    }
+                    .tiankong_ipt{
+                        height: 54rem / 50;
+                        width: 580rem / 50;
+                        outline: none;
+                        border: 1rem / 50 solid #ccc;
+                        padding-left: 10rem / 50;
+                        border-left: 0;
+                        border-radius:0px 4rem / 50  4rem / 50 0px;
+                        font-size: 22rem / 50;
+                        color: #999;
+                    }
+
+                    .tiankong_ipt:hover{
+                        border: 1rem / 50 solid #0b80b9;
+                    }
+                }
+    
+                span{
+                          
+                    font-size: 25rem / 50;
+                    line-height: 40rem / 50;
+                    color: #333;
+                }
+                
+                .cur_color{
+                    color: #0b80b9;
+                }
+
+                .rad{
+                    position: relative;                       
+                    vertical-align: top;
+                    border: 0!important;
+                    // margin-top: 5rem / 50;
+                    width: 0;
+                    height: 0;
+                    margin-right: 30rem / 50;
+                    font-size: 22rem / 50;
+
+                    &::before{
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        display: block;
+                        content: 'A';
+                        width: 30rem / 50;
+                        height: 30rem / 50;
+                        border-radius: 50%;
+                        background-color: #fff;
+                        border: 1rem / 50 solid #7b7b7b;
+                        text-align: center;
+                        line-height: 32rem / 50;  
+                        color: #999;              
+                         
+                    }
+                    
+                   
+                           
+
+                }
+
+                .rad:checked{
+                    position: relative;
+                    &::before{
+                        background-color: #0b80b9;
+                        color: #FFF;
+                        border: 0;
+                    }
+                }
+                
+
+                .rad2{
+                    position: relative;
+                    width: 0;
+                    height: 0;
+                    &::before{
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        content:'B';
+                    }
+                }
+                // 判断题
+                .rad_right{
+                    position: relative;
+                    width: 0;
+                    height: 0;
+                    &::before{
+                        content:'\e908'!important;
+                        font-family: 'icomoon';
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        
+                    }
+
+                    
+
+                    
+                }
+
+
+                .j_error{
+                    position: relative;
+                    width: 0;
+                    height: 0;
+
+                    &::before{
+                        content:'X'!important;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        
+                    }
+
+                }
+
+                .fenge{
+                    display: block;
+                    margin: 28rem / 50 0;
+                }
+                // 多选题
+                .cur_checkboxColor{
+                    margin: 25rem / 50 0;
+                    span{
+                        font-size: 25rem / 50;
+                        line-height: 45rem / 50;
+                        color: #333;
+                    }
+                }
+                .checkbox_lm{
+                    position: relative;
+                    vertical-align: middle;
+                    width: 0;  
+                    height: 0;
+                    border: 0;
+                    background-color: #fff;
+                    margin-right: 50rem / 50;
+                         
+                    &::before{
+                        content: 'A';
+                        display: inline-block;
+                        position: absolute;
+                        top: -20rem / 50;
+                        left: 0rem / 50;
+                        width: 30rem / 50;
+                        height: 30rem / 50;               
+                        border: 1px solid #707070;
+                        background-color: #fff;
+                        border-radius: 5rem / 50;
+                        text-align: center;
+                        line-height: 31rem / 50;
+                        font-size: 24rem / 50;
+                        color: #999;
+
+                    }
+                }
+                // b
+                .checkbox_lm_B{
+                    &::before{
+                        content:'B'
+                    }
+                }
+                // c
+
+                .checkbox_lm_C{
+                    &::before{
+                        content:'C'
+                    }
+                }
+                .checkbox_lm_D{
+                    &::before{
+                        content:'D'
+                    }
+                }
+                .checkbox_lm_E{
+                    &::before{
+                        content:'E'
+                    }
+                }
+                .checkbox_lm_F{
+                    &::before{
+                        content:'F'
+                    }
+                }
+                .checkbox_lm:checked{
+                    position: relative;
+                    height: 0;
+                    border: 0;
+                    background-color: #0c8ece;
+                   
+                    &::before{
+                        // content: '';
+                        display: inline-block;
+                        width: 30rem / 50;
+                        height: 30rem / 50;
+                        background-color: #0c8ece;
+                        border: 0;
+                        color: #fff;
+                    }
+                }
+
+            }
+            // 
+
+            
+
+        }
+
+        .items:nth-child(n+2){
+            display: none;
+        }
+
+        .items_duoxuan{
+            margin-bottom: 200rem / 50;
+        }
+        .fuwenben_box{
+            display: block;
+            height: 850rem / 50;
+            padding-right: 45rem / 50;
+            margin-bottom: 200rem / 50;
+
+           
+        }
+        .items_tiankong{
+            margin-bottom: 300rem / 50;
+        }
+   }
+
+}
+
+.prev_btn{
+    display: block;
+    position: fixed;
+    bottom: 60rem / 50;
+    left: 50%;
+    margin-left: -330rem / 50;
+    width: 230rem / 50;
+    height: 80rem / 50;
+    background-color: #fff;
+    font-size: 36rem / 50;
+    text-align: center;
+    border-radius: 40rem / 50;
+    border: 1rem / 50 solid #0c8ece;
+    line-height: 80rem / 50;
+    color: #0c8ece;
+}
+.prev_btn:hover{
+    color: #0c8ece;
+
+}
+.next_btn{
+    display: block;
+    position: fixed;
+    bottom: 60rem / 50;
+    left: 50%;
+    margin-left: -70rem / 50;
+    width: 420rem / 50;
+    height: 80rem / 50;
+    background-color: #0c8ece;
+    font-size: 36rem / 50;
+    border-radius: 40rem / 50;
+    text-align: center;
+    line-height: 80rem / 50;
+    color: #FFF;
+    font-weight: 700;
+
+}
+.next_btn:hover{
+    color: #FFF;
+}
+.tijiao_btn{
+    display: none;
+    position: fixed;
+    bottom: 60rem / 50;
+    left: 50%;
+    margin-left: -70rem / 50;
+    width: 420rem / 50;
+    height: 80rem / 50;
+    background-color: #0c8ece;
+    font-size: 36rem / 50;
+    border-radius: 40rem / 50;
+    text-align: center;
+    line-height: 80rem / 50;
+    color: #FFF;
+    font-weight: 700;
+}
+.tijiao_btn:hover{
+    color: #FFF;
+}
+// 
+// 版权
+.footer_copy{
+    position: fixed;
+    width: 100%;
+    bottom: 20rem / 50;
+    left: 50%;
+    transform:translateX(-50%);
+    font-size: 16rem / 50;
+    text-align: center;
+    color: #999999;
+    
+}

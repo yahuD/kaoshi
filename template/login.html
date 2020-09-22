@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>考试系统--登陆</title>
+    <link rel="stylesheet" href="/template/css/base.css">
+    <link rel="stylesheet" href="/template/css/common.css">
+    <link rel="stylesheet" href="/template/css/login.css">
+    <link rel="stylesheet" type="text/css" href="/admin/css/bootstrap.css" />
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="logo">
+            <a href="javascript:;" class="logo_pic">
+                <img src="/template/images/logo.png" alt="科普考试系统" title="科普考试系统">
+            </a>
+            <div class="h_info">科普考试系统</div>
+        </div>
+    </div>
+
+    <div class="form_box">
+        <div class="form_login">登录</div>
+
+        <form class="frm" id="login">
+            <!-- 1 -->
+            <div class="items">
+                <span class="ipt_info">学号/身份证号：</span>
+                <input type="text" name="student_id" id="student_id" placeholder="请输入学号/身份证号" class="ipt">
+                <div class="xh_err">*请输入正确的学号格式*</div>
+            </div>
+            <!-- 2 -->
+            <div class="items">
+                <span class="ipt_info">姓名：</span>
+                <input type="text" name="name" id="name" placeholder="请输入姓名" class="ipt">
+                <div class="xh_err">*姓名输入有误*</div>
+            </div>
+            <!-- 3 -->
+            <div class="items">
+                <span class="ipt_info">密码：</span>
+                <input type="password" name="password" id="password" placeholder="请输入密码" class="ipt">
+                <div class="xh_err">*密码输入错误，请检查密码*</div>
+            </div>
+            <!-- 4 -->
+            <div class="items">
+                <span class="ipt_info">验证码：</span>
+                <input type="text" name="code" id="code" placeholder="请输入验证码" class="ipt yanzhengma">
+                <div class="yzm_box"><img src="/index.php?ctl=registerLogin&act=getRandCodeForUser" class="randCode" alt=""></div>
+            </div>
+            <!-- 5 -->
+            <div class="jz">
+                <input type="checkbox" name="remember" id="remember">下次自动登录
+            </div>
+            <button class="login_btn">登录</button>
+
+        </form>
+    </div>
+
+
+<script src="/admin/js/jquery.min.js"></script>
+<script src="/admin/js/bootstrap.min.js"></script>
+<script src="/admin/js/common.js"></script>
+<script>
+    $(".randCode").on('click',function(){
+        $(this).attr('src',$(this).attr('src')+'&'+Math.random());
+    });
+    $('.login_btn').click(function(e){
+        e.preventDefault();//禁止冒泡
+        var student_id = $('#student_id').val();
+        var name = $('#name').val();
+        var password = $('#password').val();
+        var code = $('#code').val();
+        var remember = $('#remember').val();
+
+        if(student_id == ''){
+            dtAlert({ message:'请输入学号/身份证号',title:'<i class="glyphicon glyphicon-remove"></i>',style:'primary' });
+            return false;
+        }
+        if(name == ''){
+            dtAlert({ message:'请输入姓名',title:'<i class="glyphicon glyphicon-remove"></i>',style:'primary' });
+            return false;
+        }
+        if(password == ''){
+            dtAlert({ message:'请输入密码',title:'<i class="glyphicon glyphicon-remove"></i>',style:'primary' });
+            return false;
+        }
+        if(code == ''){
+            dtAlert({ message:'请输入验证码',title:'<i class="glyphicon glyphicon-remove"></i>',style:'primary' });
+            return false;
+        }
+
+        $.post("/index.php?ctl=registerLogin&act=login", $('#login').serialize(),
+            function(data){
+            console.log(data);
+            if(data.res == 'failed'){
+                dtAlert({ message:data.msg,title:'<i class="glyphicon glyphicon-remove"></i>',style:'primary' });
+                return false;
+            }else{
+                dtAlert({ message:'登录成功,正在跳转',title:'<i class="glyphicon glyphicon-ok"></i>',style:'primary',callback:'window.location.href="?/ctl=index";' });
+            }
+
+                
+        }, "json");
+        
+    })
+</script>
+</body>
+
+</html>

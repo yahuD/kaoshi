@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <style>
+        @font-face {
+            font-family: 'icomoon';
+            src: url('fonts/icomoon.eot?lrs8eq');
+            src: url('fonts/icomoon.eot?lrs8eq#iefix') format('embedded-opentype'), url('./template_m/fonts/icomoon.ttf?lrs8eq') format('truetype'), url('./template_m/fonts/icomoon.woff?lrs8eq') format('woff'), url('./template_m/fonts/icomoon.svg?lrs8eq#icomoon') format('svg');
+            font-weight: normal;
+            font-style: normal;
+            font-display: block;
+        }
+    </style>
+    <link rel="stylesheet" href="/template_m/css/base.css">
+    <link rel="stylesheet" href="/template_m/css/kaoshi_index.css">
+
+    <title>首页</title>
+</head>
+
+<body>
+    <!-- 遮罩 -->
+    <div class="zhezhao"></div>
+    <!-- 考试时间未到 -->
+    <div class="test_time_no">
+        考试还没开始，请耐心等待！
+        <a href="javascript:;" class="test_time_no_btn">确定</a>
+    </div>
+
+
+
+
+    <!-- 1 -->
+    <div class="datika_top">
+        <div class="datika_back">
+            <!-- <a href="javascript:;" class="back"></a> -->
+            <a href="/template_m/timu.html" class="back"></a>
+        </div>
+        <!-- <div class="clock"> 00:52:44</div> -->
+        <!-- <div class="clock">首页</div> -->
+        <div class="tab_kaoshi">首页</div>
+        <!-- <div class="datika_wenzi">答题卡</div> -->
+    </div>
+
+    <!-- 2  220 -->
+    <div class="kaoshi_220">
+
+        <div class="ks_icon">
+            <em class="shuzi">{$lists_count}</em>
+        </div>
+        <div class="title">考试</div>
+
+
+    </div>
+
+
+    <!-- 3 -->
+    <div class="current_test_more">
+        <div class="left_bg_4"></div>
+        <em>当前考试</em>
+        <a href="?ctl=index&act=index_more" class="more">更多</a>
+    </div>
+    <!-- 4 -->
+    <div class="current_list2">
+        {foreach $lists as $k => $v}
+        <div class="current_list_box">
+            
+            <div class="current_list_top"> {$v.title}
+                {if time() < strtotime($v.begin_time)}<div class="weikaishi">未开始</div>{else if time() >= strtotime($v.begin_time) && time() < strtotime($v.end_time)}<div class="jinxingzhong">进行中</div>{else if time() >= strtotime($v.end_time)}<div class="weikaishi" style="background:red ;">已结束</div>{/if}
+            </div>
+            <div class="xian"></div>
+
+            <div class="current_time">开始时间：{$v.begin_time}~{$v.end_time}</div>
+            <!-- <div class="xianshi">限时60分钟</div> -->
+
+            <a href="#" onclick="goTest( {strtotime($v.begin_time)},{strtotime($v.end_time)},{$v.id} );" class="begin_test2" {if time() >= strtotime($v.end_time)}style="background-color: #ccc;color: #fff;cursor: default;"{/if}>开始考试</a>
+            
+
+        </div>
+{/foreach}
+    </div>
+    <!-- 4-2进行中 -->
+    <!-- <div class="current_list2">
+        <div class="current_list_box">
+
+            <div class="current_list_top"> 电子商务考试
+                <div class="jinxingzhong">进行中</div>
+            </div>
+            <div class="xian"></div>
+
+            <div class="current_time">2020-8-24 09:30~2020-8-24 11:00</div>
+            <div class="xianshi">限时<em style="color: #0c8ece;">60分钟</em></div>
+
+            <a href="/template_m/timu.html" class="begin_test2">开始考试</a>
+        </div>
+
+    </div> -->
+
+    <!-- 4-2进行中 end -->
+    <!-- 4-3 -->
+    <!-- 已经结束状态 -->
+    <!-- <div class="current_list1">
+        <div class="current_list_box">
+
+            <div class="current_list_top"> 电子商务考试
+                <div class="weikaishi" style="background:red ;">已结束</div>
+            </div>
+            <div class="xian"></div>
+
+            <div class="current_time">2020-8-24 09:30~2020-8-24 11:00</div>
+            <div class="xianshi">限时60分钟</div>
+
+            <a href="javascript:;" class="begin_test1">开始考试</a>
+        </div>
+
+    </div> -->
+    <!-- end -->
+
+
+    <!-- 5 -->
+    <div class="footer">
+
+        <a href="javascript:;" class="home">
+            <div class="home_img">
+                <img src="/template_m/imgs/home2.png" alt="">
+            </div>
+            <div class="shouye_wenzi cur">首页</div>
+        </a>
+
+
+        <a href="?ctl=index&act=userCenter" class="person">
+            <div class="person_img">
+                <img src="/template_m/imgs/person1.png" alt="">
+            </div>
+            <div class="person_wenzi">个人</div>
+        </a>
+    </div>
+
+
+</body>
+<script src="/template_m/js/jquery.min.js"></script>
+<script src="/template_m/js/test_tixin.js"></script>
+
+<script type="text/javascript">
+    function goTest($begin_time,$end_time,id=0){
+        var now = Math.round(new Date().getTime()/1000);
+        console.log(now);
+        console.log($begin_time);
+        console.log($end_time);
+
+        if(now < $begin_time){
+            $('.text_notime').show();
+             return false;
+        }
+        if(now >= $end_time){
+            $('.end_text').show();
+            return false;
+        }
+
+        window.location.href = "?ctl=index&act=timu&id="+id;
+    }
+</script>
+
+</html>

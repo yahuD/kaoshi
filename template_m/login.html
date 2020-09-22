@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="/template_m/css/normalize.css">
+    <link rel="stylesheet" href="/template_m/css/m_index.css">
+    <title>登录</title>
+
+    <!-- js -->
+    <script src="/template_m/js/jquery.min.js"></script>
+    <script src="/template_m/js/m_login.js"></script>
+
+</head>
+
+<body>
+    <!-- 请填写完整信息后登录 -->
+    <div class="frm_info_no" style="display: none;">
+        <div class="no_top">请填写完整信息后登录</div>
+        <a href="javascript:;" class="no_queding">确定</a>
+    </div>
+    <!-- 请填写完整信息后登录 end-->
+
+    <!-- 学员/身份证输入有误 -->
+    <div class="frm_info_no2">
+        <div class="no_top2">学员/身份证或姓名输入有误</div>
+        <a href="javascript:;" class="no_queding2">确定</a>
+    </div>
+    <!-- 学员/身份证输入有误 end-->
+    <!-- 密码输入有误,请重新输入 -->
+    <div class="frm_info_pwderr">
+        <div class="no_top3">密码输入有误,请重新输入</div>
+        <a href="javascript:;" class="no_queding3">确定</a>
+    </div>
+
+    <!-- 密码输入有误,请重新输入  end-->
+
+
+    <div class="main">
+        <div class="Logo_title">
+            <div class="logo">
+                <a href="javascript:;">
+                    <img src="/template_m/imgs/logo.png" alt="">
+                </a>
+            </div>
+            <div class="title">科普考试系统</div>
+
+        </div>
+
+        <!-- form部分 -->
+        <div class="frm">
+            <form id="login">
+                <div class="frm_info">学号/身份证</div>
+                <input type="text" name="student_id" class="ipt student_id" id="student_id" placeholder="请输入学员/身份证">
+
+                <div class="frm_info">姓名</div>
+                <input type="text" name="name" class="ipt name" id="name" placeholder="请输入姓名">
+
+                <div class="frm_info">密码</div>
+                <input type="password" name="password" class="ipt password" id="password" placeholder="请输入密码">
+
+                <button class="login_btn login_btn_cur">登录</button>
+
+            </form>
+        </div>
+    </div>
+
+
+<script src="/admin/js/jquery.min.js"></script>
+<script src="/admin/js/bootstrap.min.js"></script>
+<script src="/admin/js/common.js"></script>
+<script>
+     $('.login_btn').click(function(e){
+        e.preventDefault();//禁止冒泡
+        var student_id = $('#student_id').val();
+        var name = $('#name').val();
+        var password = $('#password').val();
+
+        if(student_id == '' || name == '' || password == ''){
+           $('.frm_info_no').show();
+           return false;
+        }
+
+        $.post("/index.php?ctl=registerLogin&act=Mlogin", $('#login').serialize(),
+            function(data){
+            console.log(data);
+            if(data.res == 'failed'){
+                $('.frm_info_no').show();
+                return false;
+            }else if(data.res == 'failed_name'){
+                $('.frm_info_no2').show();
+                return false;
+            }else if(data.res == 'failed_pwd'){
+                $('.frm_info_pwderr').show();
+                return false;
+            }else{
+                window.location.href="/index";
+            }
+
+                
+        }, "json");
+        
+    })
+</script>
+</body>
+</html>

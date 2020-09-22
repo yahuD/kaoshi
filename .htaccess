@@ -1,0 +1,96 @@
+<IfModule mod_expires.c>
+
+#打开缓存
+ExpiresActive On
+
+#默认对所有资源缓存600秒
+#ExpiresDefault A600
+
+#png格式的资源缓存5秒
+#ExpiresByType image/png A5
+#jpg格式的资源缓存50秒
+#ExpiresByType image/jpg A50
+
+<FilesMatch "\.(jpg|jpeg|png|gif|swf)$">
+  ExpiresDefault A86400
+</FilesMatch>
+
+</IfModule>
+
+RewriteEngine on
+RewriteBase /
+RewriteEngine On
+
+SetEnvIfNoCase User-Agent ¡°^Baidu¡± bad_bot
+SetEnvIfNoCase User-Agent ¡°^sogou¡± bad_bot
+SetEnvIfNoCase User-Agent ¡°^Bloghoo¡± bad_bot
+SetEnvIfNoCase User-Agent ¡°^Scooter¡± bad_bot
+Deny from env=bad_bot
+SetEnvIf User-Agent ¡°^Googlebot¡± google
+Deny from env=google
+
+RewriteRule index.html  index.php [L]
+
+#首页
+RewriteRule ^adminindex$  index.php?ctl=user&act=index
+
+#管理员登录
+RewriteRule ^adminLogin$  index.php?ctl=registerLogin&act=adminLoginPage
+
+
+RewriteRule ^userLogin$  index.php?ctl=registerLogin&act=loginPage
+
+
+#学员
+RewriteRule ^student$  index.php?ctl=user&act=studentLists
+RewriteRule ^student/page([0-9]+)$  index.php?ctl=user&act=studentLists&page=$1
+RewriteRule ^student/add$  index.php?ctl=user&act=addStudentPage
+RewriteRule ^student/batadd$  index.php?ctl=user&act=batAddStudentPage
+RewriteRule ^student/edit([0-9]+)$  index.php?ctl=user&act=editStudentPage&uid=$1
+
+#教师
+RewriteRule ^teacher$  index.php?ctl=user&act=teacherLists
+RewriteRule ^teacher/page([0-9]+)$  index.php?ctl=user&act=teacherLists&page=$1
+RewriteRule ^teacher/add$  index.php?ctl=user&act=addTeacherPage
+RewriteRule ^teacher/edit([0-9]+)$  index.php?ctl=user&act=editTeacherPage&uid=$1
+
+#管理员
+RewriteRule ^adminuser$  index.php?ctl=user&act=adminLists
+RewriteRule ^adminuser/add$  index.php?ctl=user&act=addAdminPage
+RewriteRule ^adminuser/page([0-9]+)$  index.php?ctl=user&act=adminLists&page=$1
+RewriteRule ^adminuser/edit([0-9]+)$  index.php?ctl=user&act=editAdminPage&uid=$1
+
+#试卷
+RewriteRule ^exam/category$  index.php?ctl=exam&act=examCategoryPage
+RewriteRule ^exam/category/page([0-9]+)$  index.php?ctl=exam&act=examCategoryPage&page=$1
+RewriteRule ^exam/category/add$  index.php?ctl=exam&act=AddExamCategoryPage
+RewriteRule ^exam/add([0-9]+)$  index.php?ctl=exam&act=creatExamForCPage&id=$1
+RewriteRule ^exam/add$  index.php?ctl=exam&act=creatExamForCPage
+RewriteRule ^exam/category/edit([0-9]+)$  index.php?ctl=exam&act=editExamCategoryPage&id=$1
+
+RewriteRule ^exam/lists$  index.php?ctl=exam&act=examLists
+RewriteRule ^exam/lists/page([0-9]+)$  index.php?ctl=exam&act=examLists&page=$1
+RewriteRule ^exam/edit([0-9]+)$  index.php?ctl=exam&act=editExamPage&id=$1
+
+#题型
+RewriteRule ^exam/questype$  index.php?ctl=exam&act=examQuestype
+RewriteRule ^exam/questype/add$  index.php?ctl=exam&act=addExamQuestypePage
+RewriteRule ^exam/questions/add([0-9]+)$ index.php?ctl=exam&act=creatExamQuestionPage&id=$1
+RewriteRule ^exam/questions/batadd([0-9]+)$ index.php?ctl=exam&act=batCreatExamQuestionPage&id=$1
+
+#考试
+RewriteRule ^exam/test$  index.php?ctl=exam&act=examTest
+RewriteRule ^exam/test/page([0-9]+)$  index.php?ctl=exam&act=examTest&page=$1
+
+RewriteRule ^exam/test/add$  index.php?ctl=exam&act=addExamTestPage
+
+
+
+#学员登录
+RewriteRule ^index$  index.php?ctl=index&act=index
+RewriteRule ^test([0-9]+)$  index.php?ctl=index&act=test&id=$1
+
+#手机端 个人中心
+RewriteRule ^user$  index.php?ctl=index&act=userCenter
+
+RewriteRule ^logout$  index.php?ctl=index&act=logout

@@ -1,0 +1,161 @@
+{include file="admin_header.html" title="修改学员-考试系统"}
+
+{include file="admin_top.html"}
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="main">
+			<div class="col-xs-2 leftmenu">
+				<ul class="list-group">
+					<li class="list-group-item active">
+						<a href="?ctl=user&act=studentLists">学员管理</a>
+					</li>
+					<li class="list-group-item">
+						<a href="?ctl=user&act=teacherLists">教师管理</a>
+					</li>
+					<li class="list-group-item">
+						<a href="?ctl=user&act=adminLists">管理员管理</a>
+					</li>
+				</ul>
+			</div>
+
+			<div id="datacontent">
+				<div class="box itembox" style="margin-bottom:0px;border-bottom:1px solid #CCCCCC;">
+					<div class="col-xs-12">
+						<ol class="breadcrumb">
+							<li>用户</li>
+							<li><a href="/student"></a>学员管理</li>
+							<li class="active">修改学员</li>
+						</ol>
+					</div>
+				</div>
+
+				<div class="box itembox" style="padding-top:10px;margin-bottom:0px;">
+					<h4 class="title" style="padding:10px;">
+						修改学员
+						<a class="pull-right btn btn-primary" href="?ctl=user&act=studentLists">学员列表</a>
+					</h4>
+					<form class="form-horizontal" id="editStudent" style="margin-top:40px;">
+						<div class="form-group">
+							<label for="username" class="control-label col-sm-2">姓名</label>
+							<div class="col-sm-4">
+								<input class="form-control" name="name" id="name" size="25" type="text" value="{$row.name}" needle="needle" datatype="name" max="40" alt="请输入姓名" />
+								<span class="help-block">请输入姓名</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="username" class="control-label col-sm-2">性别</label>
+							<div class="col-sm-4">
+								<select name='sex' id="sex" class="form-control" style="margin-top: 10px;">
+									<option value="0">请选择</option>
+									<option value="m" {if $row.sex == 'm'} selected="selected"{/if}>男</option>
+									<option value="f" {if $row.sex == 'f'} selected="selected"{/if}>女</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="username" class="control-label col-sm-2">学号/身份证号</label>
+							<div class="col-sm-4">
+								<input class="form-control" name="student_id" id="student_id" size="25" type="text" value="{$row.student_id}" needle="needle" datatype="student_id" max="40" alt="请输入学号/身份证号" />
+								<span class="help-block">请输入学员 学号/身份证号</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="password2" class="control-label col-sm-2">学校</label>
+							<div class="col-sm-4">
+								<input class="form-control" type="text" id="school" equ="school" needle="needle" value="{$row.school}" datatype="school" msg="请输入学校" name="school"/>
+								<span class="help-block">请输入学校</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="password2" class="control-label col-sm-2">专业</label>
+							<div class="col-sm-4">
+								<input class="form-control" type="text" id="majors" equ="majors" needle="needle" value="{$row.majors}" datatype="majors" msg="请输入专业" name="majors"/>
+								<span class="help-block">请输入专业</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="password2" class="control-label col-sm-2">年级</label>
+							<div class="col-sm-4">
+								<input class="form-control" type="text" id="grade" equ="grade" needle="needle" value="{$row.grade}" datatype="grade" msg="请输入年级" name="grade"/>
+								<span class="help-block">请输入年级</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="password2" class="control-label col-sm-2">科目</label>
+							<div class="col-sm-4">
+								<input class="form-control" type="text" id="course" equ="course" needle="needle" value="{$row.course}" datatype="course" msg="请输入科目" name="course"/>
+								<span class="help-block">请输入科目</span>
+							</div>
+						</div>
+						<input type="hidden" name="uid" value="{$row.uid}">
+						
+						<div class="form-group">
+							<label for="groupid" class="control-label col-sm-2"></label>
+							<div class="col-sm-4">
+								<button class="btn btn-primary editStudent">修改</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{include file="admin_footer.html"}
+
+</body>
+<script>
+	$('.editStudent').click(function(e){
+		e.preventDefault();//禁止冒泡
+		var name = $('#name').val();
+		var sex = $('#sex').val();
+		var student_id = $('#student_id').val();
+		var school = $('#school').val();
+		var majors = $('#majors').val();
+		var grade = $('#grade').val();
+		var course = $('#course').val();
+
+		if(name == ''){
+			dtAlert({ message:'请输入姓名',title:'<i class="glyphicon glyphicon-remove"></i>',style:'primary' });
+			return false;
+		}
+		if(sex == ''){
+			dtAlert({ message:'请选择性别',title:'<i class="glyphicon glyphicon-remove"></i>',style:'primary' });
+			return false;
+		}
+		if(student_id == ''){
+			dtAlert({ message:'请输入学员 学号/身份证号',title:'<i class="glyphicon glyphicon-remove"></i>',style:'primary' });
+			return false;
+		}
+		
+		if(school == ''){
+			dtAlert({ message:'请输入学校',title:'<i class="glyphicon glyphicon-remove"></i>',style:'primary' });
+			return false;
+		}
+		if(majors == ''){
+			dtAlert({ message:'请输入专业',title:'<i class="glyphicon glyphicon-remove"></i>',style:'primary' });
+			return false;
+		}
+		if(grade == ''){
+			dtAlert({ message:'请输入年级',title:'<i class="glyphicon glyphicon-remove"></i>',style:'primary' });
+			return false;
+		}
+		if(course == ''){
+			dtAlert({ message:'请输入科目',title:'<i class="glyphicon glyphicon-remove"></i>',style:'primary' });
+			return false;
+		}
+
+		$.post("/index.php?ctl=user&act=editStudent", $('#editStudent').serialize(),
+			function(data){
+				console.log(data);
+		    	if(data.res == 'failed'){
+		    		dtAlert({ message:data.msg,title:'<i class="glyphicon glyphicon-remove"></i>',style:'primary' });
+					return false;
+		    	}else{
+		    		dtAlert({ message:'修改成功',title:'<i class="glyphicon glyphicon-ok"></i>',style:'primary',callback:"window.location.href='/student';" });
+		    	}
+		}, "json");
+	})
+</script>
+</html>

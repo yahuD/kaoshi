@@ -1,0 +1,132 @@
+{include file="admin_header.html" title="修改分类-考试系统"}
+
+{include file="admin_top.html"}
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="main">
+			<div class="col-xs-2 leftmenu">
+				<ul class="list-group">
+					<li class="list-group-item active">
+						<a href="?ctl=exam&act=examCategoryPage">试卷分类</a>
+					</li>
+					<li class="list-group-item">
+						<a href="?ctl=exam&act=examLists">试卷列表</a>
+					</li>
+					<li class="list-group-item">
+						<a href="?ctl=exam&act=examQuestype">题型管理</a>
+					</li>
+				</ul>
+			</div>
+
+			<div id="datacontent">
+				<div class="box itembox" style="margin-bottom:0px;border-bottom:1px solid #CCCCCC;">
+					<div class="col-xs-12">
+						<ol class="breadcrumb">
+							<li>试卷管理</li>
+							<li><a href="?ctl=exam&act=examCategoryPage"></a>试卷分类</li>
+							<li class="active">修改分类</li>
+						</ol>
+					</div>
+				</div>
+
+				<div class="box itembox" style="padding-top:10px;margin-bottom:0px;">
+					<h4 class="title" style="padding:10px;">
+						修改分类
+						<a class="pull-right btn btn-primary" href="?ctl=exam&act=examCategoryPage">试卷分类</a>
+					</h4>
+					<form class="form-horizontal" id="editcategory" style="margin-top:40px;">
+						<div class="form-group">
+							<label for="password2" class="control-label col-sm-2">学校</label>
+							<div class="col-sm-4">
+								<input class="form-control" type="text" id="school" equ="school" value="{$row.school}" needle="needle" datatype="school" msg="请输入学校" name="school"/>
+								<span class="help-block">请输入学校</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="password2" class="control-label col-sm-2">专业</label>
+							<div class="col-sm-4">
+								<input class="form-control" type="text" id="majors" equ="majors" value="{$row.majors}" needle="needle" datatype="majors" msg="请输入专业" name="majors"/>
+								<span class="help-block">请输入专业</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="password2" class="control-label col-sm-2">年级</label>
+							<div class="col-sm-4">
+								<input class="form-control" type="text" id="grade" equ="grade" needle="needle" value="{$row.grade}" datatype="grade" msg="请输入年级" name="grade"/>
+								<span class="help-block">请输入年级</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="password2" class="control-label col-sm-2">学期</label>
+							<div class="col-sm-4">
+								<input class="form-control" type="text" id="term" equ="term" needle="needle" value="{$row.term}" datatype="term" msg="请输入学期" name="term"/>
+								<span class="help-block">请输入学期</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="password2" class="control-label col-sm-2">科目</label>
+							<div class="col-sm-4">
+								<input class="form-control" type="text" id="course" equ="course" value="{$row.course}" needle="needle" datatype="course" msg="请输入科目" name="course"/>
+								<span class="help-block">请输入科目</span>
+							</div>
+						</div>
+						<input type="hidden" name="id" value="{$row.id}">
+						<div class="form-group">
+							<label for="groupid" class="control-label col-sm-2"></label>
+							<div class="col-sm-4">
+								<button class="btn btn-primary editcategory">修改</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{include file="admin_footer.html"}
+
+</body>
+<script>
+	$('.editcategory').click(function(e){
+		e.preventDefault();//禁止冒泡
+		var school = $('#school').val();
+		var majors = $('#majors').val();
+		var grade = $('#grade').val();
+		var term = $('#term').val();
+		var course = $('#course').val();
+
+		if(school == ''){
+			dtAlert({ message:'请输入学校',title:'<i class="glyphicon glyphicon-remove"></i>',style:'primary' });
+			return false;
+		}
+		if(majors == ''){
+			dtAlert({ message:'请输入专业',title:'<i class="glyphicon glyphicon-remove"></i>',style:'primary' });
+			return false;
+		}
+		if(grade == ''){
+			dtAlert({ message:'请输入年级',title:'<i class="glyphicon glyphicon-remove"></i>',style:'primary' });
+			return false;
+		}
+		if(term == ''){
+			dtAlert({ message:'请输入学期',title:'<i class="glyphicon glyphicon-remove"></i>',style:'primary' });
+			return false;
+		}
+		if(course == ''){
+			dtAlert({ message:'请输入科目',title:'<i class="glyphicon glyphicon-remove"></i>',style:'primary' });
+			return false;
+		}
+
+		$.post("/index.php?ctl=exam&act=editExamCategory", $('#editcategory').serialize(),
+			function(data){
+				console.log(data);
+		    	if(data.res == 'failed'){
+		    		dtAlert({ message:data.msg,title:'<i class="glyphicon glyphicon-remove"></i>',style:'primary' });
+					return false;
+		    	}else{
+		    		dtAlert({ message:'修改成功',title:'<i class="glyphicon glyphicon-ok"></i>',style:'primary',callback:"window.location.href='?ctl=exam&act=examCategoryPage';" });
+		    	}
+		}, "json");
+	})
+</script>
+</html>

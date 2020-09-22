@@ -1,0 +1,836 @@
+a {
+  text-decoration: none;
+}
+html {
+  font-size: 50px;
+}
+@media screen and (min-width: 320px) {
+  html {
+    font-size: 21.33333333px;
+  }
+}
+@media screen and (min-width: 360px) {
+  html {
+    font-size: 24px;
+  }
+}
+@media screen and (min-width: 375px) {
+  html {
+    font-size: 25px;
+  }
+}
+@media screen and (min-width: 384px) {
+  html {
+    font-size: 25.6px;
+  }
+}
+@media screen and (min-width: 400px) {
+  html {
+    font-size: 26.66666667px;
+  }
+}
+@media screen and (min-width: 414px) {
+  html {
+    font-size: 27.6px;
+  }
+}
+@media screen and (min-width: 424px) {
+  html {
+    font-size: 28.26666667px;
+  }
+}
+@media screen and (min-width: 480px) {
+  html {
+    font-size: 32px;
+  }
+}
+@media screen and (min-width: 540px) {
+  html {
+    font-size: 36px;
+  }
+}
+@media screen and (min-width: 720px) {
+  html {
+    font-size: 48px;
+  }
+}
+@media screen and (min-width: 750px) {
+  html {
+    font-size: 50px;
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  min-width: 320px;
+  width: 15rem;
+  height: 100%;
+  margin: 0 auto;
+  font-family: Arial, Helvetica;
+  box-sizing: border-box;
+  background-color: #efefef;
+}
+.zhezhao {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+.test_fifty_jiaojuan {
+  display: none;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 9.6rem;
+  height: 6.6rem;
+  background-color: #FFF;
+  border-radius: 0.16rem;
+  font-size: 0.64rem;
+  text-align: center;
+  padding-top: 1.9rem;
+  z-index: 11;
+}
+.test_fifty_jiaojuan .test_time_fifty_btn {
+  position: absolute;
+  display: block;
+  width: 3.2rem;
+  height: 1.4rem;
+  background-color: #0c8ece;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #FFF;
+  border-radius: 0.4rem;
+  line-height: 1.4rem;
+  -webkit-tap-highlight-color: transparent;
+}
+.test_time_end {
+  display: none;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 9.6rem;
+  height: 6.6rem;
+  background-color: #FFF;
+  border-radius: 0.16rem;
+  font-size: 0.64rem;
+  text-align: center;
+  padding-top: 1.9rem;
+  z-index: 11;
+}
+.test_time_end .test_time_end_btn {
+  position: absolute;
+  display: block;
+  width: 3.2rem;
+  height: 1.4rem;
+  background-color: #0c8ece;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #FFF;
+  border-radius: 0.4rem;
+  line-height: 1.4rem;
+  -webkit-tap-highlight-color: transparent;
+}
+.test_jiaojuan {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 9.6rem;
+  height: 6.6rem;
+  background-color: #fff;
+  z-index: 2;
+  box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.1);
+  border-radius: 0.16rem;
+  font-size: 0.64rem;
+  z-index: 11;
+}
+.test_jiaojuan h3 {
+  font-size: 0.64rem;
+  color: #111;
+  text-align: center;
+  padding-top: 1.7rem;
+  font-weight: 400;
+}
+.test_jiaojuan .test_jiaojuan_no {
+  float: left;
+  display: block;
+  width: 3.2rem;
+  height: 1.4rem;
+  line-height: 1.4rem;
+  border-radius: 0.4rem;
+  background-color: #cccccc;
+  font-size: 0.64rem;
+  text-align: center;
+  color: #FFF;
+  margin-left: 1.2rem;
+  margin-top: 1.4rem;
+  -webkit-tap-highlight-color: transparent;
+}
+.test_jiaojuan .test_jiaojuan_yes {
+  float: right;
+  width: 3.2rem;
+  height: 1.4rem;
+  line-height: 1.4rem;
+  border-radius: 0.4rem;
+  background-color: #0c8ece;
+  font-size: 0.64rem;
+  text-align: center;
+  color: #FFF;
+  margin-right: 1.2rem;
+  margin-top: 1.4rem;
+  -webkit-tap-highlight-color: transparent;
+}
+.test_jiaojuan_timeno {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 9.6rem;
+  height: 6.6rem;
+  background-color: #fff;
+  z-index: 2;
+  box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.1);
+  border-radius: 0.16rem;
+  font-size: 0.64rem;
+  z-index: 11;
+}
+.test_jiaojuan_timeno h3 {
+  font-size: 0.64rem;
+  color: #111;
+  padding-top: 1.7rem;
+  font-weight: 400;
+  padding-left: 2.2rem;
+  padding-right: 2.2rem;
+  text-align: center;
+}
+.test_jiaojuan_timeno .test_jiaojuan_timeno_btn {
+  float: left;
+  display: block;
+  width: 3.2rem;
+  height: 1.4rem;
+  line-height: 1.4rem;
+  border-radius: 0.4rem;
+  background-color: #cccccc;
+  font-size: 0.64rem;
+  text-align: center;
+  color: #FFF;
+  margin-left: 1.2rem;
+  margin-top: 1rem;
+  -webkit-tap-highlight-color: transparent;
+}
+.test_jiaojuan_timeno .test_jiaojuan_timeyes_btn {
+  float: right;
+  width: 3.2rem;
+  height: 1.4rem;
+  line-height: 1.4rem;
+  border-radius: 0.4rem;
+  background-color: #0c8ece;
+  font-size: 0.64rem;
+  text-align: center;
+  color: #FFF;
+  margin-right: 1.2rem;
+  margin-top: 1rem;
+  -webkit-tap-highlight-color: transparent;
+}
+.datika_top {
+  position: relative;
+  width: 100%;
+  height: 2.56rem;
+  background-color: #0C8ECE;
+}
+.datika_top .datika_back {
+  position: absolute;
+  top: 0.7rem;
+  left: 0.4rem;
+  width: 1.6rem;
+}
+.datika_top .datika_back .back {
+  position: absolute;
+  top: 0.4rem;
+  left: 0.2rem;
+  display: block;
+  width: 0.52rem;
+  height: 0.52rem;
+  font-weight: 400;
+  border: 0.06rem solid #FFF;
+  border-right: 0;
+  border-bottom: 0;
+  transform: rotate(-45deg);
+  -webkit-tap-highlight-color: transparent;
+}
+.datika_top .clock {
+  font-family: 'icomoon';
+  content:'';
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 55%;
+  transform: translate(-50%, -50%);
+  color: #FFF;
+  font-size: 0.72rem;
+}
+
+.datika_top .tab_kaoshi {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 55%;
+  transform: translate(-50%, -50%);
+  font-family: 'icomoon';
+  color: #FFF;
+  font-size: 0.72rem;
+}
+.datika_top .datika_wenzi {
+  position: absolute;
+  right: 0.3rem;
+  top: 55%;
+  transform: translateY(-50%);
+  font-size: 0.48rem;
+  color: #FFF;
+}
+.datika_top .datika_wenzi img {
+  width: 0.8rem;
+  height: 0.82rem;
+}
+.tiku_title {
+  position: relative;
+  width: 100%;
+  height: 1.7rem;
+  font-size: 0.56rem;
+  color: #333;
+  background-color: #fff;
+  padding: 0.6rem 0 0 0.4rem;
+  box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
+}
+.tiku_title .ti_title {
+  display: none;
+}
+.tiku_title .check_ti_title {
+  display: none;
+}
+.tiku_title .panduan_ti_title {
+  display: block;
+}
+.tiku_title .tiankong_ti_title {
+  display: none;
+}
+.tiku_title .wenda_ti_title {
+  display: none;
+}
+.tiku_title .jisuan_ti_title {
+  display: none;
+}
+.tiku_title .radio_ti_title {
+  display: none;
+}
+.tiku_title .zuopin_ti_title {
+  display: none;
+}
+
+
+.tiku_title .tiku_right {
+  position: absolute;
+  right: 0.4rem;
+  top: 55%;
+  transform: translateY(-50%);
+}
+.tiku_title .tiku_right .end {
+  color: #0c8ece;
+}
+.process_tiao {
+  width: 100%;
+  height: 0.2rem;
+}
+.process_tiao .process_height {
+  height: 0.2rem !important;
+  border-radius: 0;
+}
+.tiku_box {
+  overflow: hidden;
+  width: 100%;
+  padding: 0 0.4rem;
+  margin-top: 1rem;
+}
+.tiku_box form .items {
+  overflow: hidden;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 0.16rem;
+  box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.1);
+  padding-bottom: 1em;
+}
+.tiku_box form .items .timu_1 {
+  font-size: 0.52rem;
+  color: #666;
+  line-height: 0.76rem;
+  padding: 1rem 0.9rem;
+}
+.tiku_box form .items .rad_box {
+  overflow: hidden;
+  width: 100%;
+  padding-left: 0.8rem;
+  padding-right: 0.2rem;
+  padding-bottom: 0.6rem;
+}
+.tiku_box form .items .rad_box .span_link {
+  color: #333;
+}
+.tiku_box form .items .rad_box .cur_radColor {
+  overflow: hidden;
+  width: 100%;
+  margin-bottom: 0.3rem;
+}
+.tiku_box form .items .rad_box .cur_radColor .tiankong_shuzi {
+  float: left;
+  width: 1.08rem;
+  height: 1.08rem;
+  background: #F5F5F5;
+  border: 1px solid #CCCCCC;
+  opacity: 1;
+  border-radius: 0.08rem 0px 0px 0.08rem;
+  font-size: 0.48rem;
+  color: #666;
+  text-align: center;
+  line-height: 1.08rem;
+}
+.tiku_box form .items .rad_box .cur_radColor .tiankong_ipt {
+  float: left;
+  height: 1.08rem;
+  width: 11rem;
+  outline: none;
+  border: 0.02rem solid #ccc;
+  padding-left: 0.2rem;
+  border-left: 0;
+  border-radius: 0px 0.08rem 0.08rem 0px;
+  font-size: 0.44rem;
+  color: #999;
+}
+.tiku_box form .items .rad_box .cur_radColor .tiankong_ipt:hover {
+  border: 0.02rem solid #0b80b9;
+}
+.tiku_box form .items .rad_box span {
+  font-size: 0.5rem;
+  line-height: 0.8rem;
+  color: #333;
+}
+.tiku_box form .items .rad_box .cur_color {
+  color: #0b80b9;
+}
+
+.tiku_box form .items .rad_box .rad {
+  position: relative;
+  vertical-align: top;
+  border: 0!important;
+  width: 0;
+  height: 0;
+  margin-right: 0.6rem;
+  font-size: 0.44rem;
+}
+.tiku_box form .items .rad_box .rad::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  content: 'A';
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 0.02rem solid #7b7b7b;
+  text-align: center;
+  line-height: 0.64rem;
+  color: #999;
+}
+
+/*B*/
+.tiku_box form .items .rad_box .radB {
+  position: relative;
+  vertical-align: top;
+  border: 0!important;
+  width: 0;
+  height: 0;
+  margin-right: 0.6rem;
+  font-size: 0.44rem;
+}
+.tiku_box form .items .rad_box .radB::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  content: 'B';
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 0.02rem solid #7b7b7b;
+  text-align: center;
+  line-height: 0.64rem;
+  color: #999;
+}
+
+.tiku_box form .items .rad_box .radB:checked {
+  position: relative;
+}
+
+.tiku_box form .items .rad_box .radB:checked::before {
+  background-color: #0b80b9;
+  color: #FFF;
+  border: 0;
+}
+/*c*/
+
+.tiku_box form .items .rad_box .radC {
+  position: relative;
+  vertical-align: top;
+  border: 0!important;
+  width: 0;
+  height: 0;
+  margin-right: 0.6rem;
+  font-size: 0.44rem;
+}
+.tiku_box form .items .rad_box .radC::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  content: 'C';
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 0.02rem solid #7b7b7b;
+  text-align: center;
+  line-height: 0.64rem;
+  color: #999;
+}
+
+.tiku_box form .items .rad_box .radC:checked {
+  position: relative;
+}
+
+.tiku_box form .items .rad_box .radC:checked::before {
+  background-color: #0b80b9;
+  color: #FFF;
+  border: 0;
+}
+
+/*c*/
+
+/*d*/
+.tiku_box form .items .rad_box .radD {
+  position: relative;
+  vertical-align: top;
+  border: 0!important;
+  width: 0;
+  height: 0;
+  margin-right: 0.6rem;
+  font-size: 0.44rem;
+}
+.tiku_box form .items .rad_box .radD::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  content: 'D';
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 0.02rem solid #7b7b7b;
+  text-align: center;
+  line-height: 0.64rem;
+  color: #999;
+}
+
+.tiku_box form .items .rad_box .radD:checked {
+  position: relative;
+}
+
+.tiku_box form .items .rad_box .radD:checked::before {
+  background-color: #0b80b9;
+  color: #FFF;
+  border: 0;
+}
+
+/*d*/
+
+/*E*/
+.tiku_box form .items .rad_box .radE {
+  position: relative;
+  vertical-align: top;
+  border: 0!important;
+  width: 0;
+  height: 0;
+  margin-right: 0.6rem;
+  font-size: 0.44rem;
+}
+.tiku_box form .items .rad_box .radE::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  content: 'E';
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 0.02rem solid #7b7b7b;
+  text-align: center;
+  line-height: 0.64rem;
+  color: #999;
+}
+
+.tiku_box form .items .rad_box .radE:checked {
+  position: relative;
+}
+
+.tiku_box form .items .rad_box .radE:checked::before {
+  background-color: #0b80b9;
+  color: #FFF;
+  border: 0;
+}
+
+
+/*E*/
+
+/*加*/
+.textarea_wenda{
+  width: 11rem;
+  height: 10rem;
+  resize: none;
+  border:0.02rem solid #ccc;
+  padding:0.1rem; 
+}
+.jianda_textarea{
+  width: 11rem;
+  height: 10rem;
+  resize: none;
+  border:0.02rem solid #ccc;
+  padding:0.1rem; 
+
+}
+
+/*加*/
+
+
+.tiku_box form .items .rad_box .rad:checked {
+  position: relative;
+}
+
+.tiku_box form .items .rad_box .rad:checked::before {
+  background-color: #0b80b9;
+  color: #FFF;
+  border: 0;
+}
+
+
+
+
+.tiku_box form .items .rad_box .rad_right {
+  position: relative;
+  width: 0;
+  height: 0;
+}
+.tiku_box form .items .rad_box .rad_right::before {
+  content: '\e908' !important;
+  font-family: 'icomoon';
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.tiku_box form .items .rad_box .j_error {
+  position: relative;
+  width: 0;
+  height: 0;
+}
+.tiku_box form .items .rad_box .j_error::before {
+  content: 'X' !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.tiku_box form .items .rad_box .fenge {
+  display: block;
+  margin: 0.56rem 0;
+}
+.tiku_box form .items .rad_box .cur_checkboxColor {
+  margin: 0.5rem 0;
+}
+.tiku_box form .items .rad_box .cur_checkboxColor span {
+  font-size: 0.5rem;
+  line-height: 0.9rem;
+  color: #333;
+}
+.tiku_box form .items .rad_box .checkbox_lm {
+  position: relative;
+  vertical-align: middle;
+  width: 0;
+  height: 0;
+  border: 0;
+  background-color: #fff;
+  margin-right: 1rem;
+}
+.tiku_box form .items .rad_box .checkbox_lm::before {
+  content: 'A';
+  display: inline-block;
+  position: absolute;
+  top: -0.4rem;
+  left: 0rem;
+  width: 0.6rem;
+  height: 0.6rem;
+  border: 1px solid #707070;
+  background-color: #fff;
+  border-radius: 0.1rem;
+  text-align: center;
+  line-height: 0.62rem;
+  font-size: 0.48rem;
+  color: #999;
+}
+.tiku_box form .items .rad_box .checkbox_lm_B::before {
+  content: 'B';
+}
+.tiku_box form .items .rad_box .checkbox_lm_C::before {
+  content: 'C';
+}
+.tiku_box form .items .rad_box .checkbox_lm_D::before {
+  content: 'D';
+}
+.tiku_box form .items .rad_box .checkbox_lm_E::before {
+  content: 'E';
+}
+.tiku_box form .items .rad_box .checkbox_lm_F::before {
+  content: 'F';
+}
+.tiku_box form .items .rad_box .checkbox_lm:checked {
+  position: relative;
+  height: 0;
+  border: 0;
+  background-color: #0c8ece;
+}
+.tiku_box form .items .rad_box .checkbox_lm:checked::before {
+  display: inline-block;
+  width: 0.6rem;
+  height: 0.6rem;
+  background-color: #0c8ece;
+  border: 0;
+  color: #fff;
+}
+.tiku_box form .items:nth-child(n+2) {
+  display: none;
+}
+.tiku_box form .items_duoxuan {
+  margin-bottom: 4rem;
+}
+.tiku_box form .items_wenda {
+  display: none;
+  height: 17rem;
+  padding-right: 0.9rem;
+  margin-bottom: 4rem;
+}
+
+/*wenda*/
+
+
+.tiku_box form .items_tiankong {
+  margin-bottom: 6rem;
+}
+.tiku_box form .items_jisuan {
+  display: none;
+  height: 17rem;
+  padding-right: 0.9rem;
+  margin-bottom: 4rem;
+}
+
+.tiku_box form .items_jianda {
+  display: none;
+  height: 17rem;
+  padding-right: 0.9rem;
+  margin-bottom: 4rem;
+}
+.tiku_box form .items_zuopin{
+  display: none;
+  height: 17rem;
+  padding-right: 0.9rem;
+  margin-bottom: 4rem;
+}
+
+
+
+.prev_btn {
+  display: block;
+  position: fixed;
+  bottom: 1.2rem;
+  left: 50%;
+  margin-left: -6.6rem;
+  width: 4.6rem;
+  height: 1.6rem;
+  background-color: #fff;
+  font-size: 0.72rem;
+  text-align: center;
+  border-radius: 0.8rem;
+  border: 0.02rem solid #0c8ece;
+  line-height: 1.6rem;
+  color: #0c8ece;
+}
+.prev_btn:hover {
+  color: #0c8ece;
+}
+.next_btn {
+  display: block;
+  position: fixed;
+  bottom: 1.2rem;
+  left: 50%;
+  margin-left: -1.4rem;
+  width: 8.4rem;
+  height: 1.6rem;
+  background-color: #0c8ece;
+  font-size: 0.72rem;
+  border-radius: 0.8rem;
+  text-align: center;
+  line-height: 1.6rem;
+  color: #FFF;
+  font-weight: 700;
+}
+.next_btn:hover {
+  color: #FFF;
+}
+.tijiao_btn {
+  display: none;
+  position: fixed;
+  bottom: 1.2rem;
+  left: 50%;
+  margin-left: -1.4rem;
+  width: 8.4rem;
+  height: 1.6rem;
+  background-color: #0c8ece;
+  font-size: 0.72rem;
+  border-radius: 0.8rem;
+  text-align: center;
+  line-height: 1.6rem;
+  color: #FFF;
+  font-weight: 700;
+}
+.tijiao_btn:hover {
+  color: #FFF;
+}
+.footer_copy {
+  position: fixed;
+  width: 100%;
+  bottom: 0.4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.32rem;
+  text-align: center;
+  color: #999999;
+}

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>当前考试页面</title>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+  <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+  <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+    <link rel="stylesheet" href="/template/lib/layui/css/layui.css">
+    <link rel="stylesheet" href="/template/lib/fonts/iconfont.css">
+    <link rel="stylesheet" href="/template/css/base.css">
+    <link rel="stylesheet" href="/template/css/common2.css">
+    <link rel="stylesheet" href="/template/css/index.css">
+
+    <style>
+        .body_zhezhao {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, .1);
+            z-index: 100;
+        }
+    </style>
+
+
+
+    <!-- 时间js  -->
+
+
+</head>
+
+<body style="background-color: #efefef;">
+    <!-- 整体遮罩层 -->
+    <div class="body_zhezhao"></div>
+    <!-- 点击个人信息显示用户模块 -->
+
+    <div class="fix_user">
+        <div class="close">x</div>
+        <div class="top_bg"></div>
+        <div class="user_head_box">
+            <img src="/template/images/user.png" alt=""><span>{$user.name}</span>
+        </div>
+        <!-- info -->
+        <div class="fix_info">
+
+            <div class="fix_itmes">
+                <span>性别 :</span><span>{if $user.sex == 'm'}男{else}女{/if}</span>
+            </div>
+
+            <div class="fix_itmes">
+                <span>学号/身份证：</span><span>{$user.student_id}</span>
+            </div>
+
+            <div class="fix_itmes">
+                <span>院校：</span><span>{$user.school}</span>
+            </div>
+
+            <div class="fix_itmes">
+                <span>年级：</span><span>{$user.grade}</span>
+            </div>
+
+            <div class="fix_itmes">
+                <span>班级：</span><span>{$user.course}</span>
+            </div>
+
+            <div class="fix_itmes">
+                <span>专业：</span><span>{$user.majors}</span>
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+
+    <!-- 考试已结束 有疑问请联系班主任 -->
+    <div class="end_text">
+        <div class="close1">X</div>
+        考试已经结束，有疑问请联系班主任！
+    </div>
+
+    <!-- 考试时间未到，请耐心等待! -->
+    <div class="text_notime" style="display: none;">
+        <div class="close2">X</div>
+        考试时间未到，请耐心等待！
+
+    </div>
+
+    <!-- user点击退出盒子 -->
+    <div class="shezhi_logout">
+        <h3>您确定要退出登录？</h3>
+        <a href="javascript:;" class="quxiao">取消</a>
+        <a href="?ctl=index&act=logout" class="queding">确定</a>
+    </div>
+
+
+
+    <div class="header">
+        <div class="w">
+            <div class="logo_box">
+                <a href="javascript:;">
+                    <img src="/template/images/logo.png" alt="">
+                </a>
+                <div class="logo_info">科普考试系统——欢迎您</div>
+            </div>
+            <!-- 用户模块 -->
+            <div class="user">
+                <a href="javascript:;" class="user_info">{$user.name}</a>
+
+                <div class="shezhi">
+                    <div class="xian_tiao"></div>
+                    <ul>
+                        <li>
+                            <a href="javascript:;" class="showUser">个人信息</a>
+                        </li>
+                        <li>
+                            <a href="javascript:;" id="btnLogOut">退 出</a>
+                        </li>
+                    </ul>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- user点击退出盒子end -->
+    <!-- items-2 -->
+
+    <div class="tab_text">
+        <div class="w">
+            <div class="tab_btn">
+                <button class="btn btn_c btn_cur">当前考试</button>
+                <button class="btn btn_h">历史考试</button>
+            </div>
+            <!-- 选卡切换 -->
+            <!-- 当前 未开始-->
+            <div class="items_current">
+                <ul>
+                    {foreach $lists as $k => $v}
+                    <li>
+                        <h3>{$v.title}</h3>
+                        <em>开始时间：{$v.begin_time}~{$v.end_time}</em>
+                        <i>考试时长：{$v.duration}分钟 {if time() < strtotime($v.begin_time)}<span id="long">距离考试时间：{if $v.long == 0 }1{else}{$v.long}{/if}分钟</span>{else if time() >= strtotime($v.end_time)}<span>考试已结束</span>{/if}</i>
+                        <em class="last_item">当前状态：{if time() < strtotime($v.begin_time)}考试未开始{else if time() >= strtotime($v.begin_time) && time() < strtotime($v.end_time)}<span style="color: #4ea3d6;">考试进行中</span>{else if time() >= strtotime($v.end_time)}已提交试卷{/if}</em>
+                        <a href="#" onclick="goTest( {strtotime($v.begin_time)},{strtotime($v.end_time)},{$v.id} );" class="text_btn" {if time() >= strtotime($v.end_time)}style="background-color: #ccc;color: #fff;cursor: default;"{/if}>开始考试</a>
+                    </li>
+                    {/foreach}
+                </ul>
+            </div>
+
+            <!-- 考试正在进行 -->
+            <!-- <div class="items_current items_jinxing">
+                <ul>
+                    <li>
+                        <h3>电子商务考试</h3>
+                        <em>开始时间：2020-8-21  09：30~2020-8-21  11：00</em>
+                        <i>考试时长：60分钟 </i>
+                        <em class="last_item">当前状态：<span>考试进行中</span>
+                        </em>
+                        <a href="/template/tiku.html" class="text_btn">开始考试</a>
+                    </li>
+                </ul>
+            </div> -->
+
+            <!-- 考试正在进行end -->
+
+            <!-- 考试结束状态 -->
+            <!-- <div class="items_current items_end">
+                <ul>
+                    <li>
+                        <h3>电子商务考试</h3>
+                        <em>开始时间：2020-8-21  09：30~2020-8-21  11：00</em>
+                        <i>考试时长：60分钟 <span>考试已结束</span></i>
+                        <em class="last_item">当前状态：已提交试卷</em>
+                        <a href="javascript:;" class="text_btn">开始考试</a>
+                    </li>
+                </ul>
+            </div> -->
+
+            <!-- 考试结束状态end -->
+
+
+            <!-- 历史 -->
+
+
+
+
+
+
+
+            <div class="items_history">
+                <ul>
+
+
+                    {foreach $list3 as $k => $v}
+                        <li>
+                            <h3>{$v.title}</h3>
+                            <em>开始时间：{$v.begin_time}</em>
+                            <i>结束时间：{$v.end_time}</i>
+
+                            {if $v.is_quekao == 1}
+                                <em class="last_item"><a href="https://www.kepuedu.com/">考试成绩：请登录科普官网查看>></a></em>
+                            
+                            {else if $v.is_quekao == 0}
+                                <em class="last_item">考试成绩：<span style="color: red;">缺考</span></em>
+                            {/if}
+                            <a href="https://www.kepuedu.com/" class="text_btn">查看</a>
+                        </li>
+                    </li>
+                    {/foreach}
+
+                    <!-- <li>
+                        <h3>电子商务考试</h3>
+                        <em>开始时间：2020-8-21  09：30</em>
+                        <i>结束时间：2020-8-21  11：00 </i>
+                        <em class="last_item">考试成绩：<span style="color: red;">缺考</span></em>
+                        <a href="https://www.kepuedu.com/" class="text_btn">查看</a>
+                    </li>
+
+                    <li>
+                        <h3>会计从业考试</h3>
+                        <em>开始时间：2020-8-10 09：30</em>
+                        <i>结束时间：2020-8-10 11：00</i>
+                        <em class="last_item"><a href="https://www.kepuedu.com/">考试成绩：请登录科普官网查看>></a></em>
+                        <a href="https://www.kepuedu.com/" class="text_btn">查看</a>
+                    </li>
+
+                    <li>
+                        <h3>会计从业考试</h3>
+                        <em>开始时间：2020-8-10 09：30</em>
+                        <i>结束时间：2020-8-10 11：00</i>
+                        <em class="last_item"><a href="https://www.kepuedu.com/">考试成绩：请登录科普官网查看>></a></em>
+                        <a href="https://www.kepuedu.com/" class="text_btn">查看</a>
+                    </li> -->
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="fenye">
+        <div class="w">
+            <div class="prev">
+                <!-- <em></em> -->
+                <a href="javascript:;" class="pr_shang"></a>
+                <a href="javascript:;"></a>
+                <a href="" class="yeshu">1</a>
+                <a href="javascript:;"></a>
+                <a href="javascript:;" class="lack"></a>
+                <!-- <em class="lack1"></em> -->
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- 导入 layui 的JS文件 -->
+    <!-- <script src="/assets/lib/layui/layui.all.js"></script> -->
+    <script src="/template/js/jquery.min.js"></script>
+    <script src="/template/lib/layui/layui.js"></script>
+    <script src="/template/lib/layui/layui.all.js"></script>
+    <script src="/template/js/user.js"></script>
+<script>
+    function goTest($begin_time,$end_time,id=0){
+        var now = Math.round(new Date().getTime()/1000);
+
+        if(now < $begin_time){
+            $('.text_notime').show();
+             return false;
+        }
+        if(now >= $end_time){
+            $('.end_text').show();
+            return false;
+        }
+
+        window.location.href = "?ctl=index&act=test&id="+id;
+    }
+
+    
+</script>
+
+<script type="text/javascript">
+    
+    
+</script>
+
+
+
+</body>
+
+</html>

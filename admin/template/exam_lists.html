@@ -1,0 +1,123 @@
+{include file="admin_header.html" title="后台-考试系统"}
+<style>
+	a.cur{
+		color: #23527c!important;
+	    background-color: #eee!important;
+	    border-color: #ddd!important;
+    }
+</style>
+
+{include file="admin_top.html"}
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="main">
+			<div class="col-xs-2 leftmenu">
+				<ul class="list-group">
+					<li class="list-group-item">
+						<a href="?ctl=exam&act=examCategoryPage">试卷分类</a>
+					</li>
+					<li class="list-group-item active">
+						<a href="?ctl=exam&act=examLists">试卷列表</a>
+					</li>
+					<li class="list-group-item">
+						<a href="?ctl=exam&act=examQuestype">题型管理</a>
+					</li>
+				</ul>
+			</div>
+
+			<div id="datacontent">
+				<div class="box itembox" style="margin-bottom:0px;border-bottom:1px solid #CCCCCC;">
+					<div class="col-xs-12">
+						<ol class="breadcrumb">
+							<li><a href="?ctl=exam&act=examLists">试卷管理</a></li>
+							<li class="active">试卷列表</li>
+						</ol>
+					</div>
+				</div>
+
+				<div class="box itembox" style="padding-top:10px;margin-bottom:0px;">
+					<h4 class="title" style="padding:10px;">
+						试卷列表
+						<span class="pull-right">
+							<a class="btn btn-primary" href="?ctl=exam&act=creatExamForCPage">创建试卷</a>
+							<!-- <ul class="dropdown-menu">
+								<li><a href="/student/add">单个学员</a></li>
+								<li><a href="/student/batadd">从excel文件导入</a></li>
+							</ul> -->
+						</span>
+					</h4>
+					<table class="table table-hover table-bordered">
+						<thead>
+							<tr class="info">
+								<th>ID</th>
+								<th>分类</th>
+								<th>名称</th>
+								<th>状态</th>
+								<th>及格线</th>
+								<th>创建人</th>
+								<th>创建时间</th>
+								<th width="200">操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							{foreach $row as $k => $v}
+							<tr>
+								<td>{$v.id}</td>
+								<td>{$v.school}/{$v.majors}/{$v.grade}/{$v.term}/{$v.course}</td>
+								<td>{$v.title}</td>
+								<td>{if $v.status == 1}启用{else}禁用{/if}</td>
+								<td>{$v.pass_line}</td>
+								<td>{$v.name}</td>
+								<td>{$v.addtime}</td>
+								<td>
+									<div class="btn-group">
+										<a class="btn" href="?ctl=exam&act=editExamPage&id={$v.id}" title="编辑试卷"><em class="glyphicon glyphicon-edit"></em></a>
+										<a class="btn" href="?ctl=exam&act=creatExamQuestionPage&id={$v.id}" title="创建试题"><em class="glyphicon glyphicon-paste"></em></a>
+										<!-- <a class="btn  delconfirm" data-id="{$v.id}" data-gourl="{$smarty.server.REQUEST_URI}"><em class="glyphicon glyphicon-remove"></em></a> -->
+									</div>
+								</td>
+							</tr>
+							{/foreach}
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<ul class="pagination" style="text-align: center;display: block;">
+				{$showpage}
+			</ul>
+		</div>
+	</div>
+</div>
+
+{include file="admin_footer.html"}
+<script src="https://cdn.bootcdn.net/ajax/libs/bootstrap-confirmation/1.0.7/bootstrap-confirmation.min.js"></script>
+<script> 
+$(function () { 
+	$('.delconfirm').confirmation({
+
+		animation: true, 
+		placement: "top", 
+		title: "确定要删除吗？", 
+		btnOkLabel: '确定', 
+		btnCancelLabel: '取消', 
+		onConfirm: function () { 
+			console.log(this.options.id); 
+			var id = this.options.id;
+			var gourl = this.options.gourl;
+
+			$.post("/index.php?ctl=exam&act=delExamCategory", { id:id,gourl:gourl },
+			function(data){
+				console.log(data);
+		    	window.location.href=data.gourl;
+			}, "json");
+			
+		}, 
+		onCancel: function () { 
+			//alert("点击了取消"); 
+		} 
+	}) 
+});
+</script> 
+</body>
+
+</html>
